@@ -3,6 +3,7 @@
   Handles mobile navigation toggling and booking form interactions.
 */
 
+
 const navToggleButtons = document.querySelectorAll('.nav-toggle');
 const navMenus = document.querySelectorAll('.nav-menu');
 
