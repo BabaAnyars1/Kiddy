@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Kiddicare</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Main website header and navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Kiddicare</a>
+      <nav class="navbar" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="services-dropdown">Services</button>
+            <ul id="services-dropdown" class="dropdown-menu">
+              <li><a href="nanny-services.html">Nanny Services</a></li>
+              <li><a href="babysitter-services.html">Babysitter Services</a></li>
+              <li><a href="daycare-services.html">Daycare Services</a></li>
+              <li><a href="tour-guide-services.html">Child Tour Guide Services</a></li>
+            </ul>
+          </li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="trust.html">Safety and Trust</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Blog Hero -->
+    <section class="section section-hero">
+      <div class="container">
+        <div class="page-hero">
+          <span>Blog</span>
+          <h1>Helpful parenting tips and child-care insights</h1>
+          <p>Learn how to keep your child engaged, build routines, and choose the right caregiver.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-3 blog-cards">
+          <article class="card blog-card">
+            <h3>Preparing Your Child for a New Caregiver</h3>
+            <p class="blog-meta">Published on March 15, 2026</p>
+            <p>Simple steps to make transitions smoother and build trust with your child's babysitter or nanny. Learn how to introduce your child gradually, establish routines, and communicate effectively with their new caregiver.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </article>
+          <article class="card blog-card">
+            <h3>Safe and Fun Daycare Activities</h3>
+            <p class="blog-meta">Published on March 8, 2026</p>
+            <p>Find ideas for creative play, learning, and social connection in daycare environments. Discover age-appropriate activities that promote development while keeping children engaged and entertained.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </article>
+          <article class="card blog-card">
+            <h3>Choosing the Right Child Tour Guide</h3>
+            <p class="blog-meta">Published on February 28, 2026</p>
+            <p>What to look for when planning educational outings and group experiences for young children. Tips for selecting qualified guides and ensuring enriching field trip experiences.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </article>
+          <article class="card blog-card">
+            <h3>Creating a Consistent Bedtime Routine</h3>
+            <p class="blog-meta">Published on February 20, 2026</p>
+            <p>Help your child develop healthy sleep habits with consistent routines. Learn science-backed strategies for better sleep quality and more peacefully managed evenings.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </article>
+          <article class="card blog-card">
+            <h3>Supporting Emotional Development in Young Children</h3>
+            <p class="blog-meta">Published on February 12, 2026</p>
+            <p>Emotional intelligence starts early. Discover how to help your child identify and manage emotions, build resilience, and develop healthy relationships with peers.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </article>
+          <article class="card blog-card">
+            <h3>Managing Screen Time for Healthy Child Development</h3>
+            <p class="blog-meta">Published on February 1, 2026</p>
+            <p>Balanced guidance on screen time for different age groups. Learn best practices for setting boundaries while leveraging quality digital content for learning.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="section section-light">
+      <div class="container newsletter-cta">
+        <div class="newsletter-content">
+          <h2>Stay Updated with Parenting Tips</h2>
+          <p>Subscribe to our newsletter for weekly insights, care tips, and Kiddicare updates delivered to your inbox.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+          <input type="email" placeholder="your@email.com" required />
+          <button type="submit" class="button primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

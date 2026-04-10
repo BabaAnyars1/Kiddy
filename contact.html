@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Kiddicare</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Main website header and navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Kiddicare</a>
+      <nav class="navbar" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="services-dropdown">Services</button>
+            <ul id="services-dropdown" class="dropdown-menu">
+              <li><a href="nanny-services.html">Nanny Services</a></li>
+              <li><a href="babysitter-services.html">Babysitter Services</a></li>
+              <li><a href="daycare-services.html">Daycare Services</a></li>
+              <li><a href="tour-guide-services.html">Child Tour Guide Services</a></li>
+            </ul>
+          </li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="trust.html">Safety and Trust</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Contact Hero -->
+    <section class="section section-hero">
+      <div class="container">
+        <div class="page-hero">
+          <span>Contact Us</span>
+          <h1>Have questions? We're here to help.</h1>
+          <p>Reach out for booking support, caregiver information, or any questions about our services.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="section">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <h2>Get in Touch</h2>
+          <p>Whether you're a prospective family looking to learn more about our services, a current customer needing support, or a caregiver interested in joining our network, we're ready to help.</p>
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+            <address>
+              <p><strong>Email:</strong> hello@kiddicare.com</p>
+              <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+              <p><strong>Location:</strong> Your city, USA</p>
+              <p><strong>Hours:</strong> Monday - Friday, 8:00 AM - 6:00 PM</p>
+            </address>
+          </div>
+          <div class="contact-departments">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><strong>Booking Support:</strong> booking@kiddicare.com</li>
+              <li><strong>Caregiver Inquiries:</strong> careers@kiddicare.com</li>
+              <li><strong>Safety & Trust:</strong> safety@kiddicare.com</li>
+            </ul>
+          </div>
+        </div>
+        <form id="contact-form" class="contact-form card" novalidate>
+          <h2>Send us a Message</h2>
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="name" placeholder="Your name" required />
+
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="email" placeholder="you@example.com" required />
+
+          <label for="contact-subject">Subject</label>
+          <input type="text" id="contact-subject" name="subject" placeholder="How can we help?" required />
+
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="5" placeholder="Tell us more about your inquiry..." required></textarea>
+
+          <button type="submit" class="button primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Frequently Asked Questions</h2>
+          <p>Find quick answers to common questions.</p>
+        </div>
+        <div class="faq-grid">
+          <details class="faq-item card">
+            <summary><h3>How do I get started with booking a service?</h3></summary>
+            <p>Simply visit our Booking page, select the service type that fits your needs, choose your preferred dates and times, and submit your request. Our team will match you with the perfect caregiver and confirm within 24 hours.</p>
+          </details>
+          <details class="faq-item card">
+            <summary><h3>Are your caregivers background-checked?</h3></summary>
+            <p>Yes, absolutely. Every caregiver undergoes comprehensive background screening including criminal checks, reference verification, and child abuse registry screening before joining our network.</p>
+          </details>
+          <details class="faq-item card">
+            <summary><h3>What if I need last-minute care?</h3></summary>
+            <p>We offer same-day booking options for many services. Contact our support team at hello@kiddicare.com or call +1 (555) 123-4567 for emergency care availability.</p>
+          </details>
+          <details class="faq-item card">
+            <summary><h3>Can I cancel or reschedule a booking?</h3></summary>
+            <p>Yes, cancellations and rescheduling are available up to 24 hours before your scheduled service. Please contact us as soon as possible for changes.</p>
+          </details>
+          <details class="faq-item card">
+            <summary><h3>What safety measures are in place?</h3></summary>
+            <p>We maintain industry-leading safety standards including caregiver training, real-time communication with parents, incident reporting protocols, and comprehensive liability insurance.</p>
+          </details>
+          <details class="faq-item card">
+            <summary><h3>How much does Kiddicare cost?</h3></summary>
+            <p>Pricing varies by service type and location. Contact our team for a personalized quote based on your specific needs and scheduling requirements.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safety and Trust | Kiddicare</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Main website header and navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Kiddicare</a>
+      <nav class="navbar" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="services-dropdown">Services</button>
+            <ul id="services-dropdown" class="dropdown-menu">
+              <li><a href="nanny-services.html">Nanny Services</a></li>
+              <li><a href="babysitter-services.html">Babysitter Services</a></li>
+              <li><a href="daycare-services.html">Daycare Services</a></li>
+              <li><a href="tour-guide-services.html">Child Tour Guide Services</a></li>
+            </ul>
+          </li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="trust.html">Safety and Trust</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Trust Hero -->
+    <section class="section section-hero">
+      <div class="container">
+        <div class="page-hero">
+          <span>Safety and Trust</span>
+          <h1>Trusted care backed by secure processes</h1>
+          <p>We make safety visible so you can feel confident leaving your children in our care.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Features -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-3 trust-cards">
+          <article class="card trust-card">
+            <h3>Background Screening</h3>
+            <p>Every caregiver is thoroughly screened, reference-checked, and certified before they join our network. We verify work history, conduct criminal background checks, and check child abuse registries.</p>
+          </article>
+          <article class="card trust-card">
+            <h3>Child-Friendly Training</h3>
+            <p>Caregivers receive training in first aid, child development, and positive guidance techniques. Ongoing professional development ensures they stay current with best practices.</p>
+          </article>
+          <article class="card trust-card">
+            <h3>Clear Communication</h3>
+            <p>Get real-time booking confirmations, caregiver profiles, and service summaries for complete transparency. Open lines of communication mean you're always in the loop.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Safety Standards -->
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Our Safety Standards</h2>
+          <p>Industry-leading protocols for child protection.</p>
+        </div>
+        <div class="grid grid-2">
+          <article class="card safety-standard">
+            <h3>Verification Process</h3>
+            <ul>
+              <li>Multi-step background check (criminal, sexual offender registry)</li>
+              <li>Reference verification from previous employers</li>
+              <li>Child abuse and neglect registry screening</li>
+              <li>Professional credential verification</li>
+              <li>Ongoing compliance monitoring</li>
+            </ul>
+          </article>
+          <article class="card safety-standard">
+            <h3>Certification & Training</h3>
+            <ul>
+              <li>CPR and First Aid certification required</li>
+              <li>Child development training</li>
+              <li>Safe sleep practices education</li>
+              <li>Mandatory reporter training</li>
+              <li>Annual refresher courses</li>
+            </ul>
+          </article>
+          <article class="card safety-standard">
+            <h3>Monitoring & Accountability</h3>
+            <ul>
+              <li>Real-time activity updates to parents</li>
+              <li>Regular performance reviews</li>
+              <li>Parent feedback system</li>
+              <li>Incident reporting protocols</li>
+              <li>Continuous compliance checks</li>
+            </ul>
+          </article>
+          <article class="card safety-standard">
+            <h3>Insurance & Liability</h3>
+            <ul>
+              <li>Comprehensive liability coverage</li>
+              <li>Professional indemnity insurance</li>
+              <li>Coverage for accidents and incidents</li>
+              <li>Guaranteed caregiver accountability</li>
+              <li>Family protection assurance</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parent Testimonials -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>What Parents Say</h2>
+          <p>Trust verified by real families.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card testimonial-card">
+            <p>"The peace of mind I get from their thorough vetting process is incredible. I know my child is in safe hands."</p>
+            <footer>- Jennifer, Parent</footer>
+          </article>
+          <article class="card testimonial-card">
+            <p>"Kiddicare's transparency and communication make me feel like I'm always connected to my kids, even when I'm at work."</p>
+            <footer>- Marcus, Parent</footer>
+          </article>
+          <article class="card testimonial-card">
+            <p>"The caregivers are not just qualified—they're genuinely caring and invested in my child's development."</p>
+            <footer>- Lisa, Parent</footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-accent">
+      <div class="container booking-cta">
+        <h2>Feel confident in your child's care</h2>
+        <p>Join thousands of families who trust Kiddicare.</p>
+        <a href="booking.html" class="button primary">Book with Confidence</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

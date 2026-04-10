@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiddicare Booking | Secure Child Care Reservations</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Kiddicare</a>
+      <nav class="navbar" aria-label="Booking navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="booking-menu">Menu</button>
+        <ul id="booking-menu" class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="services-dropdown">Services</button>
+            <ul id="services-dropdown" class="dropdown-menu">
+              <li><a href="nanny-services.html">Nanny Services</a></li>
+              <li><a href="babysitter-services.html">Babysitter Services</a></li>
+              <li><a href="daycare-services.html">Daycare Services</a></li>
+              <li><a href="tour-guide-services.html">Child Tour Guide Services</a></li>
+            </ul>
+          </li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="trust.html">Safety and Trust</a></li>
+          <li><a href="booking.html" class="active">Booking</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section-hero booking-hero">
+      <div class="container">
+        <div class="booking-hero-copy">
+          <span>Booking</span>
+          <h1>Reserve the Right Child-Care Service</h1>
+          <p>Select a service type, choose dates, and share your family's needs with our secure booking form.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="booking-form-section">
+      <div class="container booking-grid">
+        <div class="booking-form-card card">
+          <h2>Book a Service</h2>
+          <p>Complete the form below and we will send you a confirmation with the best caregiver match.</p>
+          <form id="service-booking-form" novalidate>
+            <label for="service-type">Service Type</label>
+            <select id="service-type" name="serviceType" required>
+              <option value="">Select a service</option>
+              <option value="nanny">Nanny Services</option>
+              <option value="babysitter">Babysitter Services</option>
+              <option value="daycare">Daycare Services</option>
+              <option value="tour-guide">Child Tour Guide Services</option>
+            </select>
+
+            <label for="child-age">Child Age</label>
+            <input type="number" id="child-age" name="childAge" min="0" max="18" placeholder="Age in years" required />
+
+            <label for="start-date">Preferred Start Date</label>
+            <input type="date" id="start-date" name="startDate" required />
+
+            <label for="end-date">Preferred End Date</label>
+            <input type="date" id="end-date" name="endDate" required />
+
+            <label for="preferred-time">Preferred Time Window</label>
+            <input type="text" id="preferred-time" name="preferredTime" placeholder="e.g. 8:00 AM - 2:00 PM" required />
+
+            <label for="children-count">Number of Children</label>
+            <input type="number" id="children-count" name="childrenCount" min="1" max="5" placeholder="1" required />
+
+            <label for="additional-notes">Additional Notes</label>
+            <textarea id="additional-notes" name="notes" rows="5" placeholder="Tell us about routines, allergies, or special requests"></textarea>
+
+            <button type="submit" class="button primary">Submit Booking Request</button>
+          </form>
+        </div>
+
+        <aside class="booking-info card">
+          <h3>Booking Checklist</h3>
+          <ul>
+            <li>Choose a service that fits your schedule.</li>
+            <li>Enter your preferred dates and times clearly.</li>
+            <li>Share any special care instructions with your request.</li>
+          </ul>
+          <h3>Why book with Kiddicare?</h3>
+          <p>Fast response, verified caregivers, and an easy booking flow designed for busy parents.</p>
+          <div class="booking-summary" aria-live="polite"></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+  <script>
+    // Load footer from separate file
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

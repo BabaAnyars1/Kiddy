@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | Kiddicare</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Main website header and navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Kiddicare</a>
+      <nav class="navbar" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="services-dropdown">Services</button>
+            <ul id="services-dropdown" class="dropdown-menu">
+              <li><a href="nanny-services.html">Nanny Services</a></li>
+              <li><a href="babysitter-services.html">Babysitter Services</a></li>
+              <li><a href="daycare-services.html">Daycare Services</a></li>
+              <li><a href="tour-guide-services.html">Child Tour Guide Services</a></li>
+            </ul>
+          </li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="trust.html">Safety and Trust</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Services Hero -->
+    <section class="section section-hero" id="services-hero">
+      <div class="container">
+        <div class="page-hero">
+          <span>Our Services</span>
+          <h1>Flexible care options for every family need</h1>
+          <p>Choose the support that fits your schedule, your child's age, and your peace of mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Cards Section -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2">
+          <article class="card service-card">
+            <h3>Nanny Services</h3>
+            <p>Personalized and consistent care in your home with experienced nannies trained for early childhood development. Our nannies provide one-on-one attention, helping with homework, meal preparation, and fostering a nurturing environment tailored to your child's needs.</p>
+            <ul>
+              <li>Full-time or part-time options available</li>
+              <li>Background-screened professionals</li>
+              <li>Customized care plans</li>
+              <li>Flexible scheduling</li>
+            </ul>
+          </article>
+          <article class="card service-card">
+            <h3>Babysitter Services</h3>
+            <p>Short-term or evening care from trusted babysitters to keep your children safe and engaged while you take time for yourself. Perfect for date nights, errands, or when you need reliable backup care.</p>
+            <ul>
+              <li>Hourly or evening rates</li>
+              <li>Same-day booking available</li>
+              <li>Trusted, vetted sitters</li>
+              <li>Safe and fun engagement</li>
+            </ul>
+          </article>
+          <article class="card service-card">
+            <h3>Daycare Services</h3>
+            <p>Structured daycare programs with creative activities, healthy snacks, and nurturing supervision throughout the day. Our centers provide social interaction, learning activities, and a safe environment for children to grow.</p>
+            <ul>
+              <li>Multiple age groups</li>
+              <li>Educational programming</li>
+              <li>Nutritious meals included</li>
+              <li>Flexible enrollment</li>
+            </ul>
+          </article>
+          <article class="card service-card">
+            <h3>Child Tour Guide Services</h3>
+            <p>Field trip and activity guides who make outings educational, fun, and safe for small groups of young explorers. Our guides turn adventures into learning experiences with age-appropriate activities and expert supervision.</p>
+            <ul>
+              <li>Expert, trained guides</li>
+              <li>Safe, engaging activities</li>
+              <li>Educational focus</li>
+              <li>Customizable itineraries</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Features Section -->
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Why Choose Kiddicare Services?</h2>
+          <p>Quality care with a personal touch.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card feature-card">
+            <h3>Vetted Professionals</h3>
+            <p>All caregivers undergo rigorous background checks, training verification, and reference checks to ensure the highest standards of safety and care.</p>
+          </article>
+          <article class="card feature-card">
+            <h3>Flexible Scheduling</h3>
+            <p>We understand busy schedules. Our services accommodate your needs with flexible hours, emergency care options, and easy booking management.</p>
+          </article>
+          <article class="card feature-card">
+            <h3>Peace of Mind</h3>
+            <p>Real-time updates, transparent communication, and comprehensive insurance coverage mean you can focus on what matters while we handle childcare.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking CTA Section -->
+    <section class="section section-accent">
+      <div class="container booking-cta">
+        <h2>Ready to book a service?</h2>
+        <p>Get started in minutes with our simple, secure booking process.</p>
+        <a href="booking.html" class="button primary">Book Now</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story | Kiddicare</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Main website header and navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Kiddicare</a>
+      <nav class="navbar" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="services-dropdown">Services</button>
+            <ul id="services-dropdown" class="dropdown-menu">
+              <li><a href="nanny-services.html">Nanny Services</a></li>
+              <li><a href="babysitter-services.html">Babysitter Services</a></li>
+              <li><a href="daycare-services.html">Daycare Services</a></li>
+              <li><a href="tour-guide-services.html">Child Tour Guide Services</a></li>
+            </ul>
+          </li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="trust.html">Safety and Trust</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Story Hero -->
+    <section class="section section-hero">
+      <div class="container">
+        <div class="page-hero">
+          <span>Our Story</span>
+          <h1>Built by parents, for parents</h1>
+          <p>Discover how Kiddicare is revolutionizing child care with trust, flexibility, and expert care.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Content -->
+    <section class="section">
+      <div class="container story-grid">
+        <div class="story-copy">
+          <h2>Our Mission</h2>
+          <p>Kiddicare began with one simple promise: to make quality child care easy to find and easy to trust. We pair families with experienced caregivers who truly understand the needs of children and the demands of modern life.</p>
+          <ul>
+            <li>Family-first scheduling and communication</li>
+            <li>Thoughtful care plans supporting growth and well-being</li>
+            <li>A culture of safety, respect, and open communication</li>
+          </ul>
+        </div>
+        <div class="story-visual">
+          <div class="story-box">
+            <p>"Kiddicare helped our family stay connected and calm during busy weeks. Booking trustworthy care felt effortless."</p>
+            <span>- Sara, parent</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section section-light">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Our Core Values</h2>
+          <p>What drives everything we do at Kiddicare.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card value-card">
+            <h3>Trust</h3>
+            <p>We build trust through transparency, rigorous vetting, and open communication. Your confidence in our caregivers is everything.</p>
+          </article>
+          <article class="card value-card">
+            <h3>Safety</h3>
+            <p>Child safety is non-negotiable. Every caregiver is background-checked, trained, and committed to providing a secure environment.</p>
+          </article>
+          <article class="card value-card">
+            <h3>Flexibility</h3>
+            <p>We understand modern family needs. Our services adapt to your schedule, not the other way around.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Milestones Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Our Journey</h2>
+          <p>Growing stronger every day.</p>
+        </div>
+        <div class="milestones">
+          <div class="milestone-item">
+            <h4>2020</h4>
+            <p>Kiddicare launched with a vision to revolutionize child care access.</p>
+          </div>
+          <div class="milestone-item">
+            <h4>2021</h4>
+            <p>Expanded to serve 5 cities with 500+ active caregivers and families.</p>
+          </div>
+          <div class="milestone-item">
+            <h4>2023</h4>
+            <p>Reached 10,000+ families and introduced safety verification tools.</p>
+          </div>
+          <div class="milestone-item">
+            <h4>2026</h4>
+            <p>Leading trusted child care with innovation and parent peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team CTA -->
+    <section class="section section-accent">
+      <div class="container booking-cta">
+        <h2>Join our community of trusted families</h2>
+        <p>Experience flexible, safe, and reliable child care today.</p>
+        <a href="booking.html" class="button primary">Get Started</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js"></script>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
+</body>
+</html>
