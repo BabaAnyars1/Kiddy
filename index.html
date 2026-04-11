@@ -39,21 +39,95 @@
   <main>
     <!-- Hero section -->
     <section class="hero section-hero" id="home">
-      <div class="container hero-content">
-        <div>
-          <p class="eyebrow">Peace of mind for every parent</p>
-          <h1>Reliable Child-Care Services Designed for Your Family</h1>
-          <p>From nannies and babysitters to daycare and guided child tours, Kiddicare makes scheduling care simple, safe, and flexible.</p>
-          <div class="hero-actions">
-            <a href="booking.html" class="button primary">Book a Service</a>
-            <a href="#services" class="button secondary">Explore Services</a>
+      <div class="carousel-container">
+        <div class="carousel-slides">
+          <!-- Slide 1: Nanny Services -->
+          <div class="carousel-slide active">
+            <div class="container hero-content">
+              <div>
+                <p class="eyebrow">Flexible & Convenient</p>
+                <h1>Nanny Services That Fit Your Life</h1>
+                <p>Personalized and consistent care in your home with experienced nannies trained for early childhood development. Build lasting relationships with caregivers your family trusts.</p>
+                <div class="hero-actions">
+                  <a href="nanny-services.html" class="button primary">Learn About Nannies</a>
+                  <a href="booking.html" class="button secondary">Book Now</a>
+                </div>
+              </div>
+              <div class="hero-image" aria-hidden="true">
+                <span>In-home care</span>
+                <p>One-on-one attention with consistent, reliable caregivers in the comfort of your home.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Babysitter Services -->
+          <div class="carousel-slide">
+            <div class="container hero-content">
+              <div>
+                <p class="eyebrow">Peace of Mind</p>
+                <h1>Babysitter Services You Can Trust</h1>
+                <p>Short-term or evening care from trusted babysitters who keep your children safe, engaged, and happy while you take time for yourself.</p>
+                <div class="hero-actions">
+                  <a href="babysitter-services.html" class="button primary">Learn About Babysitters</a>
+                  <a href="booking.html" class="button secondary">Book Now</a>
+                </div>
+              </div>
+              <div class="hero-image" aria-hidden="true">
+                <span>Trusted caregivers</span>
+                <p>Background-checked professionals ready to care for your children whenever you need.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Daycare Services -->
+          <div class="carousel-slide">
+            <div class="container hero-content">
+              <div>
+                <p class="eyebrow">Grow & Thrive</p>
+                <h1>Daycare Services for Active Growth</h1>
+                <p>Structured daycare programs with creative activities, healthy snacks, and nurturing supervision throughout the day. A safe, engaging environment where your child thrives.</p>
+                <div class="hero-actions">
+                  <a href="daycare-services.html" class="button primary">Explore Daycare</a>
+                  <a href="booking.html" class="button secondary">Book Now</a>
+                </div>
+              </div>
+              <div class="hero-image" aria-hidden="true">
+                <span>Learning & Development</span>
+                <p>Structured programs with activities that nurture development and make learning fun.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: Child Tour Guide Services -->
+          <div class="carousel-slide">
+            <div class="container hero-content">
+              <div>
+                <p class="eyebrow">Adventure & Learning</p>
+                <h1>Child Tour Guide Services</h1>
+                <p>Field trip and activity guides who make outings educational, fun, and safe for small groups of young explorers. Perfect for school groups and special events.</p>
+                <div class="hero-actions">
+                  <a href="tour-guide-services.html" class="button primary">Learn About Tours</a>
+                  <a href="booking.html" class="button secondary">Book Now</a>
+                </div>
+              </div>
+              <div class="hero-image" aria-hidden="true">
+                <span>Safe Exploration</span>
+                <p>Professional guides who make every adventure educational, engaging, and memorable.</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="hero-image" aria-hidden="true">
-          <div class="hero-card">
-            <span>Trusted professionals</span>
-            <p>Certified caregivers, background-screened staff, and nurturing experiences for children ages 0-12.</p>
-          </div>
+
+        <!-- Carousel controls -->
+        <button class="carousel-btn carousel-prev" aria-label="Previous slide">❮</button>
+        <button class="carousel-btn carousel-next" aria-label="Next slide">❯</button>
+
+        <!-- Carousel indicators -->
+        <div class="carousel-indicators">
+          <button class="carousel-indicator active" aria-label="Go to slide 1" data-slide="0"></button>
+          <button class="carousel-indicator" aria-label="Go to slide 2" data-slide="1"></button>
+          <button class="carousel-indicator" aria-label="Go to slide 3" data-slide="2"></button>
+          <button class="carousel-indicator" aria-label="Go to slide 4" data-slide="3"></button>
         </div>
       </div>
     </section>

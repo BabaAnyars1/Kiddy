@@ -3,6 +3,76 @@
   Handles mobile navigation toggling and booking form interactions.
 */
 
+// Carousel functionality
+class Carousel {
+  constructor() {
+    this.slides = document.querySelectorAll('.carousel-slide');
+    this.indicators = document.querySelectorAll('.carousel-indicator');
+    this.prevBtn = document.querySelector('.carousel-prev');
+    this.nextBtn = document.querySelector('.carousel-next');
+    this.currentSlide = 0;
+
+    if (this.slides.length === 0) return;
+
+    this.prevBtn?.addEventListener('click', () => this.previousSlide());
+    this.nextBtn?.addEventListener('click', () => this.nextSlide());
+    this.indicators.forEach(indicator => {
+      indicator.addEventListener('click', (e) => {
+        const slideIndex = parseInt(e.target.dataset.slide);
+        this.goToSlide(slideIndex);
+      });
+    });
+
+    // Auto-advance carousel every 8 seconds
+    this.autoAdvance = setInterval(() => this.nextSlide(), 8000);
+
+    // Pause auto-advance on user interaction
+    [this.prevBtn, this.nextBtn, ...this.indicators].forEach(element => {
+      element?.addEventListener('click', () => this.resetAutoAdvance());
+    });
+  }
+
+  updateCarousel() {
+    this.slides.forEach((slide, index) => {
+      slide.classList.remove('active');
+      if (this.indicators[index]) {
+        this.indicators[index].classList.remove('active');
+      }
+    });
+
+    this.slides[this.currentSlide].classList.add('active');
+    if (this.indicators[this.currentSlide]) {
+      this.indicators[this.currentSlide].classList.add('active');
+    }
+  }
+
+  nextSlide() {
+    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+    this.updateCarousel();
+  }
+
+  previousSlide() {
+    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+    this.updateCarousel();
+  }
+
+  goToSlide(index) {
+    this.currentSlide = index;
+    this.updateCarousel();
+  }
+
+  resetAutoAdvance() {
+    clearInterval(this.autoAdvance);
+    this.autoAdvance = setInterval(() => this.nextSlide(), 8000);
+  }
+}
+
+// Initialize carousel when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => new Carousel());
+} else {
+  new Carousel();
+}
 
 const navToggleButtons = document.querySelectorAll('.nav-toggle');
 const navMenus = document.querySelectorAll('.nav-menu');
