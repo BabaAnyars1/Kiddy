@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Active Adventure | Booking Flow</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --bg:#f6f1e7;--surface:#fff;--surface-soft:#f8fbf8;--text:#223027;--muted:#5d6a61;
+      --green:#2f5d3a;--green-dark:#1f3d28;--orange:#f28c28;--border:rgba(20,20,20,.08);
+      --shadow:0 16px 36px rgba(0,0,0,.07);--danger:#c94747;--danger-soft:#fff3f3;
+      --success:#2f7a4a;--success-soft:#eef8f1;
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    img{max-width:100%;display:block} button,input,select,textarea{font:inherit}
+    .shell{max-width:1360px;margin:0 auto;padding:0 16px 32px}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    .header-inner{max-width:1360px;margin:0 auto;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{font-weight:700;letter-spacing:.08em;color:var(--green)} .logo small{display:block;color:#8a948d;font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-top:2px}
+    .btn,.btn-outline,.btn-ghost{appearance:none;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 18px;border-radius:999px;font-weight:600;transition:.22s ease}
+    .btn{background:var(--orange);color:#fff}.btn:hover{transform:translateY(-1px)}
+    .btn-outline{background:transparent;border:1px solid rgba(47,93,58,.2);color:var(--green)}
+    .btn-ghost{background:rgba(47,93,58,.08);color:var(--green)}
+    .hero{margin-top:18px;background:linear-gradient(135deg,#e6efe4,#f6f1e7 65%);border:1px solid rgba(47,93,58,.1);border-radius:32px;box-shadow:var(--shadow);padding:28px;display:grid;grid-template-columns:1.15fr .85fr;gap:24px}
+    .eyebrow{font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange)}
+    h1{font-size:clamp(2rem,4vw,4rem);line-height:1.05;margin:10px 0 0;color:var(--green-dark)}
+    .hero p{max-width:760px;color:var(--muted);margin:14px 0 0}
+    .hero-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:24px}
+    .mini-step{border:1px solid rgba(47,93,58,.1);border-radius:18px;padding:14px;background:rgba(255,255,255,.7)}
+    .mini-step strong{display:block;font-size:14px;color:var(--green)} .mini-step span{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+    .hero-panel{background:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.7);border-radius:24px;padding:18px}
+    .progress-stack{display:grid;gap:12px}
+    .progress-item{display:flex;gap:12px;align-items:center;border:1px solid var(--border);border-radius:18px;padding:12px;background:#fff;color:#647168}
+    .progress-item.active{background:var(--green);color:#fff;border-color:var(--green)}
+    .progress-item.done{background:var(--success-soft);color:var(--green-dark);border-color:rgba(47,93,58,.12)}
+    .badge{width:38px;height:38px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;background:#eef2ef;color:var(--green)}
+    .progress-item.active .badge{background:#fff;color:var(--green)} .progress-item.done .badge{background:var(--green);color:#fff}
+    .content{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;margin-top:24px}
+    .panel{background:var(--surface);border:1px solid var(--border);border-radius:24px;box-shadow:var(--shadow);padding:24px}
+    .section-title{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#8a948d;font-weight:700}
+    .section-heading{font-size:2rem;line-height:1.12;margin:8px 0 0;color:var(--green-dark)}
+    .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .service-card,.professional-card,.option-card{border:1px solid var(--border);border-radius:24px;background:#fff;overflow:hidden;cursor:pointer;transition:.2s ease;min-height:100%}
+    .service-card:hover,.professional-card:hover,.option-card:hover{transform:translateY(-2px)}
+    .service-card.active,.professional-card.active,.option-card.active{border-color:rgba(47,93,58,.45);background:var(--success-soft);box-shadow:0 10px 24px rgba(0,0,0,.05)}
+    .service-card img{width:100%;height:150px;object-fit:cover} .card-body{padding:16px}
+    .service-card h3,.professional-card h3,.option-card h3{margin:0;color:var(--green-dark);font-size:1.08rem;line-height:1.2}
+    .sub{margin-top:6px;font-size:13px;font-weight:700;color:var(--orange)} .muted{color:var(--muted)} .small{font-size:13px}
+    .service-card p,.professional-card p,.option-card p{margin:10px 0 0;color:var(--muted);font-size:14px}
+    .block{margin-top:28px}.two-col{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px}.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .field{display:flex;flex-direction:column;gap:8px}.field label{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7b867f}
+    .input,.select,.textarea{width:100%;border:1px solid rgba(20,20,20,.1);background:#fff;border-radius:18px;padding:14px 16px;outline:none}
+    .textarea{min-height:120px;resize:vertical}.input:focus,.select:focus,.textarea:focus{border-color:rgba(47,93,58,.35);box-shadow:0 0 0 3px rgba(47,93,58,.08)}
+    .soft-card{background:var(--surface-soft);border:1px solid rgba(47,93,58,.1);border-radius:22px;padding:18px}
+    .soft-gradient{background:linear-gradient(135deg,#f2efe6,#eef5ef);border-radius:20px;padding:16px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:#fff;border:1px solid rgba(47,93,58,.1)}
+    .date-list{display:grid;gap:14px}.date-card{background:#fff;border:1px solid rgba(47,93,58,.12);border-radius:22px;padding:16px}
+    .date-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.date-title{font-weight:600;color:var(--green-dark)}
+    .notice,.error{margin-top:14px;border-radius:18px;padding:14px 16px;font-size:14px}
+    .notice{background:#fff7ec;color:#9b5f09;border:1px solid rgba(242,140,40,.25)}
+    .error{background:var(--danger-soft);color:var(--danger);border:1px solid rgba(201,71,71,.18)}
+    .summary-box{background:var(--green-dark);color:#fff;border-radius:24px;padding:20px}
+    .summary-box .item{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.09)}
+    .summary-box .item:last-child{border-bottom:none}.summary-box .label{font-size:14px;color:rgba(255,255,255,.72)}.summary-box .value{text-align:right;font-weight:600}
+    .selected-dates{margin-top:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:16px}
+    .selected-dates div{font-size:14px;color:rgba(255,255,255,.88);margin-top:6px}
+    .footer-actions{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:24px;padding-top:20px;border-top:1px solid rgba(20,20,20,.06)}
+    .hide{display:none !important}.confirm-hero{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border-radius:28px;padding:24px}
+    .confirm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+    .confirm-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:16px}
+    .confirm-card .label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.68)}
+    .confirm-card .value{margin-top:8px;font-size:1.15rem;font-weight:600}.stack{display:grid;gap:16px}
+    .checkbox-row{display:flex;gap:12px;align-items:flex-start}.checkbox-row input{margin-top:3px;transform:scale(1.15)}
+    .hidden-step{display:none}
+    @media (max-width:1100px){.hero,.content,.two-col{grid-template-columns:1fr}.hero-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.confirm-grid,.three-col{grid-template-columns:1fr}}
+    @media (max-width:700px){.header-inner{flex-direction:column;align-items:stretch}.btn{width:100%}.hero{padding:20px}.panel{padding:18px}.hero-cards,.grid-4{grid-template-columns:1fr}.footer-actions{flex-direction:column;align-items:stretch}.footer-actions .btn,.footer-actions .btn-outline,.footer-actions .btn-ghost{width:100%}.date-top{flex-direction:column;align-items:flex-start}}
+  
+/* Unified site header */
+/* Standardized advanced footer */
+.site-footer{margin-top:48px;background:linear-gradient(135deg,#163123,#1f3d28);color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.06)}
+.site-footer .footer-shell{max-width:1320px;margin:0 auto;padding:0 20px}
+.site-footer .footer-top{padding:34px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.08)}
+.site-footer .footer-brand-card,.site-footer .footer-news-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:24px;backdrop-filter:blur(8px)}
+.site-footer .footer-brand-mark{font-weight:700;letter-spacing:.08em;color:#fff;font-size:20px}
+.site-footer .footer-brand-mark small{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.site-footer .footer-brand-copy{margin:14px 0 0;color:rgba(255,255,255,.66);line-height:1.8;max-width:720px}
+.site-footer .footer-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.site-footer .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.site-footer .footer-news-title{margin:0;font-size:22px;color:#fff}
+.site-footer .footer-news-copy{margin:10px 0 0;color:rgba(255,255,255,.66);line-height:1.8}
+.site-footer .footer-form{display:flex;gap:10px;margin-top:18px}
+.site-footer .footer-input{flex:1;min-height:50px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.10);color:#fff;padding:0 16px;outline:none}
+.site-footer .footer-input::placeholder{color:rgba(255,255,255,.52)}
+.site-footer .footer-input:focus{border-color:rgba(242,140,40,.55);box-shadow:0 0 0 3px rgba(242,140,40,.12)}
+.site-footer .footer-btn{min-height:50px;padding:0 18px;border:none;border-radius:999px;background:#f28c28;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.site-footer .footer-middle{padding:28px 0;display:grid;grid-template-columns:1.05fr .8fr .8fr .85fr;gap:24px}
+.site-footer .footer-col-title{margin:0 0 14px;color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.site-footer .footer-col-copy{color:rgba(255,255,255,.66);line-height:1.8;margin:0}
+.site-footer .footer-links{list-style:none;margin:0;padding:0}
+.site-footer .footer-links li+li{margin-top:10px}
+.site-footer .footer-links a{color:rgba(255,255,255,.66);text-decoration:none;transition:.2s ease}
+.site-footer .footer-links a:hover{color:#fff}
+.site-footer .footer-contact-item{margin-bottom:12px}
+.site-footer .footer-contact-label{display:block;color:rgba(255,255,255,.48);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+.site-footer .footer-contact-value{color:rgba(255,255,255,.88);line-height:1.7}
+.site-footer .footer-bottom{padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.site-footer .footer-bottom-copy{color:rgba(255,255,255,.66);font-size:13px}
+.site-footer .footer-bottom-links{display:flex;flex-wrap:wrap;gap:14px}
+.site-footer .footer-bottom-links a{color:rgba(255,255,255,.66);font-size:13px;text-decoration:none}
+.site-footer .footer-bottom-links a:hover{color:#fff}
+@media (max-width:980px){.site-footer .footer-top,.site-footer .footer-middle{grid-template-columns:1fr}}
+@media (max-width:640px){.site-footer .footer-shell{padding:0 16px}.site-footer .footer-top{padding:24px 0 20px}.site-footer .footer-brand-card,.site-footer .footer-news-card{padding:20px;border-radius:20px}.site-footer .footer-form{flex-direction:column}.site-footer .footer-btn,.site-footer .footer-input{width:100%}.site-footer .footer-middle{padding:22px 0;gap:18px}.site-footer .footer-bottom{padding:16px 0 24px;align-items:flex-start;flex-direction:column}}
+
+
+
+
+/* Unified AA Header Start */
+html, body { overflow-x: hidden; }
+.aa-header, .aa-header * { box-sizing: border-box; }
+.aa-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  width:100%;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(20,20,20,.08);
+  box-shadow:0 2px 12px rgba(0,0,0,.04);
+}
+.aa-header__inner{
+  max-width:1360px;
+  margin:0 auto;
+  padding:16px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.aa-header__brand{
+  color:#2f5d3a;
+  text-decoration:none;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1.05;
+  white-space:nowrap;
+  flex:0 0 auto;
+  font-size:20px;
+}
+.aa-header__brand small{
+  display:block;
+  margin-top:4px;
+  color:#8b958e;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.aa-header__nav{
+  flex:1 1 auto;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.aa-header__link,
+.aa-header details > summary{
+  list-style:none;
+  cursor:pointer;
+  color:#57645c;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.2;
+  padding:8px 0;
+  position:relative;
+  white-space:nowrap;
+  background:none;
+  border:none;
+}
+.aa-header details > summary::-webkit-details-marker{display:none;}
+.aa-header__link:hover,
+.aa-header details > summary:hover,
+.aa-header details[open] > summary,
+.aa-header__link.is-active,
+.aa-header details.is-active > summary{
+  color:#1f3d28;
+}
+.aa-header__link.is-active::after,
+.aa-header details.is-active > summary::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-8px;
+  height:2px;
+  border-radius:999px;
+  background:#f28c28;
+}
+.aa-dd{position:relative;}
+.aa-dd__menu{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:0;
+  min-width:250px;
+  max-width:min(280px, calc(100vw - 32px));
+  background:#fff;
+  border:1px solid rgba(20,20,20,.08);
+  border-radius:18px;
+  box-shadow:0 18px 38px rgba(0,0,0,.10);
+  padding:10px;
+  display:none;
+}
+.aa-dd--right .aa-dd__menu{left:auto; right:0;}
+.aa-dd[open] .aa-dd__menu{display:block;}
+.aa-dd__menu a{
+  display:block;
+  padding:10px 12px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#33423a;
+  font-size:14px;
+  line-height:1.4;
+}
+.aa-dd__menu a:hover,
+.aa-dd__menu a.is-active{
+  background:#f8fbf8;
+  color:#2f5d3a;
+}
+.aa-header__cta{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:12px 18px;
+  border-radius:999px;
+  background:#f28c28;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  white-space:nowrap;
+  box-shadow:0 12px 24px rgba(242,140,40,.24);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.aa-header__cta:hover{transform:translateY(-1px); box-shadow:0 14px 26px rgba(242,140,40,.28);}
+@media (max-width: 980px){
+  .aa-header__inner{flex-wrap:wrap; align-items:flex-start;}
+  .aa-header__nav{order:3; width:100%; justify-content:flex-start; gap:14px 18px;}
+  .aa-header__cta{margin-left:auto;}
+}
+@media (max-width: 640px){
+  .aa-header__inner{padding:14px 16px;}
+  .aa-header__brand{width:100%;}
+  .aa-header__nav{width:100%; gap:12px 16px;}
+  .aa-dd{width:100%;}
+  .aa-dd__menu{position:static; min-width:unset; max-width:none; margin-top:8px; box-shadow:none;}
+  .aa-header__cta{width:100%;}
+}
+/* Unified AA Header End */
+
+</style>
+</head>
+<body>
+<div class="aa-header" role="banner">
+<div class="aa-header__inner">
+<a class="aa-header__brand" href="Landing page 2.html">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
+<nav aria-label="Main navigation" class="aa-header__nav">
+<a class="aa-header__link" href="Landing page 2.html">Home</a>
+<details class="aa-dd">
+<summary>About</summary>
+<div class="aa-dd__menu">
+<a href="Our Story.html">Our Story</a>
+<a href="Meet the Team Page.html">Team Page</a>
+</div>
+</details>
+<details class="aa-dd">
+<summary>Services</summary>
+<div class="aa-dd__menu">
+<a href="The Executive.html">The Executive</a>
+<a href="The Overnight Companion.html">The Overnight Companion</a>
+<a href="The Tourist.html">The Tourist</a>
+<a href="The Explorer.html">The Explorer</a>
+</div>
+</details>
+<a class="aa-header__link" href="Pricing page 2.html">Pricing</a>
+<a class="aa-header__link is-active" href="Booking Page.html">Booking</a>
+<details class="aa-dd aa-dd--right">
+<summary>Insights</summary>
+<div class="aa-dd__menu">
+<a href="Insight Hub.html">Insight Hub</a>
+<a href="FAQs.html">FAQs</a>
+<a href="Career page.html">Careers</a>
+<a href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a>
+<a href="#">Blog</a>
+</div>
+</details>
+</nav>
+<a class="aa-header__cta" href="Contact Us page.html">Contact Us</a>
+</div>
+</div>
+<div class="shell">
+<section class="hero">
+<div>
+<div class="eyebrow">Book Your Custom Care Plan</div>
+<h1>Premium booking flow for flexible family care.</h1>
+<p>Select your service, customise your booking dates and hours, choose your ideal professional, add your contact details, and complete payment securely.</p>
+<div class="hero-cards">
+<div class="mini-step"><strong>Step 1</strong><span>Service + multi-date time selection</span></div>
+<div class="mini-step"><strong>Step 2</strong><span>Professional tier selection</span></div>
+<div class="mini-step"><strong>Step 3</strong><span>Review + contact + location</span></div>
+<div class="mini-step"><strong>Step 4</strong><span>Payment</span></div>
+<div class="mini-step"><strong>Step 5</strong><span>Confirmation</span></div>
+</div>
+</div>
+<div class="hero-panel">
+<div class="section-title">Progress</div>
+<div style="font-size:28px;font-weight:700;color:var(--green-dark);margin-top:4px">Step <span id="stepCounter">1</span> of 5</div>
+<div class="progress-stack" id="progressStack"></div>
+</div>
+</section>
+<div class="content">
+<section class="panel">
+<div class="step-panel" id="step1">
+<div class="section-title">Step 1</div>
+<h2 class="section-heading">Select your service &amp; flexible hours</h2>
+<div class="block">
+<h3 style="margin:0;color:var(--green-dark)">1. Select Your Service</h3>
+<div class="grid-4" id="serviceGrid" style="margin-top:16px"></div>
+</div>
+<div class="block">
+<h3 style="margin:0;color:var(--green-dark)">2. Build Your Multi-Date Care Window</h3>
+<div class="two-col" style="margin-top:16px">
+<div class="soft-card">
+<div class="field"><label>Add Booking Date</label><input class="input" id="selectedDate" type="date"/></div>
+<div class="two-col" style="margin-top:14px;grid-template-columns:1fr 1fr">
+<div class="field"><label>Draft Start</label><select class="select" id="draftStartTime"></select></div>
+<div class="field"><label>Draft End</label><select class="select" id="draftEndTime"></select></div>
+</div>
+<button class="btn" id="addDateBtn" style="width:100%;margin-top:14px" type="button">Add Date With Draft Time</button>
+<div class="soft-card" style="margin-top:14px;background:#fff">
+<div class="section-title" style="font-size:12px">Selected Service</div>
+<div id="selectedServiceSummary" style="margin-top:8px;font-weight:700;color:var(--green-dark)"></div>
+<p class="small muted" id="selectedServiceDescription" style="margin:10px 0 0"></p>
+</div>
+<div class="soft-card" style="margin-top:14px;background:#fff">
+<div class="section-title" style="font-size:12px">Draft Time For New Dates</div>
+<div class="soft-gradient" style="margin-top:12px">
+<div class="small muted">New dates will use</div>
+<div id="draftWindow" style="font-size:28px;font-weight:700;color:var(--green-dark);margin-top:4px"></div>
+<div class="small muted" id="draftDuration" style="margin-top:6px"></div>
+</div>
+<div class="three-col" style="margin-top:14px">
+<div class="soft-card"><div class="section-title" style="font-size:11px">Booking Days</div><div id="bookingDaysMetric" style="margin-top:8px;font-size:24px;font-weight:700;color:var(--green-dark)">1</div></div>
+<div class="soft-card"><div class="section-title" style="font-size:11px">Avg Hours</div><div id="averageHoursMetric" style="margin-top:8px;font-size:24px;font-weight:700;color:var(--green-dark)">6</div></div>
+<div class="soft-card"><div class="section-title" style="font-size:11px">Suggested Tier</div><div id="suggestedTierMetric" style="margin-top:8px;font-size:14px;font-weight:700;color:var(--green-dark)"></div></div>
+</div>
+</div>
+</div>
+<div class="soft-card">
+<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">
+<div><div style="font-size:22px;font-weight:700;color:var(--green-dark)">Selected Booking Dates</div><div class="small muted" style="margin-top:4px">Each date can have its own care window.</div></div>
+<div class="pill small" id="datesValidityPill">All dates valid</div>
+</div>
+<div class="date-list" id="dateList" style="margin-top:16px"></div>
+<div class="notice hide" id="overnightRuleNotice">Overnight Companion with RN or SSW requires a minimum booking of 12 hours per selected date.</div>
+<div class="error hide" id="step1Error"></div>
+<div class="footer-actions">
+<div class="small" id="step1Status" style="color:var(--muted)"></div>
+<button class="btn" id="toStep2" type="button">Proceed to Step 2</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="step-panel hidden-step" id="step2">
+<div class="section-title">Step 2</div>
+<h2 class="section-heading">Select your ideal professional</h2>
+<div class="grid-4" id="professionalGrid" style="margin-top:18px"></div>
+<div class="footer-actions">
+<button class="btn-outline" data-go="1" type="button">Back to Step 1</button>
+<div class="small" id="step2Hint" style="color:var(--muted)"></div>
+<button class="btn" id="toStep3" type="button">Proceed to Step 3</button>
+</div>
+</div>
+<div class="step-panel hidden-step" id="step3">
+<div class="section-title">Step 3</div>
+<h2 class="section-heading">Review your care plan &amp; add contact details</h2>
+<div class="two-col" style="margin-top:18px">
+<div class="soft-card">
+<div class="section-title" style="font-size:12px">Care Plan Summary</div>
+<div class="three-col" id="summaryRows" style="grid-template-columns:1fr 1fr;margin-top:14px"></div>
+<div class="soft-card" style="margin-top:16px;background:#fff">
+<div class="section-title" style="font-size:12px">Date-by-Date Schedule</div>
+<div class="stack" id="step3DateSchedule" style="margin-top:12px"></div>
+</div>
+</div>
+<div class="summary-box">
+<div style="font-size:30px;font-weight:700">Client Contact &amp; Booking Details</div>
+<p style="margin:8px 0 0;color:rgba(255,255,255,.82)">We use these details for booking confirmation, operational coordination, and care updates.</p>
+<div class="field" style="margin-top:16px"><label style="color:rgba(255,255,255,.72)">Client Name</label><input class="input" id="clientName" placeholder="Enter full name"/></div>
+<div class="two-col" style="margin-top:14px;grid-template-columns:1fr 1fr">
+<div class="field"><label style="color:rgba(255,255,255,.72)">Email Address</label><input class="input" id="email" placeholder="name@example.com" type="email"/></div>
+<div class="field"><label style="color:rgba(255,255,255,.72)">Phone Number</label><input class="input" id="phone" placeholder="+44 7..." type="tel"/></div>
+</div>
+<div class="two-col" style="margin-top:14px;grid-template-columns:1fr 1fr">
+<div class="field"><label style="color:rgba(255,255,255,.72)">Number of Children</label><input class="input" id="childCount" min="1" placeholder="Enter number" step="1" type="number"/></div>
+<div class="field"><label style="color:rgba(255,255,255,.72)">Location</label><select class="select" id="locationType"><option value="">Select location</option><option value="hotel">Hotel</option><option value="private_home">Private Home</option></select></div>
+</div>
+<div class="notice hide" id="childrenNotice">Booking for 4+ children requires a second staff member. Please contact the Founder Lead</div>
+<div class="hide" id="hotelFields" style="margin-top:14px">
+<div class="two-col" style="grid-template-columns:1fr 1fr">
+<div class="field"><label style="color:rgba(255,255,255,.72)">Room Number</label><input class="input" id="roomNumber" placeholder="Room number"/></div>
+<div class="field"><label style="color:rgba(255,255,255,.72)">Hotel Security Contact</label><input class="input" id="hotelSecurityContact" placeholder="Security contact"/></div>
+</div>
+</div>
+<div class="field" style="margin-top:14px"><label style="color:rgba(255,255,255,.72)">Booking Notes</label><textarea class="textarea" id="notes" placeholder="Add access notes, child preferences, allergies, travel details, or shift instructions..."></textarea></div>
+<div class="checkbox-row" style="margin-top:16px"><input id="consentCheckbox" type="checkbox"/><label for="consentCheckbox" style="color:rgba(255,255,255,.9);font-size:14px;line-height:1.55">I confirm that I have reviewed the care plan, the contact details are correct, and I accept the service terms and booking conditions.</label></div>
+<div class="error hide" id="step3Error"></div>
+<div class="footer-actions" style="border-top-color:rgba(255,255,255,.12)">
+<button class="btn-outline" data-go="2" style="border-color:rgba(255,255,255,.18);color:#fff" type="button">Back to Step 2</button>
+<button class="btn" id="toStep4" type="button">Continue to Payment</button>
+</div>
+</div>
+</div>
+</div>
+<div class="step-panel hidden-step" id="step4">
+<div class="section-title">Step 4</div>
+<h2 class="section-heading">Secure payment</h2>
+<div class="two-col" style="margin-top:18px">
+<div class="soft-card">
+<div class="section-title" style="font-size:12px">Choose Payment Option</div>
+<div class="two-col" style="margin-top:14px;grid-template-columns:1fr 1fr">
+<div class="option-card active" data-payment="deposit"><div class="card-body"><h3>50% Deposit</h3><div class="sub" id="depositAmount">£0</div><p>Reserve your care plan now and settle the remaining balance before service delivery.</p></div></div>
+<div class="option-card" data-payment="full"><div class="card-body"><h3>100% Full Payment</h3><div class="sub" id="fullAmount">£0</div><p>Complete your booking in full and move directly into final matching and operations review.</p></div></div>
+</div>
+<div class="soft-card" style="margin-top:16px;background:#fff">
+<div class="section-title" style="font-size:12px">Card Details</div>
+<div class="field" style="margin-top:14px"><label>Cardholder Name</label><input class="input" id="cardholderName" placeholder="Name on card"/></div>
+<div class="field" style="margin-top:14px"><label>Card Number</label><input class="input" id="cardNumber" inputmode="numeric" placeholder="1234 5678 9012 3456"/></div>
+<div class="three-col" style="margin-top:14px">
+<div class="field"><label>Expiry</label><input class="input" id="expiry" inputmode="numeric" placeholder="MM/YY"/></div>
+<div class="field"><label>CVC</label><input class="input" id="cvc" inputmode="numeric" placeholder="123"/></div>
+<div class="field"><label>Billing Postcode</label><input class="input" id="billingPostcode" placeholder="SW1A 1AA"/></div>
+</div>
+</div>
+</div>
+<div class="summary-box">
+<div style="font-size:30px;font-weight:700">Payment Summary</div>
+<div class="selected-dates">
+<div style="margin-top:0"><strong>Payment type:</strong> <span id="paymentTypeLabel">50% Deposit</span></div>
+<div><strong>Amount charged today:</strong> £<span id="paymentAmountLabel">0</span></div>
+<div><strong>Total booking value:</strong> £<span id="paymentTotalLabel">0</span></div>
+</div>
+<div class="notice" style="margin-top:16px;background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.12)">This is a real payment flow UI. In production, connect this step to Stripe Elements or Stripe Checkout to process cards securely.</div>
+<div class="checkbox-row" style="margin-top:16px"><input id="paymentConsentCheckbox" type="checkbox"/><label for="paymentConsentCheckbox" style="color:rgba(255,255,255,.9);font-size:14px;line-height:1.55">I authorise Active Adventure to process this payment securely and use my details for booking fulfilment and communication.</label></div>
+<div class="error hide" id="step4Error"></div>
+<div class="footer-actions" style="border-top-color:rgba(255,255,255,.12)">
+<button class="btn-outline" data-go="3" style="border-color:rgba(255,255,255,.18);color:#fff" type="button">Back to Step 3</button>
+<button class="btn" id="confirmPaymentBtn" type="button">Pay &amp; Secure Booking</button>
+</div>
+</div>
+</div>
+</div>
+<div class="step-panel hidden-step" id="step5">
+<div class="section-title">Step 5</div>
+<h2 class="section-heading">Booking confirmed</h2>
+<div class="two-col" style="margin-top:18px">
+<div class="confirm-hero">
+<div style="width:64px;height:64px;border-radius:999px;background:#fff;color:var(--green);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700">✓</div>
+<div style="font-size:34px;font-weight:700;margin-top:18px">Your care request has been secured.</div>
+<p style="margin:10px 0 0;color:rgba(255,255,255,.84)">Payment has been captured and your booking is now in our managed care workflow. A member of the Active Adventure team will review your care architecture, match the correct professional tier, and confirm next-step operational details.</p>
+<div class="confirm-grid">
+<div class="confirm-card"><div class="label">Booking Reference</div><div class="value" id="confirmReference"></div></div>
+<div class="confirm-card"><div class="label">Status</div><div class="value">Paid • Pending Final Matching</div></div>
+<div class="confirm-card"><div class="label">Paid Today</div><div class="value">£<span id="confirmPaid"></span></div></div>
+<div class="confirm-card"><div class="label">Card</div><div class="value" id="confirmCard"></div></div>
+</div>
+</div>
+<div class="soft-card">
+<div class="section-title" style="font-size:12px">What happens next</div>
+<div class="stack" style="margin-top:14px">
+<div class="soft-card" style="background:#fff"><div class="section-title" style="font-size:11px;color:var(--orange)">Step 01</div><div style="font-weight:700;color:var(--green-dark);margin-top:6px">Confirmation email sent</div><p class="small muted" id="confirmEmailText" style="margin:8px 0 0"></p></div>
+<div class="soft-card" style="background:#fff"><div class="section-title" style="font-size:11px;color:var(--orange)">Step 02</div><div style="font-weight:700;color:var(--green-dark);margin-top:6px">Operations review</div><p class="small muted" style="margin:8px 0 0">Your selected dates, times, notes, payment status, and location requirements are reviewed against availability and care requirements.</p></div>
+<div class="soft-card" style="background:#fff"><div class="section-title" style="font-size:11px;color:var(--orange)">Step 03</div><div style="font-weight:700;color:var(--green-dark);margin-top:6px">Professional matching</div><p class="small muted" style="margin:8px 0 0">We match the most suitable accredited professional tier to your booking and prepare backup continuity if needed.</p></div>
+</div>
+<div class="soft-card" style="margin-top:16px;background:#fff">
+<div class="section-title" style="font-size:12px">Booking Snapshot</div>
+<div class="stack" id="confirmSnapshot" style="margin-top:12px"></div>
+</div>
+<div class="footer-actions">
+<button class="btn" id="createAnotherBooking" type="button">Create Another Booking</button>
+<button class="btn-outline" data-go="3" type="button">View Booking Details</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<aside class="panel">
+<div class="section-title">Live Summary</div>
+<h3 style="font-size:32px;line-height:1.1;margin:8px 0 0;color:var(--green-dark)">Your custom care plan</h3>
+<div class="soft-card" style="margin-top:18px;padding:0;overflow:hidden">
+<img alt="Selected service" id="summaryImage" src="" style="height:220px;width:100%;object-fit:cover"/>
+<div class="card-body">
+<div class="section-title" style="font-size:11px;color:var(--orange)">Selected service</div>
+<div id="summaryServiceName" style="margin-top:8px;font-size:22px;font-weight:700;color:var(--green-dark)"></div>
+<div class="small muted" id="summaryServiceSubtitle" style="margin-top:4px"></div>
+<p class="small muted" id="summaryServiceDescription" style="margin:10px 0 0"></p>
+</div>
+</div>
+<div class="summary-box" style="margin-top:18px">
+<div class="item"><div class="label">Dates</div><div class="value" id="summaryDates"></div></div>
+<div class="item"><div class="label">Care Window</div><div class="value" id="summaryCareWindow"></div></div>
+<div class="item"><div class="label">Duration</div><div class="value" id="summaryDuration"></div></div>
+<div class="item"><div class="label">Minimum Rule</div><div class="value" id="summaryMinimum"></div></div>
+<div class="item"><div class="label">Professional</div><div class="value" id="summaryProfessional"></div></div>
+<div class="item"><div class="label">Payment Today</div><div class="value" id="summaryPaymentToday"></div></div>
+<div class="item"><div class="label">Estimated Total</div><div class="value" id="summaryTotal"></div></div>
+<div class="selected-dates"><div style="margin-top:0;font-weight:700">Selected Dates</div><div id="summaryDatesList"></div></div>
+<div class="selected-dates" style="margin-top:14px"><div style="margin-top:0;font-weight:700">Selected professional tier</div><div id="summaryProfessionalTier"></div><div id="summaryProfessionalDescription"></div></div>
+</div>
+</aside>
+</div>
+</div>
+<script>
+const state = {
+  step:1,
+  services:[
+    {id:'explorer',name:'The Explorer',subtitle:'Outdoor Focus',description:'Teacher-led, nature-based discovery with outdoor structure, STEM inquiry, and active engagement.',image:'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=80',accent:'Outdoor learning',recommended:['teacher']},
+    {id:'executive',name:'The Executive',subtitle:'Short & Long Hours',description:'Flexible support for high-pressure households, early starts, extended shifts, and routine-led care.',image:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80',accent:'Routine support',recommended:['teacher','support']},
+    {id:'tourist',name:'The Tourist',subtitle:'Holiday Traveller Care',description:'UK concierge childcare for travelling families, events, hotels, and cultural chaperone support.',image:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80',accent:'Concierge care',recommended:['rn','teacher']},
+    {id:'overnight',name:'The Overnight Companion',subtitle:'Specialized Care',description:'Expert overnight support with clinical monitoring, sleep architecture, and structured handovers.',image:'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80',accent:'Nurse support',recommended:['rn','support']}
+  ],
+  professionals:[
+    {id:'rn',short:'RN',name:'The Registered Nurse',credentials:'NHS RN',rate:80,rateLabel:'£80+/hour or overnight tier',description:'Best for medical overnight care, complex support, allergies, clinical monitoring, and travel stress.',bullets:['Medication administration','Acute health monitoring','Pediatric safety focus'],icon:'⚕️'},
+    {id:'teacher',short:'QTS',name:'The Certified Teacher',credentials:'PGCE / QTS',rate:35,rateLabel:'£35/hour',description:'Best for outdoor discovery, enrichment, homework structure, school runs, and curriculum-aligned care.',bullets:['Inquiry-based learning','Forest school style enrichment','Homework and routine support'],icon:'🎓'},
+    {id:'support',short:'SSW',name:'The Specialised Support Worker',credentials:'Behavioural / Routine Support',rate:26,rateLabel:'£26/hour',description:'Best for shift coverage, behavioural stability, routine building, and practical family support.',bullets:['Routine building','Behavioural support','Active shift coverage'],icon:'🕒'}
+  ],
+  timeOptions:['05:00','05:30','06:00','06:30','07:00','07:30','08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30','23:00'],
+  selectedService:'explorer',selectedProfessional:'teacher',selectedDate:'',draftStartTime:'09:30',draftEndTime:'15:30',
+  bookingDates:[],clientName:'[Client Name]',email:'',phone:'',childCount:'',locationType:'',roomNumber:'',
+  hotelSecurityContact:'',notes:'',consentAccepted:false,paymentConsentAccepted:false,paymentOption:'deposit',
+  cardholderName:'',cardNumber:'',expiry:'',cvc:'',billingPostcode:'',bookingReference:''
+};
+
+function todayInputValue(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function formatBookingDate(date){return new Date(`${date}T00:00:00`).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'});}
+function calculateDurationHours(startTime,endTime){const [sh,sm]=startTime.split(':').map(Number);const [eh,em]=endTime.split(':').map(Number);const start=sh*60+sm;const end=eh*60+em;const diff=end-start;return diff>0?diff/60:0;}
+function createBookingReference(){const datePart=new Date().toISOString().slice(2,10).replace(/-/g,'');const randomPart=Math.random().toString(36).slice(2,7).toUpperCase();return `AA-${datePart}-${randomPart}`;}
+function formatCardNumberInput(value){const digits=value.replace(/\D/g,'').slice(0,16);return digits.replace(/(\d{4})(?=\d)/g,'$1 ').trim();}
+function formatExpiryInput(value){const digits=value.replace(/\D/g,'').slice(0,4);if(digits.length<=2)return digits;return `${digits.slice(0,2)}/${digits.slice(2)}`;}
+function isValidEmail(email){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());}
+function isValidPhone(phone){return phone.replace(/\D/g,'').length>=10;}
+function isValidCardNumber(cardNumber){return cardNumber.replace(/\D/g,'').length===16;}
+function isValidExpiry(expiry){if(!/^\d{2}\/\d{2}$/.test(expiry)) return false; const [mm,yy]=expiry.split('/').map(Number); return mm>=1 && mm<=12 && yy>=0;}
+function isValidCvc(cvc){return /^\d{3,4}$/.test(cvc.trim());}
+function maskCardNumber(cardNumber){const digits=cardNumber.replace(/\D/g,''); if(digits.length<4) return '••••'; return `•••• ${digits.slice(-4)}`;}
+function getService(){return state.services.find(s=>s.id===state.selectedService)||state.services[0];}
+function getProfessional(){return state.professionals.find(p=>p.id===state.selectedProfessional)||state.professionals[0];}
+function getSuggestedTierLabel(recommended){const labels=[];if(recommended.includes('rn')) labels.push('RN');if(recommended.includes('teacher')) labels.push('Teacher');if(recommended.includes('support')) labels.push('Support Worker');return labels.join(' / ');}
+function getMinimumHoursForCurrentRules(){return state.selectedService==='overnight' && (state.selectedProfessional==='rn'||state.selectedProfessional==='support') ? 12 : 4;}
+function calculateDayCost(item){const professional=getProfessional();const hours=calculateDurationHours(item.startTime,item.endTime);const minimumHours=getMinimumHoursForCurrentRules();if(hours<minimumHours) return 0; if(state.selectedProfessional==='rn'&&state.selectedService==='overnight') return Math.round(Math.max(hours*80,380)); return Math.round(hours*professional.rate);}
+function getEnrichedBookingDates(){return state.bookingDates.map(item=>{const durationHours=calculateDurationHours(item.startTime,item.endTime);const minimumHours=getMinimumHoursForCurrentRules();return {...item,formattedDate:formatBookingDate(item.date),durationHours,minimumMet:durationHours>=minimumHours,dayCost:calculateDayCost(item)}});}
+function getAverageHours(enriched){if(!enriched.length) return 0; const total=enriched.reduce((sum,item)=>sum+item.durationHours,0); return Math.round((total/enriched.length)*10)/10;}
+function getTotalCost(enriched){return enriched.reduce((sum,item)=>sum+item.dayCost,0);}
+function getPaymentAmount(totalCost){return state.paymentOption==='deposit'?Math.round(totalCost*0.5):totalCost;}
+function childCountNoticeRequired(){return Number(state.childCount||0)>3;}
+function hotelFieldsRequired(){return state.locationType==='hotel';}
+function validateStep1(){const enriched=getEnrichedBookingDates(); if(!enriched.length) return 'Please add at least one booking date.'; const minimumHours=getMinimumHoursForCurrentRules(); const invalid=enriched.find(item=>item.durationHours<minimumHours); if(invalid){return minimumHours===12?'Overnight Companion with RN or SSW requires at least 12 hours for every selected date.':'Each selected date must meet the 4-hour minimum before you can continue.';} return '';}
+function validateStep3(){if(state.clientName.trim().length<2) return 'Please enter the client name.'; if(!isValidEmail(state.email)) return 'Please enter a valid email address.'; if(!isValidPhone(state.phone)) return 'Please enter a valid phone number.'; if(!state.childCount||Number(state.childCount)<1) return 'Please enter the number of children.'; if(!state.locationType) return 'Please select the booking location.'; if(hotelFieldsRequired()){if(!state.roomNumber.trim()) return 'Room Number is required when Hotel is selected.'; if(!state.hotelSecurityContact.trim()) return 'Hotel Security Contact is required when Hotel is selected.';} if(!state.consentAccepted) return 'You must accept the booking terms checkbox before continuing.'; return '';}
+function validateStep4(){const prev=validateStep3(); if(prev) return prev; if(state.cardholderName.trim().length<2) return 'Please enter the cardholder name.'; if(!isValidCardNumber(state.cardNumber)) return 'Please enter a valid 16-digit card number.'; if(!isValidExpiry(state.expiry)) return 'Please enter a valid expiry in MM/YY format.'; if(!isValidCvc(state.cvc)) return 'Please enter a valid CVC.'; if(state.billingPostcode.trim().length<3) return 'Please enter the billing postcode.'; if(!state.paymentConsentAccepted) return 'You must authorise the payment checkbox before paying.'; return '';}
+
+function renderProgress(){
+  const progressStack=document.getElementById('progressStack'); progressStack.innerHTML='';
+  ['Select Service & Hours','Select Ideal Professional','Review & Contact Details','Payment','Booking Confirmed'].forEach((label,index)=>{
+    const stepNum=index+1, active=stepNum===state.step, done=stepNum<state.step;
+    const div=document.createElement('div');
+    div.className=`progress-item ${active?'active':''} ${done?'done':''}`;
+    div.innerHTML=`<div class="badge">${done?'✓':stepNum}</div><div style="font-size:14px;font-weight:600">${label}</div>`;
+    progressStack.appendChild(div);
+  });
+  document.getElementById('stepCounter').textContent=String(state.step);
+}
+function renderServiceGrid(){
+  const grid=document.getElementById('serviceGrid'); grid.innerHTML='';
+  state.services.forEach(service=>{
+    const card=document.createElement('button'); card.type='button'; card.className=`service-card ${state.selectedService===service.id?'active':''}`;
+    card.innerHTML=`<img src="${service.image}" alt="${service.name}"><div class="card-body"><h3>${service.name}</h3><div class="sub">${service.subtitle}</div><p>${service.description}</p><div class="small muted" style="margin-top:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em">${service.accent}</div></div>`;
+    card.addEventListener('click',()=>{state.selectedService=service.id; renderAll();});
+    grid.appendChild(card);
+  });
+}
+function renderProfessionalGrid(){
+  const grid=document.getElementById('professionalGrid'); grid.innerHTML='';
+  const service=getService();
+  state.professionals.forEach(prof=>{
+    const active=state.selectedProfessional===prof.id, recommended=service.recommended.includes(prof.id);
+    const card=document.createElement('button'); card.type='button'; card.className=`professional-card ${active?'active':''}`;
+    card.innerHTML=`<div class="card-body"><div style="font-size:34px">${prof.icon}</div><div class="small" style="margin-top:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7b867f">${prof.credentials}</div><h3 style="margin-top:10px">${prof.name}</h3><div class="sub">${prof.rateLabel}</div><p>${prof.description}</p><ul style="margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:14px">${prof.bullets.map(b=>`<li style="margin-top:6px">${b}</li>`).join('')}</ul><div style="margin-top:14px;display:flex;justify-content:space-between;gap:10px;align-items:center"><span class="pill small" style="padding:8px 12px">${recommended?'Recommended for this service':'Available tier'}</span><span class="small" style="font-weight:700;color:${active?'var(--green)':'#94a09a'}">${active?'Selected':'Select'}</span></div></div>`;
+    card.addEventListener('click',()=>{state.selectedProfessional=prof.id; renderAll();}); grid.appendChild(card);
+  });
+  document.getElementById('step2Hint').textContent=service.recommended.includes(state.selectedProfessional)?'Excellent match for this service.':'Available, but not the most typical tier for this service.';
+}
+function renderDateList(){
+  const container=document.getElementById('dateList'), enriched=getEnrichedBookingDates(), minimumHours=getMinimumHoursForCurrentRules(); container.innerHTML='';
+  if(!enriched.length){container.innerHTML='<div class="soft-card">No dates added yet. Add one or more dates to continue.</div>'; return;}
+  enriched.forEach(item=>{
+    const card=document.createElement('div'); card.className='date-card';
+    card.innerHTML=`<div class="date-top"><div><div class="date-title">${item.formattedDate}</div><div class="small" style="margin-top:4px;color:${item.minimumMet?'var(--success)':'var(--danger)'}">${item.durationHours} hours • ${item.minimumMet?'Minimum met':`Minimum ${minimumHours} hours required`}</div></div><div style="display:flex;align-items:center;gap:10px"><div class="pill small">£${item.dayCost}</div><button type="button" class="btn-ghost small" data-remove-date="${item.date}" style="min-height:auto;padding:10px 14px">Remove</button></div></div><div class="two-col" style="margin-top:14px;grid-template-columns:1fr 1fr"><div class="field"><label>Start Time</label><select class="select" data-date-field="startTime" data-date="${item.date}">${state.timeOptions.map(t=>`<option value="${t}" ${t===item.startTime?'selected':''}>${t}</option>`).join('')}</select></div><div class="field"><label>End Time</label><select class="select" data-date-field="endTime" data-date="${item.date}">${state.timeOptions.map(t=>`<option value="${t}" ${t===item.endTime?'selected':''}>${t}</option>`).join('')}</select></div></div>`;
+    container.appendChild(card);
+  });
+  container.querySelectorAll('[data-remove-date]').forEach(btn=>btn.addEventListener('click',()=>{const date=btn.getAttribute('data-remove-date'); state.bookingDates=state.bookingDates.filter(item=>item.date!==date); renderAll();}));
+  container.querySelectorAll('[data-date-field]').forEach(select=>select.addEventListener('change',e=>{const field=e.target.getAttribute('data-date-field'),date=e.target.getAttribute('data-date'),value=e.target.value; state.bookingDates=state.bookingDates.map(item=>item.date===date?{...item,[field]:value}:item); renderAll();}));
+}
+function renderStepPanels(){for(let i=1;i<=5;i++) document.getElementById(`step${i}`).classList.toggle('hidden-step', state.step!==i);}
+function renderSelectedServiceSummary(){const service=getService(); document.getElementById('selectedServiceSummary').textContent=`${service.name} (${service.subtitle})`; document.getElementById('selectedServiceDescription').textContent=service.description; document.getElementById('suggestedTierMetric').textContent=getSuggestedTierLabel(service.recommended);}
+function renderDraftSummary(){document.getElementById('draftWindow').textContent=`${state.draftStartTime} to ${state.draftEndTime}`; document.getElementById('draftDuration').textContent=`${calculateDurationHours(state.draftStartTime,state.draftEndTime)} hours • Change later per date below`;}
+function renderStep1Status(){
+  const enriched=getEnrichedBookingDates(), allDatesValid=enriched.length>0 && enriched.every(item=>item.minimumMet), minimumHours=getMinimumHoursForCurrentRules();
+  document.getElementById('bookingDaysMetric').textContent=String(enriched.length);
+  document.getElementById('averageHoursMetric').textContent=String(getAverageHours(enriched)||0);
+  const pill=document.getElementById('datesValidityPill'); pill.textContent=allDatesValid?'All dates valid':'One or more dates below minimum'; pill.style.background=allDatesValid?'var(--success-soft)':'var(--danger-soft)'; pill.style.color=allDatesValid?'var(--success)':'var(--danger)';
+  document.getElementById('overnightRuleNotice').classList.toggle('hide', !(state.selectedService==='overnight' && (state.selectedProfessional==='rn'||state.selectedProfessional==='support')));
+  const status=document.getElementById('step1Status'); status.textContent=allDatesValid?`All selected dates meet the ${minimumHours}-hour minimum booking requirement.`:`Each selected date must meet the ${minimumHours}-hour minimum before you can continue.`; status.style.color=allDatesValid?'var(--success)':'var(--danger)';
+}
+function renderSummaryRows(){
+  const enriched=getEnrichedBookingDates(), total=getTotalCost(enriched), averageHours=getAverageHours(enriched), container=document.getElementById('summaryRows'), service=getService(), professional=getProfessional();
+  const rows=[['Booking Dates',`${enriched.length} date${enriched.length===1?'':'s'} selected`],['Service Type',`${service.name} (${service.subtitle})`],['Booking Pattern',enriched.length>1?'Custom time per selected date':`${averageHours} hours`],['Accredited Professional',`${professional.name} (${professional.credentials})`],['Pricing Tier',professional.rateLabel],['Estimated Total',`£${total}`]];
+  container.innerHTML=rows.map(([label,value])=>`<div class="soft-card" style="background:#f8fbf8"><div class="section-title" style="font-size:11px">${label}</div><div style="margin-top:8px;font-weight:700;color:var(--green-dark);font-size:14px">${value}</div></div>`).join('');
+}
+function renderStep3Schedule(){document.getElementById('step3DateSchedule').innerHTML=getEnrichedBookingDates().map(item=>`<div class="soft-card" style="background:#f8fbf8"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><div style="font-weight:700;color:var(--green-dark)">${item.formattedDate}</div><div style="font-weight:700;color:var(--success)">£${item.dayCost}</div></div><div class="small muted" style="margin-top:6px">${item.startTime} to ${item.endTime} • ${item.durationHours} hours</div></div>`).join('');}
+function renderChildrenNotice(){document.getElementById('childrenNotice').classList.toggle('hide', !childCountNoticeRequired());}
+function renderHotelFields(){document.getElementById('hotelFields').classList.toggle('hide', !hotelFieldsRequired());}
+function renderPaymentOptions(){
+  const total=getTotalCost(getEnrichedBookingDates()), deposit=Math.round(total*0.5);
+  document.getElementById('depositAmount').textContent=`£${deposit}`; document.getElementById('fullAmount').textContent=`£${total}`;
+  document.getElementById('paymentTypeLabel').textContent=state.paymentOption==='deposit'?'50% Deposit':'100% Full Payment';
+  document.getElementById('paymentAmountLabel').textContent=String(getPaymentAmount(total)); document.getElementById('paymentTotalLabel').textContent=String(total);
+  document.querySelectorAll('[data-payment]').forEach(card=>card.classList.toggle('active', card.getAttribute('data-payment')===state.paymentOption));
+}
+function renderConfirmation(){
+  const total=getTotalCost(getEnrichedBookingDates()), paymentAmount=getPaymentAmount(total);
+  document.getElementById('confirmReference').textContent=state.bookingReference;
+  document.getElementById('confirmPaid').textContent=String(paymentAmount);
+  document.getElementById('confirmCard').textContent=maskCardNumber(state.cardNumber);
+  document.getElementById('confirmEmailText').textContent=`A booking confirmation will be issued to ${state.email}.`;
+  document.getElementById('confirmSnapshot').innerHTML=`<div><strong style="color:var(--green-dark)">Client:</strong> ${state.clientName}</div><div><strong style="color:var(--green-dark)">Email:</strong> ${state.email}</div><div><strong style="color:var(--green-dark)">Phone:</strong> ${state.phone}</div><div><strong style="color:var(--green-dark)">Children:</strong> ${state.childCount}</div><div><strong style="color:var(--green-dark)">Location:</strong> ${state.locationType==='hotel'?'Hotel':'Private Home'}</div><div><strong style="color:var(--green-dark)">Estimated total:</strong> £${total}</div>`;
+}
+function renderSidebar(){
+  const service=getService(), professional=getProfessional(), enriched=getEnrichedBookingDates(), total=getTotalCost(enriched), paymentAmount=getPaymentAmount(total), averageHours=getAverageHours(enriched), minimumHours=getMinimumHoursForCurrentRules();
+  document.getElementById('summaryImage').src=service.image;
+  document.getElementById('summaryServiceName').textContent=service.name;
+  document.getElementById('summaryServiceSubtitle').textContent=service.subtitle;
+  document.getElementById('summaryServiceDescription').textContent=service.description;
+  document.getElementById('summaryDates').textContent=`${enriched.length} selected`;
+  document.getElementById('summaryCareWindow').textContent=enriched.length>1?'Custom by date':(enriched[0]?`${enriched[0].startTime} to ${enriched[0].endTime}`:`${state.draftStartTime} to ${state.draftEndTime}`);
+  document.getElementById('summaryDuration').textContent=enriched.length>1?`${averageHours||0}h avg / day`:`${enriched[0]?enriched[0].durationHours:0} hours / day`;
+  document.getElementById('summaryMinimum').textContent=`Minimum ${minimumHours}h`;
+  document.getElementById('summaryProfessional').textContent=professional.name;
+  document.getElementById('summaryPaymentToday').textContent=`£${paymentAmount}`;
+  document.getElementById('summaryTotal').textContent=`£${total}`;
+  document.getElementById('summaryDatesList').innerHTML=enriched.map(item=>`<div>${item.formattedDate} • ${item.startTime} to ${item.endTime} (${item.durationHours}h)</div>`).join('')||'<div>No dates selected</div>';
+  document.getElementById('summaryProfessionalTier').textContent=`${professional.short} • ${professional.name}`;
+  document.getElementById('summaryProfessionalDescription').textContent=professional.description;
+}
+function renderAll(){
+  renderProgress(); renderStepPanels(); renderServiceGrid(); renderProfessionalGrid(); renderSelectedServiceSummary(); renderDraftSummary(); renderDateList(); renderStep1Status(); renderSummaryRows(); renderStep3Schedule(); renderChildrenNotice(); renderHotelFields(); renderPaymentOptions(); renderConfirmation(); renderSidebar();
+  const e1=validateStep1(); document.getElementById('step1Error').textContent=e1; document.getElementById('step1Error').classList.toggle('hide', !e1);
+  const e3=validateStep3(); document.getElementById('step3Error').textContent=e3; document.getElementById('step3Error').classList.toggle('hide', !e3);
+  const e4=validateStep4(); document.getElementById('step4Error').textContent=e4; document.getElementById('step4Error').classList.toggle('hide', !e4);
+}
+function initInputs(){
+  const dateInput=document.getElementById('selectedDate'); dateInput.min=todayInputValue(); state.selectedDate=todayInputValue(); dateInput.value=state.selectedDate;
+  const start=document.getElementById('draftStartTime'), end=document.getElementById('draftEndTime');
+  state.timeOptions.forEach(time=>{const o1=document.createElement('option');o1.value=time;o1.textContent=time;start.appendChild(o1);const o2=document.createElement('option');o2.value=time;o2.textContent=time;end.appendChild(o2);});
+  start.value=state.draftStartTime; end.value=state.draftEndTime; state.bookingDates=[{date:todayInputValue(),startTime:state.draftStartTime,endTime:state.draftEndTime}];
+}
+function attachStaticEvents(){
+  document.getElementById('selectedDate').addEventListener('change',e=>{state.selectedDate=e.target.value;});
+  document.getElementById('draftStartTime').addEventListener('change',e=>{state.draftStartTime=e.target.value; renderAll();});
+  document.getElementById('draftEndTime').addEventListener('change',e=>{state.draftEndTime=e.target.value; renderAll();});
+  document.getElementById('addDateBtn').addEventListener('click',()=>{if(!state.selectedDate) return; if(state.bookingDates.some(i=>i.date===state.selectedDate)){renderAll(); return;} state.bookingDates.push({date:state.selectedDate,startTime:state.draftStartTime,endTime:state.draftEndTime}); state.bookingDates.sort((a,b)=>a.date.localeCompare(b.date)); renderAll();});
+  document.getElementById('toStep2').addEventListener('click',()=>{if(!validateStep1()) state.step=2; renderAll();});
+  document.getElementById('toStep3').addEventListener('click',()=>{state.step=3; renderAll();});
+  document.getElementById('toStep4').addEventListener('click',()=>{if(!validateStep3()) state.step=4; renderAll();});
+  document.getElementById('confirmPaymentBtn').addEventListener('click',()=>{if(!validateStep4()){state.bookingReference=state.bookingReference||createBookingReference(); state.step=5;} renderAll();});
+  document.querySelectorAll('[data-go]').forEach(btn=>btn.addEventListener('click',()=>{state.step=Number(btn.getAttribute('data-go')); renderAll();}));
+  document.getElementById('createAnotherBooking').addEventListener('click',()=>{location.reload();});
+  document.getElementById('clientName').addEventListener('input',e=>{state.clientName=e.target.value; renderAll();});
+  document.getElementById('email').addEventListener('input',e=>{state.email=e.target.value; renderAll();});
+  document.getElementById('phone').addEventListener('input',e=>{state.phone=e.target.value; renderAll();});
+  document.getElementById('childCount').addEventListener('input',e=>{state.childCount=e.target.value; renderAll();});
+  document.getElementById('locationType').addEventListener('change',e=>{state.locationType=e.target.value; renderAll();});
+  document.getElementById('roomNumber').addEventListener('input',e=>{state.roomNumber=e.target.value; renderAll();});
+  document.getElementById('hotelSecurityContact').addEventListener('input',e=>{state.hotelSecurityContact=e.target.value; renderAll();});
+  document.getElementById('notes').addEventListener('input',e=>{state.notes=e.target.value; renderAll();});
+  document.getElementById('consentCheckbox').addEventListener('change',e=>{state.consentAccepted=e.target.checked; renderAll();});
+  document.querySelectorAll('[data-payment]').forEach(card=>card.addEventListener('click',()=>{state.paymentOption=card.getAttribute('data-payment'); renderAll();}));
+  document.getElementById('cardholderName').addEventListener('input',e=>{state.cardholderName=e.target.value; renderAll();});
+  document.getElementById('cardNumber').addEventListener('input',e=>{state.cardNumber=formatCardNumberInput(e.target.value); e.target.value=state.cardNumber; renderAll();});
+  document.getElementById('expiry').addEventListener('input',e=>{state.expiry=formatExpiryInput(e.target.value); e.target.value=state.expiry; renderAll();});
+  document.getElementById('cvc').addEventListener('input',e=>{state.cvc=e.target.value.replace(/\D/g,'').slice(0,4); e.target.value=state.cvc; renderAll();});
+  document.getElementById('billingPostcode').addEventListener('input',e=>{state.billingPostcode=e.target.value.toUpperCase(); e.target.value=state.billingPostcode; renderAll();});
+  document.getElementById('paymentConsentCheckbox').addEventListener('change',e=>{state.paymentConsentAccepted=e.target.checked; renderAll();});
+}
+initInputs(); attachStaticEvents(); renderAll();
+</script>
+
+<footer class="site-footer"><div class="footer-shell"><div class="footer-top"><div class="footer-brand-card"><div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div><p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers across homes, hotels, and travel environments.</p><div class="footer-trust-row"><span class="footer-pill">NHS RN-Led</span><span class="footer-pill">Qualified Teachers (QTS)</span><span class="footer-pill">Specialised Support</span><span class="footer-pill">London Coverage</span></div></div><div class="footer-news-card"><h3 class="footer-news-title">Stay connected</h3><p class="footer-news-copy">Receive updates on services, availability, and premium childcare insights.</p><form action="#" class="footer-form" method="post"><input class="footer-input" placeholder="Enter your email" type="email"/><button class="footer-btn" type="submit">Subscribe</button></form></div></div><div class="footer-middle"><div><h4 class="footer-col-title">Company</h4><ul class="footer-links"><li><a href="Landing page 2.html">Home</a></li><li><a href="About Us.html">About Us</a></li><li><a href="Our Story.html">Our Story</a></li><li><a href="Meet the Team Page.html">Meet the Team</a></li><li><a href="Career page.html">Careers</a></li></ul></div><div><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="The Explorer.html">The Explorer</a></li><li><a href="The Executive.html">The Executive</a></li><li><a href="The Tourist.html">The Tourist</a></li><li><a href="The Overnight Companion.html">Overnight Companion</a></li><li><a href="Booking Page.html">Book Now</a></li><li><a href="Pricing page 2.html">Pricing</a></li></ul></div><div><h4 class="footer-col-title">Insights</h4><ul class="footer-links"><li><a href="FAQs.html">FAQs</a></li><li><a href="Insight Hub.html">Insights Hub</a></li><li><a href="Insight Parent Resources_page.html">Parent Resources</a></li><li><a href="Insight Media &amp; Press page.html">Media &amp; Press</a></li><li><a href="Insight Downloadable documents page.html">Documents</a></li><li><a href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a></li><li><a href="#">Blog</a></li></ul></div><div><h4 class="footer-col-title">Contact</h4><div class="footer-contact-item"><span class="footer-contact-label">Email</span><div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div></div><div class="footer-contact-item"><span class="footer-contact-label">Location</span><div class="footer-contact-value">London, United Kingdom</div></div><div style="margin-top:12px;"><a class="footer-btn" href="Contact Us page.html">Contact Us</a></div></div></div><div class="footer-bottom"><div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div><div class="footer-bottom-links"><a href="Safety &amp; Trust - Main.html">Safeguarding</a><a href="FAQs.html">Support</a><a href="Contact Us page.html">Contact</a></div></div></div></footer></body>
+</html>

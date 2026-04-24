@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | Active Adventure Home Childcare</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f6f1e7;
+    color: #333;
+    line-height: 1.7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 60px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 20px;
+    color: #2f5d3a;
+    letter-spacing: 0.4px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn {
+    display: inline-block;
+    background: #f28c28;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.hero {
+    padding: 90px 60px 110px;
+    background: linear-gradient(to right, #e6efe4, #f6f1e7);
+    text-align: center;
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #f28c28;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: 52px;
+    line-height: 1.1;
+    color: #2f5d3a;
+}
+
+.hero p {
+    max-width: 820px;
+    margin: 22px auto 0;
+    font-size: 19px;
+}
+
+.section {
+    padding: 90px 60px;
+}
+
+.section-white {
+    background: #fff;
+}
+
+.section-soft {
+    background: #f6f1e7;
+}
+
+.section-dark {
+    background: #2f5d3a;
+    color: #fff;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 36px;
+    color: #2f5d3a;
+    margin: 0 0 18px;
+}
+
+.section-dark .section-title {
+    color: #fff;
+}
+
+.lead-text {
+    max-width: 900px;
+    font-size: 17px;
+    color: #555;
+}
+
+.section-dark .lead-text,
+.section-dark p {
+    color: rgba(255,255,255,0.92);
+}
+
+.story-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 36px;
+    align-items: start;
+}
+
+.story-panel {
+    background: #fff;
+    padding: 34px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.story-panel h3 {
+    margin-top: 0;
+    color: #2f5d3a;
+    font-size: 24px;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, #2f5d3a, #1f3d28);
+    color: #fff;
+    padding: 34px;
+    border-radius: 24px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+.highlight-box h3 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.highlight-box p {
+    color: rgba(255,255,255,0.92);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+    margin-top: 38px;
+}
+
+.card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #2f5d3a;
+    font-size: 22px;
+}
+
+.card p {
+    font-size: 15px;
+    color: #555;
+}
+
+.promise-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 40px;
+}
+
+.promise-text {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 32px;
+    border-radius: 22px;
+}
+
+.promise-points {
+    display: grid;
+    gap: 18px;
+}
+
+.promise-item {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 24px;
+    border-radius: 18px;
+}
+
+.promise-item h4 {
+    margin: 0 0 8px;
+    color: #f6f1e7;
+    font-size: 18px;
+}
+
+.cta-band {
+    text-align: center;
+    padding: 80px 60px 100px;
+    background: #fff;
+}
+
+.cta-band h2 {
+    color: #2f5d3a;
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.cta-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 26px;
+}
+
+footer {
+    background: #1f3d28;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media (max-width: 900px) {
+    .story-layout,
+    .promise-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 20px 24px;
+    }
+
+    .hero,
+    .section,
+    .cta-band {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .hero {
+        padding-top: 70px;
+        padding-bottom: 80px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+/* Unified site header */
+/* Standardized advanced footer */
+.site-footer{margin-top:48px;background:linear-gradient(135deg,#163123,#1f3d28);color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.06)}
+.site-footer .footer-shell{max-width:1320px;margin:0 auto;padding:0 20px}
+.site-footer .footer-top{padding:34px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.08)}
+.site-footer .footer-brand-card,.site-footer .footer-news-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:24px;backdrop-filter:blur(8px)}
+.site-footer .footer-brand-mark{font-weight:700;letter-spacing:.08em;color:#fff;font-size:20px}
+.site-footer .footer-brand-mark small{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.site-footer .footer-brand-copy{margin:14px 0 0;color:rgba(255,255,255,.66);line-height:1.8;max-width:720px}
+.site-footer .footer-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.site-footer .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.site-footer .footer-news-title{margin:0;font-size:22px;color:#fff}
+.site-footer .footer-news-copy{margin:10px 0 0;color:rgba(255,255,255,.66);line-height:1.8}
+.site-footer .footer-form{display:flex;gap:10px;margin-top:18px}
+.site-footer .footer-input{flex:1;min-height:50px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.10);color:#fff;padding:0 16px;outline:none}
+.site-footer .footer-input::placeholder{color:rgba(255,255,255,.52)}
+.site-footer .footer-input:focus{border-color:rgba(242,140,40,.55);box-shadow:0 0 0 3px rgba(242,140,40,.12)}
+.site-footer .footer-btn{min-height:50px;padding:0 18px;border:none;border-radius:999px;background:#f28c28;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.site-footer .footer-middle{padding:28px 0;display:grid;grid-template-columns:1.05fr .8fr .8fr .85fr;gap:24px}
+.site-footer .footer-col-title{margin:0 0 14px;color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.site-footer .footer-col-copy{color:rgba(255,255,255,.66);line-height:1.8;margin:0}
+.site-footer .footer-links{list-style:none;margin:0;padding:0}
+.site-footer .footer-links li+li{margin-top:10px}
+.site-footer .footer-links a{color:rgba(255,255,255,.66);text-decoration:none;transition:.2s ease}
+.site-footer .footer-links a:hover{color:#fff}
+.site-footer .footer-contact-item{margin-bottom:12px}
+.site-footer .footer-contact-label{display:block;color:rgba(255,255,255,.48);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+.site-footer .footer-contact-value{color:rgba(255,255,255,.88);line-height:1.7}
+.site-footer .footer-bottom{padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.site-footer .footer-bottom-copy{color:rgba(255,255,255,.66);font-size:13px}
+.site-footer .footer-bottom-links{display:flex;flex-wrap:wrap;gap:14px}
+.site-footer .footer-bottom-links a{color:rgba(255,255,255,.66);font-size:13px;text-decoration:none}
+.site-footer .footer-bottom-links a:hover{color:#fff}
+@media (max-width:980px){.site-footer .footer-top,.site-footer .footer-middle{grid-template-columns:1fr}}
+@media (max-width:640px){.site-footer .footer-shell{padding:0 16px}.site-footer .footer-top{padding:24px 0 20px}.site-footer .footer-brand-card,.site-footer .footer-news-card{padding:20px;border-radius:20px}.site-footer .footer-form{flex-direction:column}.site-footer .footer-btn,.site-footer .footer-input{width:100%}.site-footer .footer-middle{padding:22px 0;gap:18px}.site-footer .footer-bottom{padding:16px 0 24px;align-items:flex-start;flex-direction:column}}
+
+
+
+
+/* Unified AA Header Start */
+html, body { overflow-x: hidden; }
+.aa-header, .aa-header * { box-sizing: border-box; }
+.aa-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  width:100%;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(20,20,20,.08);
+  box-shadow:0 2px 12px rgba(0,0,0,.04);
+}
+.aa-header__inner{
+  max-width:1360px;
+  margin:0 auto;
+  padding:16px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.aa-header__brand{
+  color:#2f5d3a;
+  text-decoration:none;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1.05;
+  white-space:nowrap;
+  flex:0 0 auto;
+  font-size:20px;
+}
+.aa-header__brand small{
+  display:block;
+  margin-top:4px;
+  color:#8b958e;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.aa-header__nav{
+  flex:1 1 auto;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.aa-header__link,
+.aa-header details > summary{
+  list-style:none;
+  cursor:pointer;
+  color:#57645c;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.2;
+  padding:8px 0;
+  position:relative;
+  white-space:nowrap;
+  background:none;
+  border:none;
+}
+.aa-header details > summary::-webkit-details-marker{display:none;}
+.aa-header__link:hover,
+.aa-header details > summary:hover,
+.aa-header details[open] > summary,
+.aa-header__link.is-active,
+.aa-header details.is-active > summary{
+  color:#1f3d28;
+}
+.aa-header__link.is-active::after,
+.aa-header details.is-active > summary::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-8px;
+  height:2px;
+  border-radius:999px;
+  background:#f28c28;
+}
+.aa-dd{position:relative;}
+.aa-dd__menu{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:0;
+  min-width:250px;
+  max-width:min(280px, calc(100vw - 32px));
+  background:#fff;
+  border:1px solid rgba(20,20,20,.08);
+  border-radius:18px;
+  box-shadow:0 18px 38px rgba(0,0,0,.10);
+  padding:10px;
+  display:none;
+}
+.aa-dd--right .aa-dd__menu{left:auto; right:0;}
+.aa-dd[open] .aa-dd__menu{display:block;}
+.aa-dd__menu a{
+  display:block;
+  padding:10px 12px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#33423a;
+  font-size:14px;
+  line-height:1.4;
+}
+.aa-dd__menu a:hover,
+.aa-dd__menu a.is-active{
+  background:#f8fbf8;
+  color:#2f5d3a;
+}
+.aa-header__cta{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:12px 18px;
+  border-radius:999px;
+  background:#f28c28;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  white-space:nowrap;
+  box-shadow:0 12px 24px rgba(242,140,40,.24);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.aa-header__cta:hover{transform:translateY(-1px); box-shadow:0 14px 26px rgba(242,140,40,.28);}
+@media (max-width: 980px){
+  .aa-header__inner{flex-wrap:wrap; align-items:flex-start;}
+  .aa-header__nav{order:3; width:100%; justify-content:flex-start; gap:14px 18px;}
+  .aa-header__cta{margin-left:auto;}
+}
+@media (max-width: 640px){
+  .aa-header__inner{padding:14px 16px;}
+  .aa-header__brand{width:100%;}
+  .aa-header__nav{width:100%; gap:12px 16px;}
+  .aa-dd{width:100%;}
+  .aa-dd__menu{position:static; min-width:unset; max-width:none; margin-top:8px; box-shadow:none;}
+  .aa-header__cta{width:100%;}
+}
+/* Unified AA Header End */
+
+</style>
+</head>
+<body>
+<div class="aa-header" role="banner">
+<div class="aa-header__inner">
+<a class="aa-header__brand" href="Landing page 2.html">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
+<nav aria-label="Main navigation" class="aa-header__nav">
+<a class="aa-header__link" href="Landing page 2.html">Home</a>
+<details class="aa-dd is-active">
+<summary>About</summary>
+<div class="aa-dd__menu">
+<a class="is-active" href="Our Story.html">Our Story</a>
+<a class="is-active" href="Meet the Team Page.html">Team Page</a>
+</div>
+</details>
+<details class="aa-dd">
+<summary>Services</summary>
+<div class="aa-dd__menu">
+<a href="The Executive.html">The Executive</a>
+<a href="The Overnight Companion.html">The Overnight Companion</a>
+<a href="The Tourist.html">The Tourist</a>
+<a href="The Explorer.html">The Explorer</a>
+</div>
+</details>
+<a class="aa-header__link" href="Pricing page 2.html">Pricing</a>
+<a class="aa-header__link" href="Booking Page.html">Booking</a>
+<details class="aa-dd aa-dd--right">
+<summary>Insights</summary>
+<div class="aa-dd__menu">
+<a href="Insight Hub.html">Insight Hub</a>
+<a href="FAQs.html">FAQs</a>
+<a href="Career page.html">Careers</a>
+<a href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a>
+<a href="#">Blog</a>
+</div>
+</details>
+</nav>
+<a class="aa-header__cta" href="Contact Us page.html">Contact Us</a>
+</div>
+</div>
+<section class="hero">
+<div class="eyebrow">About Us</div>
+<h1>Two Professionals. Four Sons. One Mission: Professionalising Peace of Mind.</h1>
+<p>Active Adventure Home Childcare was built by parents and professionals who wanted more than ordinary childcare. We created a care model grounded in safety, education, trust, and the realities of family life.</p>
+</section>
+<section class="section section-white" id="story">
+<div class="container story-layout">
+<div class="story-panel">
+<h2 class="section-title">Our Story</h2>
+<p>Every business has a why. Ours was shaped by years of searching for childcare that truly matched our standards. As a College Teacher and an NHS Registered Nurse, our professional lives have always been built on curriculum, clinical safety, and accountability. At home, as parents to four young boys, we experienced the challenge of finding care that felt both dependable and deeply aligned with what children actually need.</p>
+<p>We were not looking for someone to simply supervise. We were looking for people we could trust with our whole world — people who understood child development, medical safety, and the value of a stable, nurturing routine.</p>
+</div>
+<div class="highlight-box">
+<h3>Why We Built Active Adventure</h3>
+<p>We created the service we could not find ourselves: premium home childcare that combines warmth with professional standards, and flexibility with genuine peace of mind.</p>
+<p>Everything we offer begins with the same question: would we trust this person and this system with our own children?</p>
+</div>
+</div>
+</section>
+<section class="section section-soft" id="perspective">
+<div class="container">
+<h2 class="section-title">The Parent-Professional Perspective</h2>
+<p class="lead-text">Active Adventure was born in the quiet, honest moments of parenting — when it became clear that many families were being forced to choose between rigid nursery structures and informal, lightly vetted childcare. We decided to build a third option: a managed professional agency designed around what modern families actually need.</p>
+<div class="cards">
+<div class="card">
+<h3>We Are the Client</h3>
+<p>We evaluate every staff member against the highest standard possible: would we feel completely confident leaving our own four boys in their care? That standard shapes every hiring decision.</p>
+</div>
+<div class="card">
+<h3>We Are the Experts</h3>
+<p>Our approach combines NHS clinical governance with educational pedagogy, creating a childcare model that is structured, thoughtful, and intentionally high quality.</p>
+</div>
+<div class="card">
+<h3>We Built the Third Option</h3>
+<p>Families deserve more than a choice between convenience and trust. Our model delivers flexibility without compromising on oversight, safety, or child development.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section section-white" id="pedigree">
+<div class="container">
+<h2 class="section-title">Our Triple-Accredited Pedigree</h2>
+<p class="lead-text">We do not simply hire staff. We curate a team of professionals whose training, judgement, and specialist experience allow us to deliver a higher standard of in-home childcare.</p>
+<div class="cards">
+<div class="card">
+<h3>The Clinical Tier</h3>
+<p>NHS Nurses who bring hospital-grade safety awareness, medical confidence, allergy management understanding, and calm oversight into the home environment.</p>
+</div>
+<div class="card">
+<h3>The Educational Tier</h3>
+<p>Certified Teachers who transform daily care into meaningful learning moments, using structured development and engaging experiences to support each child.</p>
+</div>
+<div class="card">
+<h3>The Behavioral Tier</h3>
+<p>Specialised Support Workers with experience in routine building, neurodivergence support, and household stability during demanding schedules and transitions.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section section-dark" id="promise">
+<div class="container">
+<h2 class="section-title">Our Promise to You</h2>
+<div class="promise-wrap">
+<div class="promise-text">
+<p>We understand what it feels like to keep searching because “good enough” does not feel safe enough. We understand the pressure of long shifts, unpredictable schedules, and the emotional weight of leaving your children in someone else’s care.</p>
+<p>Active Adventure is the solution we built for ourselves, and now proudly offer to other families who want more than a service. They want certainty, professionalism, and care they can genuinely rely on.</p>
+</div>
+<div class="promise-points">
+<div class="promise-item">
+<h4>For Local Professionals</h4>
+<p>Reliable, structured care that supports demanding routines and changing schedules.</p>
+</div>
+<div class="promise-item">
+<h4>For Executives &amp; High-Performing Families</h4>
+<p>A premium standard of oversight, flexibility, and confidence when time and trust both matter.</p>
+</div>
+<div class="promise-item">
+<h4>For Visiting Families</h4>
+<p>Professional in-home childcare in the UK that allows you to settle, work, or travel with peace of mind.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="cta-band" id="contact">
+<h2>Because the people who care for your world should be experts in theirs.</h2>
+<p>Explore our services, meet our standards, and discover a childcare model built around trust.</p>
+<div class="cta-links">
+<a class="btn" href="#">Meet Our Accredited Team</a>
+<a class="btn" href="#">View Safety &amp; Trust Standards</a>
+<a class="btn" href="#">Explore Our Services</a>
+</div>
+</section>
+
+<footer class="site-footer"><div class="footer-shell"><div class="footer-top"><div class="footer-brand-card"><div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div><p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers across homes, hotels, and travel environments.</p><div class="footer-trust-row"><span class="footer-pill">NHS RN-Led</span><span class="footer-pill">Qualified Teachers (QTS)</span><span class="footer-pill">Specialised Support</span><span class="footer-pill">London Coverage</span></div></div><div class="footer-news-card"><h3 class="footer-news-title">Stay connected</h3><p class="footer-news-copy">Receive updates on services, availability, and premium childcare insights.</p><form action="#" class="footer-form" method="post"><input class="footer-input" placeholder="Enter your email" type="email"/><button class="footer-btn" type="submit">Subscribe</button></form></div></div><div class="footer-middle"><div><h4 class="footer-col-title">Company</h4><ul class="footer-links"><li><a href="Landing page 2.html">Home</a></li><li><a href="About Us.html">About Us</a></li><li><a href="Our Story.html">Our Story</a></li><li><a href="Meet the Team Page.html">Meet the Team</a></li><li><a href="Career page.html">Careers</a></li></ul></div><div><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="The Explorer.html">The Explorer</a></li><li><a href="The Executive.html">The Executive</a></li><li><a href="The Tourist.html">The Tourist</a></li><li><a href="The Overnight Companion.html">Overnight Companion</a></li><li><a href="Booking Page.html">Book Now</a></li><li><a href="Pricing page 2.html">Pricing</a></li></ul></div><div><h4 class="footer-col-title">Insights</h4><ul class="footer-links"><li><a href="FAQs.html">FAQs</a></li><li><a href="Insight Hub.html">Insights Hub</a></li><li><a href="Insight Parent Resources_page.html">Parent Resources</a></li><li><a href="Insight Media &amp; Press page.html">Media &amp; Press</a></li><li><a href="Insight Downloadable documents page.html">Documents</a></li><li><a href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a></li><li><a href="#">Blog</a></li></ul></div><div><h4 class="footer-col-title">Contact</h4><div class="footer-contact-item"><span class="footer-contact-label">Email</span><div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div></div><div class="footer-contact-item"><span class="footer-contact-label">Location</span><div class="footer-contact-value">London, United Kingdom</div></div><div style="margin-top:12px;"><a class="footer-btn" href="Contact Us page.html">Contact Us</a></div></div></div><div class="footer-bottom"><div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div><div class="footer-bottom-links"><a href="Safety &amp; Trust - Main.html">Safeguarding</a><a href="FAQs.html">Support</a><a href="Contact Us page.html">Contact</a></div></div></div></footer></body>
+</html>

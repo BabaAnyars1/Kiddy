@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | Active Adventure</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg: #f6f1e7;
+      --surface: #ffffff;
+      --surface-soft: #f8fbf8;
+      --text: #223027;
+      --muted: #627067;
+      --green: #2f5d3a;
+      --green-dark: #1f3d28;
+      --orange: #f28c28;
+      --border: rgba(20,20,20,0.08);
+      --shadow: 0 18px 45px rgba(0,0,0,0.07);
+      --success: #2f7a4a;
+      --success-soft: #eef8f1;
+      --danger: #c94747;
+      --danger-soft: #fff3f3;
+      --radius: 28px;
+      --radius-sm: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; display: block; }
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; }
+
+    .shell {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 16px 36px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 0.08em;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8d968f;
+      margin-top: 2px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      color: #57645c;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav a {
+      text-decoration: none;
+    }
+
+    .btn, .btn-outline, .btn-ghost {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.22s ease;
+    }
+
+    .btn {
+      background: var(--orange);
+      color: white;
+      box-shadow: 0 12px 24px rgba(242,140,40,0.24);
+    }
+
+    .btn:hover, .btn-outline:hover, .btn-ghost:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(47,93,58,0.18);
+      color: var(--green);
+    }
+
+    .btn-ghost {
+      background: rgba(47,93,58,0.08);
+      color: var(--green);
+    }
+
+    .hero {
+      margin-top: 18px;
+      border-radius: 34px;
+      border: 1px solid rgba(47,93,58,0.10);
+      background: linear-gradient(135deg, #e6efe4 0%, #f6f1e7 62%, #ffffff 100%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 24px;
+      padding: 28px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    h1 {
+      margin: 10px 0 0;
+      font-size: clamp(2.2rem, 4vw, 4.4rem);
+      line-height: 1.02;
+      color: var(--green-dark);
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      margin: 16px 0 0;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .hero-badges {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .mini-card {
+      border: 1px solid rgba(47,93,58,0.10);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.72);
+      padding: 18px;
+    }
+
+    .mini-card .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(47,93,58,0.08);
+      color: var(--green);
+      font-size: 22px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-top: 14px;
+      color: var(--green-dark);
+      font-size: 16px;
+    }
+
+    .mini-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .hero-panel {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.75);
+      border-radius: 28px;
+      padding: 20px;
+      align-self: stretch;
+    }
+
+    .hero-panel img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+
+    .hero-panel .panel-copy {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 22px;
+      background: var(--surface-soft);
+      border: 1px solid rgba(47,93,58,0.09);
+    }
+
+    .hero-panel h3 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--green-dark);
+    }
+
+    .hero-panel p {
+      margin: 10px 0 0;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .contact-meta {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(20,20,20,0.06);
+    }
+
+    .meta-row:last-child { border-bottom: none; }
+
+    .meta-row .label {
+      color: #758179;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 700;
+    }
+
+    .meta-row .value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green-dark);
+      text-align: right;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #8a948d;
+      font-weight: 700;
+    }
+
+    .section-heading {
+      margin: 8px 0 0;
+      font-size: 2rem;
+      line-height: 1.12;
+      color: var(--green-dark);
+    }
+
+    .section-copy {
+      color: var(--muted);
+      margin: 12px 0 0;
+      line-height: 1.85;
+      font-size: 15px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .info-card {
+      border: 1px solid rgba(47,93,58,0.10);
+      background: var(--surface-soft);
+      border-radius: 24px;
+      padding: 20px;
+      transition: 0.22s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .info-card .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(47,93,58,0.09);
+      color: var(--green);
+      font-size: 22px;
+    }
+
+    .info-card h3 {
+      margin: 16px 0 0;
+      color: var(--green-dark);
+      font-size: 18px;
+    }
+
+    .info-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .form-shell {
+      margin-top: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .field-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #79857d;
+    }
+
+    .input, .select, .textarea {
+      width: 100%;
+      border: 1px solid rgba(20,20,20,0.10);
+      background: #fff;
+      border-radius: 18px;
+      padding: 15px 16px;
+      outline: none;
+      transition: 0.18s ease;
+    }
+
+    .textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .input:focus, .select:focus, .textarea:focus {
+      border-color: rgba(47,93,58,0.34);
+      box-shadow: 0 0 0 3px rgba(47,93,58,0.08);
+    }
+
+    .help-text {
+      margin-top: -2px;
+      font-size: 13px;
+      color: #849088;
+    }
+
+    .checkbox-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 20px;
+      background: var(--surface-soft);
+      border: 1px solid rgba(47,93,58,0.08);
+    }
+
+    .checkbox-row input {
+      margin-top: 4px;
+      transform: scale(1.15);
+    }
+
+    .checkbox-row label {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .notice, .error, .success {
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .notice {
+      background: #fff7ec;
+      color: #9b5f09;
+      border: 1px solid rgba(242,140,40,0.25);
+    }
+
+    .error {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border: 1px solid rgba(201,71,71,0.18);
+    }
+
+    .success {
+      background: var(--success-soft);
+      color: var(--success);
+      border: 1px solid rgba(47,122,74,0.16);
+    }
+
+    .status { display: none; }
+    .status.show { display: block; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .note-block {
+      margin-top: 22px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: white;
+      padding: 22px;
+    }
+
+    .note-block h3 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    .note-block p {
+      margin: 10px 0 0;
+      color: rgba(255,255,255,0.84);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .quick-links {
+      margin-top: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .quick-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      border-radius: 20px;
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: white;
+    }
+
+    .quick-link strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .quick-link span {
+      display: block;
+      margin-top: 4px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+    }
+
+    footer {
+      margin-top: 28px;
+      border-radius: 28px;
+      background: var(--green-dark);
+      color: rgba(255,255,255,0.84);
+      padding: 22px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid, .content { grid-template-columns: 1fr; }
+      .hero-badges, .info-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px 18px;
+      }
+      .hero, .panel { border-radius: 24px; }
+      .hero-grid { padding: 20px; }
+      .panel { padding: 18px; }
+      .hero-badges, .info-grid, .field-grid-2 { grid-template-columns: 1fr; }
+      .actions { flex-direction: column; align-items: stretch; }
+      .btn, .btn-outline, .btn-ghost { width: 100%; }
+    }
+  
+/* Unified site header */
+/* Standardized advanced footer */
+.site-footer{margin-top:48px;background:linear-gradient(135deg,#163123,#1f3d28);color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.06)}
+.site-footer .footer-shell{max-width:1320px;margin:0 auto;padding:0 20px}
+.site-footer .footer-top{padding:34px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.08)}
+.site-footer .footer-brand-card,.site-footer .footer-news-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:24px;backdrop-filter:blur(8px)}
+.site-footer .footer-brand-mark{font-weight:700;letter-spacing:.08em;color:#fff;font-size:20px}
+.site-footer .footer-brand-mark small{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.site-footer .footer-brand-copy{margin:14px 0 0;color:rgba(255,255,255,.66);line-height:1.8;max-width:720px}
+.site-footer .footer-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.site-footer .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.site-footer .footer-news-title{margin:0;font-size:22px;color:#fff}
+.site-footer .footer-news-copy{margin:10px 0 0;color:rgba(255,255,255,.66);line-height:1.8}
+.site-footer .footer-form{display:flex;gap:10px;margin-top:18px}
+.site-footer .footer-input{flex:1;min-height:50px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.10);color:#fff;padding:0 16px;outline:none}
+.site-footer .footer-input::placeholder{color:rgba(255,255,255,.52)}
+.site-footer .footer-input:focus{border-color:rgba(242,140,40,.55);box-shadow:0 0 0 3px rgba(242,140,40,.12)}
+.site-footer .footer-btn{min-height:50px;padding:0 18px;border:none;border-radius:999px;background:#f28c28;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.site-footer .footer-middle{padding:28px 0;display:grid;grid-template-columns:1.05fr .8fr .8fr .85fr;gap:24px}
+.site-footer .footer-col-title{margin:0 0 14px;color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.site-footer .footer-col-copy{color:rgba(255,255,255,.66);line-height:1.8;margin:0}
+.site-footer .footer-links{list-style:none;margin:0;padding:0}
+.site-footer .footer-links li+li{margin-top:10px}
+.site-footer .footer-links a{color:rgba(255,255,255,.66);text-decoration:none;transition:.2s ease}
+.site-footer .footer-links a:hover{color:#fff}
+.site-footer .footer-contact-item{margin-bottom:12px}
+.site-footer .footer-contact-label{display:block;color:rgba(255,255,255,.48);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+.site-footer .footer-contact-value{color:rgba(255,255,255,.88);line-height:1.7}
+.site-footer .footer-bottom{padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.site-footer .footer-bottom-copy{color:rgba(255,255,255,.66);font-size:13px}
+.site-footer .footer-bottom-links{display:flex;flex-wrap:wrap;gap:14px}
+.site-footer .footer-bottom-links a{color:rgba(255,255,255,.66);font-size:13px;text-decoration:none}
+.site-footer .footer-bottom-links a:hover{color:#fff}
+@media (max-width:980px){.site-footer .footer-top,.site-footer .footer-middle{grid-template-columns:1fr}}
+@media (max-width:640px){.site-footer .footer-shell{padding:0 16px}.site-footer .footer-top{padding:24px 0 20px}.site-footer .footer-brand-card,.site-footer .footer-news-card{padding:20px;border-radius:20px}.site-footer .footer-form{flex-direction:column}.site-footer .footer-btn,.site-footer .footer-input{width:100%}.site-footer .footer-middle{padding:22px 0;gap:18px}.site-footer .footer-bottom{padding:16px 0 24px;align-items:flex-start;flex-direction:column}}
+
+
+
+
+/* Unified AA Header Start */
+html, body { overflow-x: hidden; }
+.aa-header, .aa-header * { box-sizing: border-box; }
+.aa-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  width:100%;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(20,20,20,.08);
+  box-shadow:0 2px 12px rgba(0,0,0,.04);
+}
+.aa-header__inner{
+  max-width:1360px;
+  margin:0 auto;
+  padding:16px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.aa-header__brand{
+  color:#2f5d3a;
+  text-decoration:none;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1.05;
+  white-space:nowrap;
+  flex:0 0 auto;
+  font-size:20px;
+}
+.aa-header__brand small{
+  display:block;
+  margin-top:4px;
+  color:#8b958e;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.aa-header__nav{
+  flex:1 1 auto;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.aa-header__link,
+.aa-header details > summary{
+  list-style:none;
+  cursor:pointer;
+  color:#57645c;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.2;
+  padding:8px 0;
+  position:relative;
+  white-space:nowrap;
+  background:none;
+  border:none;
+}
+.aa-header details > summary::-webkit-details-marker{display:none;}
+.aa-header__link:hover,
+.aa-header details > summary:hover,
+.aa-header details[open] > summary,
+.aa-header__link.is-active,
+.aa-header details.is-active > summary{
+  color:#1f3d28;
+}
+.aa-header__link.is-active::after,
+.aa-header details.is-active > summary::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-8px;
+  height:2px;
+  border-radius:999px;
+  background:#f28c28;
+}
+.aa-dd{position:relative;}
+.aa-dd__menu{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:0;
+  min-width:250px;
+  max-width:min(280px, calc(100vw - 32px));
+  background:#fff;
+  border:1px solid rgba(20,20,20,.08);
+  border-radius:18px;
+  box-shadow:0 18px 38px rgba(0,0,0,.10);
+  padding:10px;
+  display:none;
+}
+.aa-dd--right .aa-dd__menu{left:auto; right:0;}
+.aa-dd[open] .aa-dd__menu{display:block;}
+.aa-dd__menu a{
+  display:block;
+  padding:10px 12px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#33423a;
+  font-size:14px;
+  line-height:1.4;
+}
+.aa-dd__menu a:hover,
+.aa-dd__menu a.is-active{
+  background:#f8fbf8;
+  color:#2f5d3a;
+}
+.aa-header__cta{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:12px 18px;
+  border-radius:999px;
+  background:#f28c28;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  white-space:nowrap;
+  box-shadow:0 12px 24px rgba(242,140,40,.24);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.aa-header__cta:hover{transform:translateY(-1px); box-shadow:0 14px 26px rgba(242,140,40,.28);}
+@media (max-width: 980px){
+  .aa-header__inner{flex-wrap:wrap; align-items:flex-start;}
+  .aa-header__nav{order:3; width:100%; justify-content:flex-start; gap:14px 18px;}
+  .aa-header__cta{margin-left:auto;}
+}
+@media (max-width: 640px){
+  .aa-header__inner{padding:14px 16px;}
+  .aa-header__brand{width:100%;}
+  .aa-header__nav{width:100%; gap:12px 16px;}
+  .aa-dd{width:100%;}
+  .aa-dd__menu{position:static; min-width:unset; max-width:none; margin-top:8px; box-shadow:none;}
+  .aa-header__cta{width:100%;}
+}
+/* Unified AA Header End */
+
+</style>
+</head>
+<body>
+<div class="aa-header" role="banner">
+<div class="aa-header__inner">
+<a class="aa-header__brand" href="Landing page 2.html">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
+<nav aria-label="Main navigation" class="aa-header__nav">
+<a class="aa-header__link" href="Landing page 2.html">Home</a>
+<details class="aa-dd">
+<summary>About</summary>
+<div class="aa-dd__menu">
+<a href="Our Story.html">Our Story</a>
+<a href="Meet the Team Page.html">Team Page</a>
+</div>
+</details>
+<details class="aa-dd">
+<summary>Services</summary>
+<div class="aa-dd__menu">
+<a href="The Executive.html">The Executive</a>
+<a href="The Overnight Companion.html">The Overnight Companion</a>
+<a href="The Tourist.html">The Tourist</a>
+<a href="The Explorer.html">The Explorer</a>
+</div>
+</details>
+<a class="aa-header__link" href="Pricing page 2.html">Pricing</a>
+<a class="aa-header__link" href="Booking Page.html">Booking</a>
+<details class="aa-dd aa-dd--right">
+<summary>Insights</summary>
+<div class="aa-dd__menu">
+<a href="Insight Hub.html">Insight Hub</a>
+<a href="FAQs.html">FAQs</a>
+<a href="Career page.html">Careers</a>
+<a href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a>
+<a href="#">Blog</a>
+</div>
+</details>
+</nav>
+<a class="aa-header__cta" href="Contact Us page.html">Contact Us</a>
+</div>
+</div>
+<div class="shell">
+<section class="hero">
+<div class="hero-grid">
+<div>
+<div class="eyebrow">Contact Active Adventure</div>
+<h1>Premium support for bespoke family care requests.</h1>
+<p>
+            Connect with our team for urgent care coordination, premium booking guidance, hotel and travel support,
+            or founder-led conversations about complex family requirements.
+          </p>
+<div class="hero-badges">
+<div class="mini-card">
+<div class="icon">✦</div>
+<strong>Founder-Led Review</strong>
+<span>Complex requests can be escalated directly for bespoke planning and operational oversight.</span>
+</div>
+<div class="mini-card">
+<div class="icon">⚕</div>
+<strong>Clinical &amp; Educational Expertise</strong>
+<span>Requests are handled with dual-led awareness across safety, learning, and family routine needs.</span>
+</div>
+<div class="mini-card">
+<div class="icon">↗</div>
+<strong>Fast Response Pathway</strong>
+<span>Urgent requests, travel bookings, and premium support cases are prioritised for response routing.</span>
+</div>
+</div>
+</div>
+<div class="hero-panel">
+<img alt="Premium family care consultation" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/>
+<div class="panel-copy">
+<h3>Direct access to our care coordination team.</h3>
+<p>
+              Whether you need a same-day consultation, premium travel support, or a founder-led discussion for a more specialised request, our contact route is designed to move you quickly into the right care pathway.
+            </p>
+<div class="contact-meta">
+<div class="meta-row"><div class="label">Response Window</div><div class="value">Priority same-day review</div></div>
+<div class="meta-row"><div class="label">Coverage</div><div class="value">London, UK, hotels &amp; travel-led support</div></div>
+<div class="meta-row"><div class="label">Support Route</div><div class="value">Enquiry → review → tailored coordination</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="content">
+<section class="panel">
+<div class="section-title">Direct Contact</div>
+<h2 class="section-heading">Reach the right team quickly.</h2>
+<p class="section-copy">
+          Use the enquiry form for general bookings, premium consultations, hotel or travel support, founder-led reviews, or partnership enquiries. This upgraded version is backend-ready and can post directly to your server endpoint.
+        </p>
+<div class="info-grid">
+<div class="info-card">
+<div class="icon">✉</div>
+<h3>Email</h3>
+<p>contact@activeadventure.co.uk</p>
+</div>
+<div class="info-card">
+<div class="icon">☎</div>
+<h3>Phone</h3>
+<p>+44 7XXX XXX XXX</p>
+</div>
+<div class="info-card">
+<div class="icon">⌚</div>
+<h3>Priority Hours</h3>
+<p>Rapid response handling for premium, urgent, and travel-led requests.</p>
+</div>
+<div class="info-card">
+<div class="icon">⌂</div>
+<h3>Service Environments</h3>
+<p>Private homes, hotels, event venues, travel settings, and bespoke family itineraries.</p>
+</div>
+</div>
+<div class="note-block">
+<h3>Prefer direct escalation?</h3>
+<p>
+            For urgent hotel support, premium travel coordination, 4+ child enquiries, or high-complexity requests, route the enquiry to founder review so the case can be triaged more carefully.
+          </p>
+<div class="quick-links">
+<a class="quick-link" href="mailto:contact@activeadventure.co.uk">
+<div>
+<strong>Email the team</strong>
+<span>For premium and standard enquiry routing</span>
+</div>
+<div>→</div>
+</a>
+<a class="quick-link" href="tel:+447000000000">
+<div>
+<strong>Call priority line</strong>
+<span>For urgent family care coordination</span>
+</div>
+<div>→</div>
+</a>
+</div>
+</div>
+</section>
+<section class="panel" id="contact-form">
+<div class="section-title">Premium Enquiry Form</div>
+<h2 class="section-heading">Submit your request</h2>
+<p class="section-copy">
+          This form is designed to connect directly to your backend. Update the endpoint constant in the script to your production API route, for example <code>/api/contact</code>.
+        </p>
+<form class="form-shell" id="premiumContactForm" novalidate="">
+<div class="field-grid-2">
+<div class="field">
+<label for="fullName">Full Name</label>
+<input class="input" id="fullName" name="fullName" placeholder="Your full name" required=""/>
+</div>
+<div class="field">
+<label for="email">Email Address</label>
+<input class="input" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+</div>
+<div class="field-grid-2">
+<div class="field">
+<label for="phone">Phone Number</label>
+<input class="input" id="phone" name="phone" placeholder="+44 ..." required="" type="tel"/>
+</div>
+<div class="field">
+<label for="enquiryType">Enquiry Type</label>
+<select class="select" id="enquiryType" name="enquiryType" required="">
+<option value="">Select enquiry type</option>
+<option value="booking">General booking enquiry</option>
+<option value="premium_consultation">Premium consultation</option>
+<option value="founder_review">Founder-led review</option>
+<option value="hotel_travel">Hotel / travel support</option>
+<option value="partnership">Partnership / collaboration</option>
+</select>
+</div>
+</div>
+<div class="field-grid-2">
+<div class="field">
+<label for="serviceInterest">Service Interest</label>
+<select class="select" id="serviceInterest" name="serviceInterest" required="">
+<option value="">Select service</option>
+<option value="explorer">The Explorer</option>
+<option value="executive">The Executive</option>
+<option value="tourist">The Tourist</option>
+<option value="overnight">The Overnight Companion</option>
+<option value="unsure">Unsure / need guidance</option>
+</select>
+</div>
+<div class="field">
+<label for="locationType">Location Type</label>
+<select class="select" id="locationType" name="locationType" required="">
+<option value="">Select location</option>
+<option value="private_home">Private Home</option>
+<option value="hotel">Hotel</option>
+<option value="travel">Travel / itinerary based</option>
+<option value="event_venue">Event venue</option>
+</select>
+</div>
+</div>
+<div class="field-grid-2">
+<div class="field">
+<label for="childCount">Number of Children</label>
+<input class="input" id="childCount" min="1" name="childCount" placeholder="Enter number" required="" step="1" type="number"/>
+<div class="help-text">Required for operational review and staffing routing.</div>
+</div>
+<div class="field">
+<label for="urgency">Request Urgency</label>
+<select class="select" id="urgency" name="urgency" required="">
+<option value="">Select urgency</option>
+<option value="standard">Standard</option>
+<option value="priority">Priority</option>
+<option value="urgent_same_day">Urgent / same day</option>
+</select>
+</div>
+</div>
+<div class="notice" id="founderReviewNotice" style="display:none;">
+            Booking for 4+ children requires a second staff member. Please contact the Founder Lead.
+          </div>
+<div class="field">
+<label for="message">Message</label>
+<textarea class="textarea" id="message" name="message" placeholder="Tell us about your family needs, preferred dates, schedule, environment, hotel or travel details, and any priorities..." required=""></textarea>
+</div>
+<div class="checkbox-row">
+<input id="consent" name="consent" required="" type="checkbox"/>
+<label for="consent">
+              I confirm that the details provided are accurate and I consent to being contacted by Active Adventure regarding this enquiry.
+            </label>
+</div>
+<div class="error status" id="formError"></div>
+<div class="success status" id="formSuccess"></div>
+<div class="actions">
+<div class="help-text">Backend-ready submission: posts JSON to your configured API endpoint.</div>
+<button class="btn" id="submitBtn" type="submit">Send Premium Enquiry</button>
+</div>
+</form>
+</section>
+</div>
+</div>
+<script>
+    const CONTACT_API_ENDPOINT = '/api/contact';
+
+    const form = document.getElementById('premiumContactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const errorBox = document.getElementById('formError');
+    const successBox = document.getElementById('formSuccess');
+    const childCountInput = document.getElementById('childCount');
+    const founderReviewNotice = document.getElementById('founderReviewNotice');
+
+    function showStatus(element, message) {
+      element.textContent = message;
+      element.classList.add('show');
+    }
+
+    function hideStatus(element) {
+      element.textContent = '';
+      element.classList.remove('show');
+    }
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+    }
+
+    function validatePhone(phone) {
+      return phone.replace(/\D/g, '').length >= 10;
+    }
+
+    function updateFounderNotice() {
+      const count = Number(childCountInput.value || 0);
+      founderReviewNotice.style.display = count > 3 ? 'block' : 'none';
+    }
+
+    childCountInput.addEventListener('input', updateFounderNotice);
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      hideStatus(errorBox);
+      hideStatus(successBox);
+
+      const formData = new FormData(form);
+      const payload = {
+        fullName: String(formData.get('fullName') || '').trim(),
+        email: String(formData.get('email') || '').trim(),
+        phone: String(formData.get('phone') || '').trim(),
+        enquiryType: String(formData.get('enquiryType') || '').trim(),
+        serviceInterest: String(formData.get('serviceInterest') || '').trim(),
+        locationType: String(formData.get('locationType') || '').trim(),
+        childCount: Number(formData.get('childCount') || 0),
+        urgency: String(formData.get('urgency') || '').trim(),
+        message: String(formData.get('message') || '').trim(),
+        consent: formData.get('consent') === 'on',
+        requiresFounderReview: Number(formData.get('childCount') || 0) > 3,
+        source: 'contact_page'
+      };
+
+      if (!payload.fullName || payload.fullName.length < 2) {
+        showStatus(errorBox, 'Please enter your full name.');
+        return;
+      }
+
+      if (!validateEmail(payload.email)) {
+        showStatus(errorBox, 'Please enter a valid email address.');
+        return;
+      }
+
+      if (!validatePhone(payload.phone)) {
+        showStatus(errorBox, 'Please enter a valid phone number.');
+        return;
+      }
+
+      if (!payload.enquiryType || !payload.serviceInterest || !payload.locationType || !payload.urgency) {
+        showStatus(errorBox, 'Please complete all required selection fields.');
+        return;
+      }
+
+      if (!payload.childCount || payload.childCount < 1) {
+        showStatus(errorBox, 'Please enter the number of children.');
+        return;
+      }
+
+      if (!payload.message || payload.message.length < 20) {
+        showStatus(errorBox, 'Please provide a little more detail in your message so the team can triage your enquiry properly.');
+        return;
+      }
+
+      if (!payload.consent) {
+        showStatus(errorBox, 'Please confirm consent before submitting your enquiry.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(CONTACT_API_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          let message = 'Your enquiry could not be submitted right now. Please try again.';
+          try {
+            const errorData = await response.json();
+            if (errorData && errorData.message) message = errorData.message;
+          } catch (_) {}
+          throw new Error(message);
+        }
+
+        showStatus(successBox, payload.requiresFounderReview
+          ? 'Your enquiry has been submitted and flagged for founder review. A member of the team will contact you shortly.'
+          : 'Your enquiry has been submitted successfully. A member of the team will contact you shortly.');
+
+        form.reset();
+        updateFounderNotice();
+      } catch (error) {
+        showStatus(errorBox, error.message || 'Something went wrong while sending your enquiry.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Premium Enquiry';
+      }
+    });
+  </script>
+
+<footer class="site-footer"><div class="footer-shell"><div class="footer-top"><div class="footer-brand-card"><div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div><p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers across homes, hotels, and travel environments.</p><div class="footer-trust-row"><span class="footer-pill">NHS RN-Led</span><span class="footer-pill">Qualified Teachers (QTS)</span><span class="footer-pill">Specialised Support</span><span class="footer-pill">London Coverage</span></div></div><div class="footer-news-card"><h3 class="footer-news-title">Stay connected</h3><p class="footer-news-copy">Receive updates on services, availability, and premium childcare insights.</p><form action="#" class="footer-form" method="post"><input class="footer-input" placeholder="Enter your email" type="email"/><button class="footer-btn" type="submit">Subscribe</button></form></div></div><div class="footer-middle"><div><h4 class="footer-col-title">Company</h4><ul class="footer-links"><li><a href="Landing page 2.html">Home</a></li><li><a href="About Us.html">About Us</a></li><li><a href="Our Story.html">Our Story</a></li><li><a href="Meet the Team Page.html">Meet the Team</a></li><li><a href="Career page.html">Careers</a></li></ul></div><div><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="The Explorer.html">The Explorer</a></li><li><a href="The Executive.html">The Executive</a></li><li><a href="The Tourist.html">The Tourist</a></li><li><a href="The Overnight Companion.html">Overnight Companion</a></li><li><a href="Booking Page.html">Book Now</a></li><li><a href="Pricing page 2.html">Pricing</a></li></ul></div><div><h4 class="footer-col-title">Insights</h4><ul class="footer-links"><li><a href="FAQs.html">FAQs</a></li><li><a href="Insight Hub.html">Insights Hub</a></li><li><a href="Insight Parent Resources_page.html">Parent Resources</a></li><li><a href="Insight Media &amp; Press page.html">Media &amp; Press</a></li><li><a href="Insight Downloadable documents page.html">Documents</a></li><li><a href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a></li><li><a href="#">Blog</a></li></ul></div><div><h4 class="footer-col-title">Contact</h4><div class="footer-contact-item"><span class="footer-contact-label">Email</span><div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div></div><div class="footer-contact-item"><span class="footer-contact-label">Location</span><div class="footer-contact-value">London, United Kingdom</div></div><div style="margin-top:12px;"><a class="footer-btn" href="Contact Us page.html">Contact Us</a></div></div></div><div class="footer-bottom"><div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div><div class="footer-bottom-links"><a href="Safety &amp; Trust - Main.html">Safeguarding</a><a href="FAQs.html">Support</a><a href="Contact Us page.html">Contact</a></div></div></div></footer></body>
+</html>

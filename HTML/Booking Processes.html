@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Booking Process | Active Adventure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e7;
+  --surface:#ffffff;
+  --surface-soft:#f8fbf8;
+  --text:#223027;
+  --muted:#627067;
+  --green:#2f5d3a;
+  --green-dark:#1f3d28;
+  --orange:#f28c28;
+  --border:rgba(20,20,20,.08);
+  --shadow:0 18px 45px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button,input{font:inherit}
+
+/* Exact unified header */
+.aa-header,.aa-header *{box-sizing:border-box}
+.aa-header{position:sticky;top:0;z-index:1000;width:100%;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(20,20,20,.08);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.aa-header__inner{max-width:1360px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.aa-header__brand{color:#2f5d3a;text-decoration:none;font-weight:700;letter-spacing:.08em;line-height:1.05;white-space:nowrap;flex:0 0 auto;font-size:20px}
+.aa-header__brand small{display:block;margin-top:4px;color:#8b958e;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.aa-header__nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.aa-header__link,.aa-header details>summary{list-style:none;cursor:pointer;color:#57645c;text-decoration:none;font-size:14px;font-weight:500;line-height:1.2;padding:8px 0;position:relative;white-space:nowrap;background:none;border:none}
+.aa-header details>summary::-webkit-details-marker{display:none}
+.aa-header__link:hover,.aa-header details>summary:hover,.aa-header details[open]>summary,.aa-header__link.is-active,.aa-header details.is-active>summary{color:#1f3d28}
+.aa-header__link.is-active::after,.aa-header details.is-active>summary::after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:2px;border-radius:999px;background:#f28c28}
+.aa-dd{position:relative}
+.aa-dd__menu{position:absolute;top:calc(100% + 10px);left:0;min-width:250px;max-width:min(280px,calc(100vw - 32px));background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:18px;box-shadow:0 18px 38px rgba(0,0,0,.10);padding:10px;display:none}
+.aa-dd--right .aa-dd__menu{left:auto;right:0}
+.aa-dd[open] .aa-dd__menu{display:block}
+.aa-dd__menu a{display:block;padding:10px 12px;border-radius:12px;text-decoration:none;color:#33423a;font-size:14px;line-height:1.4}
+.aa-dd__menu a:hover,.aa-dd__menu a.is-active{background:#f8fbf8;color:#2f5d3a}
+.aa-header__cta{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:999px;background:#f28c28;color:#fff;text-decoration:none;font-weight:600;white-space:nowrap;box-shadow:0 12px 24px rgba(242,140,40,.24);transition:transform .22s ease,box-shadow .22s ease}
+.aa-header__cta:hover{transform:translateY(-1px);box-shadow:0 14px 26px rgba(242,140,40,.28)}
+
+.shell{max-width:1360px;margin:0 auto;padding:0 16px 36px}
+.hero{margin-top:18px;border-radius:34px;border:1px solid rgba(47,93,58,.1);background:linear-gradient(135deg,#e6efe4 0%,#f6f1e7 62%,#ffffff 100%);box-shadow:var(--shadow);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:24px;padding:28px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange)}
+h1{margin:10px 0 0;font-size:clamp(2.2rem,4vw,4.2rem);line-height:1.02;color:var(--green-dark)}
+.hero p{margin:16px 0 0;max-width:760px;color:var(--muted);font-size:16px;line-height:1.88}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero-pill{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.76);border:1px solid rgba(47,93,58,.08);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.05em}
+.hero-visual{background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.75);border-radius:28px;padding:18px}
+.hero-visual img{width:100%;height:auto;border-radius:22px;border:1px solid rgba(47,93,58,.08)}
+.visual-note{margin-top:14px;padding:16px;border-radius:20px;background:var(--surface-soft);border:1px solid rgba(47,93,58,.08);color:var(--muted);line-height:1.8;font-size:14px}
+
+.btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:999px;font-weight:600;transition:.22s ease;cursor:pointer}
+.btn{background:var(--orange);color:#fff;box-shadow:0 12px 24px rgba(242,140,40,.24)}
+.btn-outline{border:1px solid rgba(47,93,58,.16);color:var(--green);background:transparent}
+.btn:hover,.btn-outline:hover{transform:translateY(-1px)}
+
+.panel{margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);padding:24px}
+.section-title{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#8a948d;font-weight:700}
+.section-heading{margin:8px 0 0;font-size:2rem;line-height:1.12;color:var(--green-dark)}
+.section-copy{margin:12px 0 0;max-width:960px;color:var(--muted);font-size:15px;line-height:1.85}
+
+.steps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+.step-card{border-radius:26px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:22px;position:relative;overflow:hidden}
+.step-tag{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;background:#eef8f1;color:var(--green);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.step-card h3{margin:14px 0 0;color:var(--green-dark);font-size:24px;line-height:1.12}
+.step-card p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.82}
+.step-card ul{margin:14px 0 0;padding-left:18px;color:var(--muted)}
+.step-card li+li{margin-top:8px}
+.step-num{position:absolute;top:18px;right:18px;font-size:44px;font-weight:700;color:rgba(47,93,58,.08);line-height:1}
+
+.logic-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.logic-card{border-radius:24px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:22px}
+.logic-card h3{margin:0;color:var(--green-dark);font-size:22px}
+.logic-card p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.82}
+.logic-card strong{color:var(--green-dark)}
+.alert-box{margin-top:14px;border-radius:18px;padding:14px 16px;background:#fff7ec;color:#8c5c12;border:1px solid rgba(242,140,40,.24);font-size:14px;line-height:1.75}
+
+.tier-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+.tier-card{border-radius:24px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:22px}
+.tier-icon{width:56px;height:56px;border-radius:18px;background:rgba(47,93,58,.09);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:24px}
+.tier-card h3{margin:14px 0 0;color:var(--green-dark);font-size:22px}
+.tier-role{margin-top:6px;color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.tier-card p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.82}
+
+.summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:22px}
+.summary-card{border-radius:22px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.08);padding:20px;text-align:center}
+.summary-icon{width:56px;height:56px;border-radius:18px;background:rgba(47,93,58,.09);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px;color:var(--green)}
+.summary-card h3{margin:0;color:var(--green-dark);font-size:20px}
+.summary-card p{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
+
+.cta{margin-top:24px;border-radius:28px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;padding:28px;display:grid;grid-template-columns:1.08fr .92fr;gap:20px;align-items:center}
+.cta h3{margin:0;font-size:32px;line-height:1.08}
+.cta p{margin:12px 0 0;color:rgba(255,255,255,.84);font-size:14px;line-height:1.85;max-width:720px}
+.cta-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
+.cta .btn-outline{color:#fff;border-color:rgba(255,255,255,.18)}
+
+.site-footer{margin-top:28px;background:linear-gradient(135deg,#163123,#1f3d28);color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.06);width:100vw;margin-left:calc(50% - 50vw);border-radius:0}
+.site-footer .footer-shell{max-width:1360px;margin:0 auto;padding:0 20px}
+.site-footer .footer-top{padding:34px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.08)}
+.site-footer .footer-brand-card,.site-footer .footer-news-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:24px;backdrop-filter:blur(8px)}
+.site-footer .footer-brand-mark{font-weight:700;letter-spacing:.08em;color:#fff;font-size:20px}
+.site-footer .footer-brand-mark small{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.site-footer .footer-brand-copy{margin:14px 0 0;color:rgba(255,255,255,.66);line-height:1.8;max-width:720px}
+.site-footer .footer-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.site-footer .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.site-footer .footer-news-title{margin:0;font-size:22px;color:#fff}
+.site-footer .footer-news-copy{margin:10px 0 0;color:rgba(255,255,255,.66);line-height:1.8}
+.site-footer .footer-form{display:flex;gap:10px;margin-top:18px}
+.site-footer .footer-input{flex:1;min-height:50px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.10);color:#fff;padding:0 16px;outline:none}
+.site-footer .footer-input::placeholder{color:rgba(255,255,255,.52)}
+.site-footer .footer-btn{min-height:50px;padding:0 18px;border:none;border-radius:999px;background:var(--orange);color:#fff;font-weight:600;cursor:pointer;white-space:nowrap}
+.site-footer .footer-middle{padding:28px 0;display:grid;grid-template-columns:1.05fr .8fr .8fr .85fr;gap:24px}
+.site-footer .footer-col-title{margin:0 0 14px;color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.site-footer .footer-col-copy{color:rgba(255,255,255,.66);line-height:1.8;margin:0}
+.site-footer .footer-links{list-style:none;margin:0;padding:0}
+.site-footer .footer-links li+li{margin-top:10px}
+.site-footer .footer-links a{color:rgba(255,255,255,.66);text-decoration:none;transition:.2s ease}
+.site-footer .footer-links a:hover{color:#fff}
+.site-footer .footer-contact-item{margin-bottom:12px}
+.site-footer .footer-contact-label{display:block;color:rgba(255,255,255,.48);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+.site-footer .footer-contact-value{color:rgba(255,255,255,.88);line-height:1.7}
+.site-footer .footer-bottom{padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.site-footer .footer-bottom-copy{color:rgba(255,255,255,.66);font-size:13px}
+.site-footer .footer-bottom-links{display:flex;flex-wrap:wrap;gap:14px}
+.site-footer .footer-bottom-links a{color:rgba(255,255,255,.66);font-size:13px;text-decoration:none}
+.site-footer .footer-bottom-links a:hover{color:#fff}
+
+@media (max-width:1180px){.hero-grid,.steps-grid,.logic-grid,.tier-grid,.summary-grid,.cta,.site-footer .footer-top,.site-footer .footer-middle{grid-template-columns:1fr}}
+@media (max-width:980px){.aa-header__inner{flex-wrap:wrap;align-items:flex-start}.aa-header__nav{order:3;width:100%;justify-content:flex-start;gap:14px 18px}.aa-header__cta{margin-left:auto}}
+@media (max-width:760px){.hero,.panel,.cta,.site-footer{border-radius:24px}.hero-grid,.panel,.cta{padding:20px}.cta-actions{justify-content:stretch}.btn,.btn-outline{width:100%}.site-footer .footer-shell{padding:0 16px}.site-footer .footer-brand-card,.site-footer .footer-news-card{padding:20px;border-radius:20px}.site-footer .footer-form{flex-direction:column}.site-footer .footer-btn,.site-footer .footer-input{width:100%}.site-footer .footer-bottom{align-items:flex-start;flex-direction:column}}
+@media (max-width:640px){.aa-header__inner{padding:14px 16px}.aa-header__brand{width:100%}.aa-header__nav{width:100%;gap:12px 16px}.aa-dd{width:100%}.aa-dd__menu{position:static;min-width:unset;max-width:none;margin-top:8px;box-shadow:none}.aa-header__cta{width:100%}}
+</style>
+</head>
+<body>
+<div class="aa-header" role="banner">
+  <div class="aa-header__inner">
+    <a class="aa-header__brand" href="#">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
+    <nav aria-label="Main navigation" class="aa-header__nav">
+      <a class="aa-header__link" href="#">Home</a>
+      <details class="aa-dd">
+        <summary>About</summary>
+        <div class="aa-dd__menu">
+          <a href="#">Our Story</a>
+          <a href="#">Team Page</a>
+        </div>
+      </details>
+      <details class="aa-dd">
+        <summary>Services</summary>
+        <div class="aa-dd__menu">
+          <a href="#">The Executive</a>
+          <a href="#">The Overnight Companion</a>
+          <a href="#">The Tourist</a>
+          <a href="#">The Explorer</a>
+        </div>
+      </details>
+      <a class="aa-header__link" href="#">Pricing</a>
+      <a class="aa-header__link is-active" href="#">Booking</a>
+      <details class="aa-dd aa-dd--right">
+        <summary>Insights</summary>
+        <div class="aa-dd__menu">
+          <a href="#">Insight Hub</a>
+          <a href="#">FAQs</a>
+          <a href="#">Careers</a>
+          <a href="#">Safety &amp; Trust</a>
+          <a href="#">Blog</a>
+        </div>
+      </details>
+    </nav>
+    <a class="aa-header__cta" href="#">Contact Us</a>
+  </div>
+</div>
+
+<div class="shell">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Booking Process</div>
+        <h1>A premium booking journey built for secure, structured, high-trust care.</h1>
+        <p>Our booking process is designed to help families move from enquiry to confirmed care with more clarity, better safety screening, and stronger professional matching than a typical childcare booking route.</p>
+        <div class="hero-pills">
+          <span class="hero-pill">Service tier selection</span>
+          <span class="hero-pill">Specialist matching</span>
+          <span class="hero-pill">Time logic enforcement</span>
+          <span class="hero-pill">Secure payment flow</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#steps" class="btn">View the Journey</a>
+          <a href="#" class="btn-outline">Start Your Booking</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="/mnt/data/Booking Processes.png" alt="Active Adventure booking process visual" />
+        <div class="visual-note">This booking flow combines service selection, professional matching, date logic, profile screening, payment security, and confirmation access into one premium client journey.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="steps">
+    <div class="section-title">Step-by-Step Journey</div>
+    <h2 class="section-heading">How the booking process works from selection to confirmation.</h2>
+    <p class="section-copy">Each stage has been designed to reduce friction while protecting service quality, professional fit, and family safety requirements. The process is structured to feel premium, not improvised.</p>
+
+    <div class="steps-grid">
+      <article class="step-card">
+        <div class="step-num">01</div>
+        <span class="step-tag">Service Tier</span>
+        <h3>Select Your Service</h3>
+        <p>Families begin by selecting the service architecture that best matches their needs, schedule, and childcare context.</p>
+        <ul>
+          <li>Active Adventure standard bookings start from a 4-hour minimum</li>
+          <li>Overnight Companion is structured differently and starts from a 12-hour minimum</li>
+          <li>The chosen tier shapes what options appear next in the flow</li>
+        </ul>
+      </article>
+
+      <article class="step-card">
+        <div class="step-num">02</div>
+        <span class="step-tag">Professional Match</span>
+        <h3>Choose Your Specialist</h3>
+        <p>Clients then choose the professional category most suitable for the type of support required.</p>
+        <ul>
+          <li>Registered Nurse (RN) for clinical safety and medically aware care</li>
+          <li>Certified Teacher / OCT for learning and structured engagement</li>
+          <li>Support Worker / CYW for behavioural support and routine continuity</li>
+        </ul>
+      </article>
+
+      <article class="step-card">
+        <div class="step-num">03</div>
+        <span class="step-tag">Date Logic</span>
+        <h3>Select Date &amp; Time</h3>
+        <p>The system enforces minimum duration logic automatically so the booking reflects the service architecture selected.</p>
+        <ul>
+          <li>4-hour minimum for standard care bookings</li>
+          <li>12-hour minimum for Overnight Companion routes tied to RN or support-led care</li>
+          <li>Multiple-date bookings can be supported in a premium flow</li>
+        </ul>
+      </article>
+
+      <article class="step-card">
+        <div class="step-num">04</div>
+        <span class="step-tag">Family Profile</span>
+        <h3>Child &amp; Medical Profile</h3>
+        <p>Before confirmation, the system collects the information required to deliver safer, more tailored care.</p>
+        <ul>
+          <li>Child count and booking complexity</li>
+          <li>Allergies, medical needs, and special support requirements</li>
+          <li>Hotel or private home location details where relevant</li>
+        </ul>
+      </article>
+
+      <article class="step-card">
+        <div class="step-num">05</div>
+        <span class="step-tag">Secure Payment</span>
+        <h3>Deposit or Payment</h3>
+        <p>Payment is structured to secure commitment, improve scheduling confidence, and support premium service delivery.</p>
+        <ul>
+          <li>Secure Stripe-style payment experience</li>
+          <li>Deposit options can be used in more flexible booking models</li>
+          <li>Client details and service scope are captured before final confirmation</li>
+        </ul>
+      </article>
+
+      <article class="step-card">
+        <div class="step-num">06</div>
+        <span class="step-tag">Confirmation</span>
+        <h3>Confirmation &amp; Access</h3>
+        <p>After successful booking and payment, the client receives confirmation and can be guided toward the next-stage experience.</p>
+        <ul>
+          <li>Email or SMS confirmation</li>
+          <li>Dashboard or deep-link access for premium flow continuation</li>
+          <li>Preparation for profile completion and pre-care review</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title">Process</div>
+    <h2 class="section-heading">A structured booking approach designed for clarity and confidence.</h2>
+    <p class="section-copy">Each step is designed to ensure the right service selection, appropriate care duration, and a smooth, reliable experience from enquiry through to confirmation.</p>
+
+    <div class="logic-grid">
+      <article class="logic-card">
+        <h3>Minimum Duration Rules</h3>
+        <p><strong>Active Adventure standard bookings</strong> should hold a 4-hour minimum. <strong>Overnight Companion</strong> should enforce a 12-hour minimum when the booking is tied to RN or support-led overnight care.</p>
+        <div class="alert-box">Minimum booking durations ensure consistent care, appropriate staffing, and a high-quality experience for every family.</div>
+      </article>
+
+      <article class="logic-card">
+        <h3>Booking Complexity Checks</h3>
+        <p>The form should require the number of children. Where bookings exceed 3 children, the system should show a visible notice that a second staff member is required and that direct founder-led contact may be needed.</p>
+        <div class="alert-box">For larger or more complex bookings, additional support may be required to maintain safety, coverage, and service quality.</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title">Professional Selection</div>
+    <h2 class="section-heading">Who the client is really booking.</h2>
+    <p class="section-copy">A major strength of the process is that the client is not just choosing a slot. They are selecting a professional pathway aligned to the real support needed.</p>
+
+    <div class="tier-grid">
+      <article class="tier-card">
+        <div class="tier-icon">⚕</div>
+        <div class="tier-role">Clinical Safety</div>
+        <h3>Registered Nurse (RN)</h3>
+        <p>Best suited to overnight support, medically aware care, reassurance-led environments, and families needing stronger clinical confidence.</p>
+      </article>
+      <article class="tier-card">
+        <div class="tier-icon">🎓</div>
+        <div class="tier-role">Learning &amp; Development</div>
+        <h3>Certified Teacher</h3>
+        <p>Designed for families who want structured engagement, educational quality, and stronger developmental value inside the care session.</p>
+      </article>
+      <article class="tier-card">
+        <div class="tier-icon">✓</div>
+        <div class="tier-role">Behavioural Support</div>
+        <h3>Support Worker / CYW</h3>
+        <p>Supports routines, practical family logistics, behavioural structure, and more flexible care environments requiring stability and consistency.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title">Why This Journey Works</div>
+    <h2 class="section-heading">A more structured, higher-standard approach to booking childcare.</h2>
+    <p class="section-copy">Every step is intentionally designed to ensure the right service, the right professional, and the right level of care. This structured approach provides greater clarity, stronger safety alignment, and a more reliable experience for families who expect a higher standard.</p>
+
+    <div class="summary-grid">
+      <article class="summary-card"><div class="summary-icon">🧭</div><h3>Guided</h3><p>The process helps the client make the right service and professional choice rather than guessing.</p></article>
+      <article class="summary-card"><div class="summary-icon">🛡</div><h3>Secure</h3><p>Medical details, special requirements, and payment are handled through a more protected structured flow.</p></article>
+      <article class="summary-card"><div class="summary-icon">⏱</div><h3>Efficient</h3><p>Time logic and profile checks reduce back-and-forth and strengthen booking readiness.</p></article>
+      <article class="summary-card"><div class="summary-icon">✓</div><h3>Premium</h3><p>The journey reflects a managed care architecture rather than a generic childcare marketplace experience.</p></article>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h3>Begin your booking with confidence.</h3>
+      <p>Select your service, choose your specialist, and confirm your care with a secure, structured process designed for premium family support.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#" class="btn">Start Booking</a>
+      <a href="#" class="btn-outline">Contact Our Team</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div class="footer-top">
+        <div class="footer-brand-card">
+          <div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div>
+          <p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers across homes, hotels, and travel environments.</p>
+          <div class="footer-trust-row">
+            <span class="footer-pill">NHS RN-Led</span>
+            <span class="footer-pill">Qualified Teachers</span>
+            <span class="footer-pill">Specialised Support</span>
+            <span class="footer-pill">Managed Agency</span>
+          </div>
+        </div>
+        <div class="footer-news-card">
+          <h3 class="footer-news-title">Stay connected</h3>
+          <p class="footer-news-copy">Receive updates on services, family resources, availability, and premium childcare insights.</p>
+          <form class="footer-form">
+            <input class="footer-input" type="email" placeholder="Enter your email address" />
+            <button class="footer-btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-middle">
+        <div>
+          <h4 class="footer-col-title">About</h4>
+          <p class="footer-col-copy">We provide premium, structured childcare through a carefully matched team of Registered Nurses, Qualified Teachers, and Specialised Support Workers.</p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#">The Explorer</a></li>
+            <li><a href="#">The Executive</a></li>
+            <li><a href="#">The Tourist</a></li>
+            <li><a href="#">Overnight Companion</a></li>
+            <li><a href="#">Booking</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Insights</h4>
+          <ul class="footer-links">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Insights Hub</a></li>
+            <li><a href="#">Parent Resources</a></li>
+            <li><a href="#">Media &amp; Press</a></li>
+            <li><a href="#">Documents</a></li>
+            <li><a href="#">Safety &amp; Trust</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <div class="footer-contact-item"><span class="footer-contact-label">Email</span><div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div></div>
+          <div class="footer-contact-item"><span class="footer-contact-label">Location</span><div class="footer-contact-value">London, United Kingdom</div></div>
+          <div class="footer-contact-item"><span class="footer-contact-label">Page</span><div class="footer-contact-value"><a href="#">Contact Us</a></div></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div>
+        <div class="footer-bottom-links"><a href="#">Safeguarding</a><a href="#">Support</a><a href="#">Contact</a></div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const headerDropdowns = document.querySelectorAll('.aa-header .aa-dd');
+headerDropdowns.forEach((dropdown) => {
+  dropdown.addEventListener('toggle', () => {
+    if (dropdown.open) {
+      headerDropdowns.forEach((other) => {
+        if (other !== dropdown) other.open = false;
+      });
+    }
+  });
+});
+
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.aa-header')) {
+    headerDropdowns.forEach((dropdown) => {
+      dropdown.open = false;
+    });
+  }
+});
+</script>
+</body>
+</html>

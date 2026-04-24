@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms of Service | Active Adventure Home Childcare</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+    --bg: #f6f1e7;
+    --surface: #ffffff;
+    --surface-soft: #f8fbf8;
+    --text: #333333;
+    --muted: #555555;
+    --green: #2f5d3a;
+    --green-dark: #1f3d28;
+    --green-deep: #163123;
+    --orange: #f28c28;
+    --radius-lg: 24px;
+    --shadow-sm: 0 6px 18px rgba(0,0,0,0.05);
+    --shadow-md: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+
+.btn, .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.25s, box-shadow 0.25s, background-color 0.25s, color 0.25s;
+}
+.btn { background: var(--orange); color: #fff; box-shadow: 0 12px 24px rgba(242,140,40,.22); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(242,140,40,.28); }
+.btn-outline { border: 1.5px solid var(--green); color: var(--green); background: transparent; }
+.btn-outline:hover { background: var(--green); color: #fff; }
+
+/* Unified AA Header Start */
+.aa-header, .aa-header * { box-sizing: border-box; }
+.aa-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  width:100%;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(20,20,20,.08);
+  box-shadow:0 2px 12px rgba(0,0,0,.04);
+}
+.aa-header__inner{
+  max-width:1360px;
+  margin:0 auto;
+  padding:16px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.aa-header__brand{
+  color:#2f5d3a;
+  text-decoration:none;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1.05;
+  white-space:nowrap;
+  flex:0 0 auto;
+  font-size:20px;
+}
+.aa-header__brand small{
+  display:block;
+  margin-top:4px;
+  color:#8b958e;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.aa-header__nav{
+  flex:1 1 auto;
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.aa-header__link,
+.aa-header details > summary{
+  list-style:none;
+  cursor:pointer;
+  color:#57645c;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.2;
+  padding:8px 0;
+  position:relative;
+  white-space:nowrap;
+  background:none;
+  border:none;
+}
+.aa-header details > summary::-webkit-details-marker{display:none;}
+.aa-header__link:hover,
+.aa-header details > summary:hover,
+.aa-header details[open] > summary,
+.aa-header__link.is-active,
+.aa-header details.is-active > summary{ color:#1f3d28; }
+.aa-header__link.is-active::after,
+.aa-header details.is-active > summary::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-8px;
+  height:2px;
+  border-radius:999px;
+  background:#f28c28;
+}
+.aa-dd{position:relative;}
+.aa-dd__menu{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:0;
+  min-width:250px;
+  max-width:min(280px, calc(100vw - 32px));
+  background:#fff;
+  border:1px solid rgba(20,20,20,.08);
+  border-radius:18px;
+  box-shadow:0 18px 38px rgba(0,0,0,.10);
+  padding:10px;
+  display:none;
+}
+.aa-dd--right .aa-dd__menu{left:auto; right:0;}
+.aa-dd[open] .aa-dd__menu{display:block;}
+.aa-dd__menu a{
+  display:block;
+  padding:10px 12px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#33423a;
+  font-size:14px;
+  line-height:1.4;
+}
+.aa-dd__menu a:hover,
+.aa-dd__menu a.is-active{ background:#f8fbf8; color:#2f5d3a; }
+.aa-header__cta{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:12px 18px;
+  border-radius:999px;
+  background:#f28c28;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  white-space:nowrap;
+  box-shadow:0 12px 24px rgba(242,140,40,.24);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.aa-header__cta:hover{transform:translateY(-1px); box-shadow:0 14px 26px rgba(242,140,40,.28);}
+
+/* Legal Page */
+.legal-hero {
+    position: relative;
+    padding: 76px 24px 56px;
+    background:
+      radial-gradient(circle at top right, rgba(242,140,40,.18), transparent 34%),
+      linear-gradient(135deg, #e6efe4 0%, var(--bg) 58%, #fff9ef 100%);
+}
+.legal-hero__shell,
+.legal-shell { max-width: 1180px; margin: 0 auto; }
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.legal-hero h1 {
+    margin: 0;
+    font-size: clamp(2.35rem, 6vw, 4.15rem);
+    line-height: 1.02;
+    color: var(--green);
+    letter-spacing: -0.04em;
+    max-width: 900px;
+    text-wrap: balance;
+}
+.legal-hero p {
+    font-size: clamp(1rem, 2.2vw, 1.14rem);
+    max-width: 840px;
+    margin: 20px 0 0;
+    color: var(--muted);
+}
+.legal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
+}
+.meta-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(47,93,58,.10);
+    color: var(--green-dark);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 8px 22px rgba(0,0,0,.035);
+}
+.legal-layout {
+    display: grid;
+    grid-template-columns: 310px minmax(0, 1fr);
+    gap: 28px;
+    padding: 44px 24px 76px;
+}
+.legal-nav {
+    position: sticky;
+    top: 104px;
+    align-self: start;
+    background: rgba(255,255,255,.86);
+    border: 1px solid rgba(47,93,58,.10);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(10px);
+}
+.legal-nav h2 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--green);
+}
+.legal-nav a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #57645c;
+    font-size: 14px;
+    line-height: 1.35;
+}
+.legal-nav a:hover { background: var(--surface-soft); color: var(--green); }
+.legal-main { min-width: 0; }
+.notice-card {
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 22px;
+}
+.notice-card h2 { margin: 0 0 10px; font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1.15; }
+.notice-card p { margin: 0; color: rgba(255,255,255,.9); }
+.legal-card {
+    background: var(--surface);
+    border: 1px solid rgba(47,93,58,.08);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+    scroll-margin-top: 116px;
+}
+.legal-card h2 {
+    margin: 0 0 14px;
+    color: var(--green);
+    font-size: clamp(1.42rem, 3vw, 2rem);
+    line-height: 1.2;
+}
+.legal-card h3 {
+    margin: 24px 0 8px;
+    color: var(--green-dark);
+    font-size: 18px;
+}
+.legal-card p { margin: 0 0 13px; color: var(--muted); }
+.legal-card ul { margin: 10px 0 0; padding-left: 20px; color: var(--muted); }
+.legal-card li { margin-bottom: 8px; }
+.legal-card strong { color: var(--green-dark); }
+.definition-grid,
+.terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+}
+.mini-card {
+    background: linear-gradient(180deg, #ffffff, var(--surface-soft));
+    border: 1px solid rgba(47,93,58,.08);
+    border-radius: 18px;
+    padding: 18px;
+}
+.mini-card h3 { margin: 0 0 8px; font-size: 16px; color: var(--green); }
+.mini-card p { margin: 0; font-size: 14px; }
+.highlight-box {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 18px;
+    background: #fff9ef;
+    border: 1px solid rgba(242,140,40,.22);
+    color: #5f4a31;
+}
+.highlight-box p { margin: 0; color: #5f4a31; }
+.cta-band {
+    text-align: center;
+    padding: 72px 24px 88px;
+    background: var(--surface);
+}
+.cta-band h2 {
+    color: var(--green);
+    font-size: clamp(2rem, 4vw, 2.35rem);
+    margin: 0 0 10px;
+    line-height: 1.15;
+    text-wrap: balance;
+}
+.cta-band p { max-width: 780px; margin: 0 auto; color: var(--muted); }
+.cta-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+
+/* Standardized advanced footer */
+.site-footer{margin-top:0;background:linear-gradient(135deg,#163123,#1f3d28);color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.06)}
+.site-footer .footer-shell{max-width:1320px;margin:0 auto;padding:0 20px}
+.site-footer .footer-top{padding:34px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.08)}
+.site-footer .footer-brand-card,.site-footer .footer-news-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:24px;backdrop-filter:blur(8px)}
+.site-footer .footer-brand-mark{font-weight:700;letter-spacing:.08em;color:#fff;font-size:20px}
+.site-footer .footer-brand-mark small{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.site-footer .footer-brand-copy{margin:14px 0 0;color:rgba(255,255,255,.66);line-height:1.8;max-width:720px}
+.site-footer .footer-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.site-footer .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.site-footer .footer-news-title{margin:0;font-size:22px;color:#fff}
+.site-footer .footer-news-copy{margin:10px 0 0;color:rgba(255,255,255,.66);line-height:1.8}
+.site-footer .footer-form{display:flex;gap:10px;margin-top:18px}
+.site-footer .footer-input{flex:1;min-height:50px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.10);color:#fff;padding:0 16px;outline:none}
+.site-footer .footer-input::placeholder{color:rgba(255,255,255,.52)}
+.site-footer .footer-input:focus{border-color:rgba(242,140,40,.55);box-shadow:0 0 0 3px rgba(242,140,40,.12)}
+.site-footer .footer-btn{min-height:50px;padding:0 18px;border:none;border-radius:999px;background:#f28c28;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.site-footer .footer-middle{padding:28px 0;display:grid;grid-template-columns:1.05fr .8fr .8fr .85fr;gap:24px}
+.site-footer .footer-col-title{margin:0 0 14px;color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.site-footer .footer-col-copy{color:rgba(255,255,255,.66);line-height:1.8;margin:0}
+.site-footer .footer-links{list-style:none;margin:0;padding:0}
+.site-footer .footer-links li+li{margin-top:10px}
+.site-footer .footer-links a{color:rgba(255,255,255,.66);text-decoration:none;transition:.2s ease}
+.site-footer .footer-links a:hover{color:#fff}
+.site-footer .footer-contact-item{margin-bottom:12px}
+.site-footer .footer-contact-label{display:block;color:rgba(255,255,255,.48);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+.site-footer .footer-contact-value{color:rgba(255,255,255,.88);line-height:1.7}
+.site-footer .footer-bottom{padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.site-footer .footer-bottom-copy{color:rgba(255,255,255,.66);font-size:13px}
+.site-footer .footer-bottom-links{display:flex;flex-wrap:wrap;gap:14px}
+.site-footer .footer-bottom-links a{color:rgba(255,255,255,.66);font-size:13px;text-decoration:none}
+.site-footer .footer-bottom-links a:hover{color:#fff}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .btn-outline, .aa-header__cta { transition: none; }
+    .btn:hover, .aa-header__cta:hover { transform: none; }
+}
+@media (max-width: 980px){
+  .aa-header__inner{flex-wrap:wrap; align-items:flex-start;}
+  .aa-header__nav{order:3; width:100%; justify-content:flex-start; gap:14px 18px;}
+  .aa-header__cta{margin-left:auto;}
+  .legal-layout{grid-template-columns:1fr;}
+  .legal-nav{position:relative;top:0;}
+  .site-footer .footer-top,.site-footer .footer-middle{grid-template-columns:1fr}
+}
+@media (max-width: 640px){
+  .aa-header__inner{padding:14px 16px;}
+  .aa-header__brand{width:100%;}
+  .aa-header__nav{width:100%; gap:12px 16px;}
+  .aa-dd{width:100%;}
+  .aa-dd__menu{position:static; min-width:unset; max-width:none; margin-top:8px; box-shadow:none;}
+  .aa-header__cta{width:100%;}
+  .legal-hero{padding:50px 16px 38px;}
+  .legal-layout{padding:28px 16px 54px;gap:20px;}
+  .legal-card,.notice-card,.legal-nav{padding:22px;border-radius:20px;}
+  .definition-grid,.terms-grid{grid-template-columns:1fr;}
+  .cta-band{padding-left:16px;padding-right:16px;}
+  .cta-links{flex-direction:column;}
+  .cta-links .btn,.cta-links .btn-outline{width:100%;}
+  .site-footer .footer-shell{padding:0 16px}.site-footer .footer-top{padding:24px 0 20px}.site-footer .footer-brand-card,.site-footer .footer-news-card{padding:20px;border-radius:20px}.site-footer .footer-form{flex-direction:column}.site-footer .footer-btn,.site-footer .footer-input{width:100%}.site-footer .footer-middle{padding:22px 0;gap:18px}.site-footer .footer-bottom{padding:16px 0 24px;align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="aa-header" role="banner">
+  <div class="aa-header__inner">
+    <a class="aa-header__brand" href="Landing page 2.html">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
+    <nav aria-label="Main navigation" class="aa-header__nav">
+      <a class="aa-header__link" href="Landing page 2.html">Home</a>
+      <details class="aa-dd">
+        <summary>About</summary>
+        <div class="aa-dd__menu">
+          <a href="Our Story.html">Our Story</a>
+          <a href="Meet the Team Page.html">Team Page</a>
+        </div>
+      </details>
+      <details class="aa-dd">
+        <summary>Services</summary>
+        <div class="aa-dd__menu">
+          <a href="The Executive.html">The Executive</a>
+          <a href="The Overnight Companion.html">The Overnight Companion</a>
+          <a href="The Tourist.html">The Tourist</a>
+          <a href="The Explorer.html">The Explorer</a>
+        </div>
+      </details>
+      <a class="aa-header__link" href="Pricing page 2.html">Pricing</a>
+      <a class="aa-header__link" href="Booking Page.html">Booking</a>
+      <details class="aa-dd aa-dd--right is-active">
+        <summary>Insights</summary>
+        <div class="aa-dd__menu">
+          <a href="Insight Hub.html">Insight Hub</a>
+          <a href="FAQs.html">FAQs</a>
+          <a href="Career page.html">Careers</a>
+          <a href="Safety & Trust - Main.html">Safety &amp; Trust</a>
+          <a class="is-active" href="Terms of Service.html">Terms of Service</a>
+          <a href="#">Blog</a>
+        </div>
+      </details>
+    </nav>
+    <a class="aa-header__cta" href="Contact Us page.html">Contact Us</a>
+  </div>
+</div>
+
+<section class="legal-hero">
+  <div class="legal-hero__shell">
+    <div class="eyebrow">Client Agreement</div>
+    <h1>Terms of Service</h1>
+    <p>These Terms set out the standards, responsibilities, booking rules, cancellation terms, safeguarding expectations, and service limitations that apply when families use Active Adventure Home Childcare.</p>
+    <div class="legal-meta" aria-label="Terms summary">
+      <span class="meta-pill">United Kingdom Service Terms</span>
+      <span class="meta-pill">Effective: 24 April 2026</span>
+      <span class="meta-pill">Version 1.0</span>
+    </div>
+  </div>
+</section>
+
+<main class="legal-shell legal-layout">
+  <aside class="legal-nav" aria-label="Terms page navigation">
+    <h2>On this page</h2>
+    <a href="#overview">1. Overview</a>
+    <a href="#definitions">2. Key definitions</a>
+    <a href="#eligibility">3. Eligibility and account information</a>
+    <a href="#bookings">4. Bookings and care plans</a>
+    <a href="#fees">5. Fees, payment and late payment</a>
+    <a href="#cancellations">6. Changes, cancellations and refunds</a>
+    <a href="#client-duties">7. Client responsibilities</a>
+    <a href="#safeguarding">8. Safeguarding, safety and health</a>
+    <a href="#staffing">9. Staffing and service delivery</a>
+    <a href="#limitations">10. Limitations of service</a>
+    <a href="#liability">11. Liability</a>
+    <a href="#data">12. Privacy and records</a>
+    <a href="#intellectual-property">13. Intellectual property</a>
+    <a href="#complaints">14. Complaints</a>
+    <a href="#law">15. Governing law</a>
+  </aside>
+
+  <div class="legal-main">
+    <section class="notice-card" id="overview">
+      <h2>Professional childcare depends on clear expectations.</h2>
+      <p>By booking, requesting, confirming, paying for, or receiving any service from Active Adventure Home Childcare, you agree to these Terms. Please read them carefully before making a booking.</p>
+    </section>
+
+    <section class="legal-card">
+      <h2>1. Overview</h2>
+      <p>These Terms of Service apply to childcare, home support, travel support, hotel-based support, overnight care, educational support, specialist support, and related services provided or arranged by Active Adventure Home Childcare.</p>
+      <p>Our services are designed to provide premium, structured, professional childcare support. They are not a substitute for emergency medical care, statutory social care, specialist clinical treatment, or legal guardianship.</p>
+      <p>Where a separate written service agreement, booking confirmation, safeguarding policy, privacy notice, or care plan applies, those documents should be read alongside these Terms. If there is a conflict, the specific written booking confirmation or signed agreement will usually take priority for that booking.</p>
+      <div class="highlight-box"><p><strong>Important:</strong> This page is drafted as a strong commercial template for a UK childcare business. It should be reviewed by a qualified UK solicitor before publication or client use.</p></div>
+    </section>
+
+    <section class="legal-card" id="definitions">
+      <h2>2. Key definitions</h2>
+      <div class="definition-grid">
+        <div class="mini-card"><h3>“Active Adventure”, “we”, “us”, “our”</h3><p>Active Adventure Home Childcare, its owners, employees, contractors, representatives, and authorised service providers.</p></div>
+        <div class="mini-card"><h3>“Client”, “you”, “your”</h3><p>The parent, guardian, family member, company, hotel, travel partner, or authorised adult requesting or receiving services.</p></div>
+        <div class="mini-card"><h3>“Child” or “children”</h3><p>Any child or young person for whom care, support, supervision, or related services are requested.</p></div>
+        <div class="mini-card"><h3>“Care Professional”</h3><p>A nurse, teacher, specialist support worker, childcare professional, or other vetted individual assigned to provide services.</p></div>
+        <div class="mini-card"><h3>“Booking”</h3><p>A confirmed request for services, including the agreed date, time, location, care requirements, and fee structure.</p></div>
+        <div class="mini-card"><h3>“Care Plan”</h3><p>Any written or digital information used to guide service delivery, including routines, medical notes, behavioural needs, safeguarding considerations, and emergency contacts.</p></div>
+      </div>
+    </section>
+
+    <section class="legal-card" id="eligibility">
+      <h2>3. Eligibility and account information</h2>
+      <p>You must be at least 18 years old and legally authorised to arrange childcare for the child named in the booking.</p>
+      <p>You agree to provide accurate, complete, and current information during enquiry, registration, booking, payment, onboarding, risk assessment, and care planning.</p>
+      <p>You must notify us promptly of any information that could affect safe service delivery, including allergies, medical conditions, additional needs, safeguarding concerns, court orders, contact restrictions, behavioural risks, medication requirements, or changes in collection authority.</p>
+    </section>
+
+    <section class="legal-card" id="bookings">
+      <h2>4. Bookings and care plans</h2>
+      <p>A booking is only confirmed when we issue written confirmation and any required deposit, prepayment, onboarding information, or signed agreement has been received.</p>
+      <p>We may decline, pause, amend, or cancel a booking where we reasonably believe the service cannot be delivered safely, lawfully, professionally, or in the best interests of the child.</p>
+      <h3>Minimum booking periods</h3>
+      <p>Minimum booking periods may apply depending on the service tier, location, time of day, staffing requirements, travel time, overnight arrangements, or specialist care needs. Any minimum period will be stated at booking or in the relevant service page.</p>
+      <h3>Care information</h3>
+      <p>You are responsible for ensuring that care information is truthful, complete, and updated before each session. We may require an onboarding call, written care plan, risk assessment, or additional professional review before confirming certain bookings.</p>
+    </section>
+
+    <section class="legal-card" id="fees">
+      <h2>5. Fees, payment and late payment</h2>
+      <p>Fees are calculated according to the service selected, care professional assigned, booking duration, location, time of day, specialist requirements, travel requirements, and any additional services agreed.</p>
+      <ul>
+        <li>All fees must be paid by the deadline stated in the booking confirmation or invoice.</li>
+        <li>Deposits, retainers, or prepayments may be required to secure availability.</li>
+        <li>Additional time, late finishes, travel, parking, congestion charges, entry fees, activity costs, meals, hotel access fees, and other reasonable expenses may be charged where applicable.</li>
+        <li>Late payment may result in suspension of future bookings, cancellation of reserved availability, recovery of debt collection costs, and statutory interest where legally permitted.</li>
+      </ul>
+      <p>Unless expressly stated otherwise, quoted prices do not include third-party costs, venue costs, travel tickets, premium activity fees, or additional expenses incurred for the child.</p>
+    </section>
+
+    <section class="legal-card" id="cancellations">
+      <h2>6. Changes, cancellations and refunds</h2>
+      <p>Cancellation and amendment rules are designed to protect professional staffing, reserved availability, travel arrangements, and operational planning.</p>
+      <div class="terms-grid">
+        <div class="mini-card"><h3>Client cancellations</h3><p>Cancellation charges may apply depending on how close the cancellation is to the booking start time and whether specialist staff, travel, overnight care, or extended care has been reserved.</p></div>
+        <div class="mini-card"><h3>Short-notice changes</h3><p>Changes to time, location, duties, number of children, or care complexity are subject to approval and may result in additional charges.</p></div>
+        <div class="mini-card"><h3>No access or no handover</h3><p>If we cannot start because access, handover, accurate information, or an authorised adult is unavailable, the booking may remain chargeable.</p></div>
+        <div class="mini-card"><h3>Agency cancellations</h3><p>If we need to cancel due to safety, illness, emergency, or circumstances beyond our control, we will aim to provide a suitable replacement, credit, refund, or alternative solution where appropriate.</p></div>
+      </div>
+      <p>Refunds, credits, or rescheduling are assessed according to the booking type, notice period, work already completed, expenses incurred, and any applicable written agreement.</p>
+    </section>
+
+    <section class="legal-card" id="client-duties">
+      <h2>7. Client responsibilities</h2>
+      <p>You agree to provide a safe, respectful, and appropriate environment for children and care professionals.</p>
+      <ul>
+        <li>Provide accurate emergency contact details and ensure an authorised adult can be reached during the booking.</li>
+        <li>Ensure the care professional has safe access to the home, hotel, venue, or agreed location.</li>
+        <li>Provide necessary supplies, including food, nappies, medication instructions, clothing, keys, transport details, and comfort items where required.</li>
+        <li>Disclose pets, security systems, cameras, household risks, allergies, medical needs, behaviour plans, court orders, and any relevant safeguarding information.</li>
+        <li>Treat all care professionals with dignity, respect, and professional courtesy.</li>
+        <li>Do not request duties outside the agreed booking scope without prior approval.</li>
+      </ul>
+      <p>We reserve the right to end a session or decline future services where a client, household member, guest, or third party behaves abusively, unsafely, unlawfully, or in a way that compromises professional boundaries.</p>
+    </section>
+
+    <section class="legal-card" id="safeguarding">
+      <h2>8. Safeguarding, safety and health</h2>
+      <p>Safeguarding is central to our service. We may take any action we reasonably consider necessary to protect a child, care professional, family member, or member of the public.</p>
+      <p>If we identify a safeguarding concern, immediate risk, non-disclosure, unsafe environment, medical emergency, or legal concern, we may contact emergency services, local authority safeguarding teams, health professionals, police, or other appropriate agencies.</p>
+      <h3>Health and medication</h3>
+      <p>You must provide clear written instructions for allergies, medication, medical routines, emergency plans, and health conditions. Care professionals may only administer medication or provide health-related support where it has been expressly agreed and is within their competence, role, insurance, and lawful authority.</p>
+      <h3>Illness and infection control</h3>
+      <p>You must disclose contagious illness, recent symptoms, or health risks before a booking. We may refuse or cancel a booking where illness creates an unacceptable risk to the child, care professional, household, or wider community.</p>
+    </section>
+
+    <section class="legal-card" id="staffing">
+      <h2>9. Staffing and service delivery</h2>
+      <p>We aim to assign care professionals whose experience matches the booking requirements. Specific individuals may be requested but cannot be guaranteed unless expressly confirmed in writing.</p>
+      <p>We may substitute a care professional where reasonably necessary due to illness, availability, travel disruption, safeguarding considerations, service suitability, or operational requirements.</p>
+      <p>Care professionals must not be privately engaged, solicited, hired, paid directly, or contacted for services outside Active Adventure without our prior written consent. Breach of this clause may result in cancellation of services and a reasonable introduction or placement fee.</p>
+    </section>
+
+    <section class="legal-card" id="limitations">
+      <h2>10. Limitations of service</h2>
+      <p>Our services are professional childcare and support services. Unless expressly agreed in writing, we do not provide:</p>
+      <ul>
+        <li>Emergency medical treatment or clinical diagnosis.</li>
+        <li>Legal guardianship, parental responsibility, or statutory social care.</li>
+        <li>Unapproved transportation, high-risk activities, or unsupervised swimming.</li>
+        <li>Heavy domestic cleaning, personal assistant duties, or non-child-related household labour.</li>
+        <li>Services in unsafe, unlawful, intoxicated, abusive, or materially misrepresented environments.</li>
+      </ul>
+      <p>Where a child requires complex medical, behavioural, mobility, safeguarding, or specialist support, we may require additional assessment, additional staffing, specialist documentation, or approval before accepting the booking.</p>
+    </section>
+
+    <section class="legal-card" id="liability">
+      <h2>11. Liability</h2>
+      <p>Nothing in these Terms limits or excludes liability where it would be unlawful to do so, including liability for death or personal injury caused by negligence, fraud, fraudulent misrepresentation, or any legal rights that cannot be excluded under UK law.</p>
+      <p>Subject to the above, we are not responsible for losses caused by inaccurate information, undisclosed risks, client breach of these Terms, third-party conduct, events beyond our reasonable control, or circumstances outside the agreed scope of service.</p>
+      <p>We are not liable for indirect, consequential, special, punitive, or business losses, including loss of income, loss of opportunity, loss of goodwill, travel disruption, missed work, or alternative childcare costs, except where required by law.</p>
+      <p>You may be responsible for loss, damage, injury, cost, or claim arising from your breach of these Terms, inaccurate information, unsafe premises, unauthorised requests, or conduct of household members, guests, pets, or third parties.</p>
+    </section>
+
+    <section class="legal-card" id="data">
+      <h2>12. Privacy, records and communications</h2>
+      <p>We collect and use personal information to manage enquiries, bookings, care plans, safeguarding, payments, client communication, service improvement, and legal compliance.</p>
+      <p>Information relating to children, health, safeguarding, family circumstances, and care needs may be sensitive. We expect clients to provide such information only where accurate, relevant, and necessary for safe service delivery.</p>
+      <p>We may keep records of enquiries, booking confirmations, care notes, incident reports, safeguarding notes, complaints, payment records, and communications where needed for operational, legal, insurance, safeguarding, or regulatory purposes.</p>
+      <p>Marketing communications may be sent where you have opted in or where legally permitted. You may unsubscribe from marketing at any time, but we may still send essential service communications.</p>
+    </section>
+
+    <section class="legal-card" id="intellectual-property">
+      <h2>13. Intellectual property</h2>
+      <p>All website content, service names, page layouts, written materials, care frameworks, booking documents, brand assets, graphics, policies, guides, and other materials created by or for Active Adventure are owned by us or licensed to us.</p>
+      <p>You may not copy, reproduce, resell, publish, adapt, scrape, distribute, or commercially exploit our materials without prior written permission.</p>
+    </section>
+
+    <section class="legal-card" id="complaints">
+      <h2>14. Complaints, concerns and dispute resolution</h2>
+      <p>If you have a concern about service quality, safety, billing, conduct, or communication, please contact us as soon as possible so we can review the matter properly.</p>
+      <p>We may request written details, relevant dates, names, communications, photos, care notes, payment records, or other information needed to investigate. We aim to handle complaints fairly, professionally, and proportionately.</p>
+      <p>Raising a complaint does not automatically suspend payment obligations unless we agree otherwise in writing or the law requires it.</p>
+    </section>
+
+    <section class="legal-card" id="law">
+      <h2>15. Governing law and changes to these Terms</h2>
+      <p>These Terms are governed by the laws of England and Wales. The courts of England and Wales will have jurisdiction, except where consumer law gives you the right to bring proceedings elsewhere in the United Kingdom.</p>
+      <p>We may update these Terms from time to time to reflect changes in law, service structure, safeguarding practice, payment rules, operational standards, or business requirements. The version in force at the time of booking will usually apply to that booking unless otherwise required by law.</p>
+      <h3>Contact</h3>
+      <p>For questions about these Terms, please contact Active Adventure Home Childcare at <strong>jeffery.owusu@ojstrattech.co.uk</strong>.</p>
+    </section>
+  </div>
+</main>
+
+<section class="cta-band">
+  <h2>Need support before booking?</h2>
+  <p>Speak with the team before confirming care requirements, specialist needs, overnight arrangements, travel support, or high-pressure schedule cover.</p>
+  <div class="cta-links">
+    <a class="btn" href="Booking Page.html">Start a Booking</a>
+    <a class="btn-outline" href="Safety & Trust - Main.html">View Safety Standards</a>
+    <a class="btn-outline" href="Contact Us page.html">Contact Us</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-shell">
+    <div class="footer-top">
+      <div class="footer-brand-card">
+        <div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div>
+        <p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers across homes, hotels, and travel environments.</p>
+        <div class="footer-trust-row"><span class="footer-pill">NHS RN-Led</span><span class="footer-pill">Qualified Teachers (QTS)</span><span class="footer-pill">Specialised Support</span><span class="footer-pill">London Coverage</span></div>
+      </div>
+      <div class="footer-news-card">
+        <h3 class="footer-news-title">Stay connected</h3>
+        <p class="footer-news-copy">Receive updates on services, availability, and premium childcare insights.</p>
+        <form action="#" class="footer-form" method="post"><input class="footer-input" placeholder="Enter your email" type="email"/><button class="footer-btn" type="submit">Subscribe</button></form>
+      </div>
+    </div>
+    <div class="footer-middle">
+      <div><h4 class="footer-col-title">Company</h4><ul class="footer-links"><li><a href="Landing page 2.html">Home</a></li><li><a href="About Us.html">About Us</a></li><li><a href="Our Story.html">Our Story</a></li><li><a href="Meet the Team Page.html">Meet the Team</a></li><li><a href="Career page.html">Careers</a></li></ul></div>
+      <div><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="The Explorer.html">The Explorer</a></li><li><a href="The Executive.html">The Executive</a></li><li><a href="The Tourist.html">The Tourist</a></li><li><a href="The Overnight Companion.html">Overnight Companion</a></li><li><a href="Booking Page.html">Book Now</a></li><li><a href="Pricing page 2.html">Pricing</a></li></ul></div>
+      <div><h4 class="footer-col-title">Insights</h4><ul class="footer-links"><li><a href="FAQs.html">FAQs</a></li><li><a href="Insight Hub.html">Insights Hub</a></li><li><a href="Insight Parent Resources_page.html">Parent Resources</a></li><li><a href="Insight Media & Press page.html">Media &amp; Press</a></li><li><a href="Insight Downloadable documents page.html">Documents</a></li><li><a href="Safety & Trust - Main.html">Safety &amp; Trust</a></li><li><a href="Terms of Service.html">Terms of Service</a></li></ul></div>
+      <div><h4 class="footer-col-title">Contact</h4><div class="footer-contact-item"><span class="footer-contact-label">Email</span><div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div></div><div class="footer-contact-item"><span class="footer-contact-label">Location</span><div class="footer-contact-value">London, United Kingdom</div></div><div style="margin-top:12px;"><a class="footer-btn" href="Contact Us page.html">Contact Us</a></div></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div><div class="footer-bottom-links"><a href="Safety & Trust - Main.html">Safeguarding</a><a href="FAQs.html">Support</a><a href="Contact Us page.html">Contact</a></div></div>
+  </div>
+</footer>
+</body>
+</html>
