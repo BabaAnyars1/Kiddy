@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Contact Us | Active Adventure</title>
+  <title>Meet the Team | Active Adventure</title>
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
@@ -22,10 +22,6 @@
       --orange: #f28c28;
       --border: rgba(20, 20, 20, 0.08);
       --shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
-      --success: #2f7a4a;
-      --success-soft: #eef8f1;
-      --danger: #c94747;
-      --danger-soft: #fff3f3;
       --radius: 28px;
       --radius-sm: 20px;
     }
@@ -52,15 +48,13 @@
       display: block;
     }
 
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
-    }
-
     a {
       color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
     }
 
     .shell {
@@ -83,8 +77,8 @@
       margin: 0 auto;
       padding: 16px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 16px;
     }
 
@@ -96,42 +90,33 @@
 
     .logo small {
       display: block;
+      margin-top: 2px;
       font-size: 11px;
+      color: #8c958f;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #8d968f;
-      margin-top: 2px;
     }
 
     .nav {
       display: flex;
-      gap: 28px;
       align-items: center;
-      color: #57645c;
+      gap: 28px;
+      color: #58655d;
       font-size: 14px;
       font-weight: 500;
     }
 
-    .nav a {
-      text-decoration: none;
-    }
-
     .btn,
-    .btn-outline,
-    .btn-ghost {
-      appearance: none;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
+    .btn-outline {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
       min-height: 48px;
       padding: 12px 18px;
       border-radius: 999px;
       font-weight: 600;
       transition: 0.22s ease;
+      cursor: pointer;
     }
 
     .btn {
@@ -140,28 +125,22 @@
       box-shadow: 0 12px 24px rgba(242, 140, 40, 0.24);
     }
 
-    .btn:hover,
-    .btn-outline:hover,
-    .btn-ghost:hover {
-      transform: translateY(-1px);
-    }
-
     .btn-outline {
-      background: transparent;
-      border: 1px solid rgba(47, 93, 58, 0.18);
+      border: 1px solid rgba(47, 93, 58, 0.16);
       color: var(--green);
+      background: transparent;
     }
 
-    .btn-ghost {
-      background: rgba(47, 93, 58, 0.08);
-      color: var(--green);
+    .btn:hover,
+    .btn-outline:hover {
+      transform: translateY(-1px);
     }
 
     .hero {
       margin-top: 18px;
       border-radius: 34px;
       border: 1px solid rgba(47, 93, 58, 0.10);
-      background: linear-gradient(135deg, #e6efe4 0%, #f6f1e7 62%, #ffffff 100%);
+      background: linear-gradient(135deg, #e6efe4 0%, #f6f1e7 64%, #ffffff 100%);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
@@ -183,17 +162,17 @@
 
     h1 {
       margin: 10px 0 0;
-      font-size: clamp(2.2rem, 4vw, 4.4rem);
+      font-size: clamp(2.25rem, 4vw, 4.5rem);
       line-height: 1.02;
       color: var(--green-dark);
     }
 
     .hero p {
+      margin: 16px 0 0;
       max-width: 760px;
       color: var(--muted);
-      margin: 16px 0 0;
       font-size: 16px;
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
     .hero-badges {
@@ -206,13 +185,13 @@
     .mini-card {
       border: 1px solid rgba(47, 93, 58, 0.10);
       border-radius: 22px;
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.74);
       padding: 18px;
     }
 
-    .mini-card .icon {
-      width: 48px;
-      height: 48px;
+    .mini-icon {
+      width: 50px;
+      height: 50px;
       border-radius: 16px;
       display: flex;
       align-items: center;
@@ -225,39 +204,38 @@
     .mini-card strong {
       display: block;
       margin-top: 14px;
-      color: var(--green-dark);
       font-size: 16px;
+      color: var(--green-dark);
     }
 
     .mini-card span {
       display: block;
       margin-top: 6px;
-      color: var(--muted);
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.72;
+      color: var(--muted);
     }
 
     .hero-panel {
       background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.74);
       border-radius: 28px;
       padding: 20px;
-      align-self: stretch;
     }
 
     .hero-panel img {
       width: 100%;
-      height: 220px;
+      height: 230px;
       object-fit: cover;
       border-radius: 24px;
     }
 
     .hero-panel .panel-copy {
       margin-top: 18px;
-      padding: 18px;
       border-radius: 22px;
       background: var(--surface-soft);
       border: 1px solid rgba(47, 93, 58, 0.09);
+      padding: 18px;
     }
 
     .hero-panel h3 {
@@ -270,11 +248,11 @@
     .hero-panel p {
       margin: 10px 0 0;
       font-size: 14px;
-      line-height: 1.8;
       color: var(--muted);
+      line-height: 1.8;
     }
 
-    .contact-meta {
+    .meta-stack {
       display: grid;
       gap: 12px;
       margin-top: 18px;
@@ -294,11 +272,11 @@
     }
 
     .meta-row .label {
-      color: #758179;
-      font-size: 13px;
-      text-transform: uppercase;
+      font-size: 12px;
+      color: #79857d;
       letter-spacing: 0.16em;
       font-weight: 700;
+      text-transform: uppercase;
     }
 
     .meta-row .value {
@@ -308,14 +286,8 @@
       text-align: right;
     }
 
-    .content {
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 24px;
-      margin-top: 24px;
-    }
-
     .panel {
+      margin-top: 24px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -339,32 +311,158 @@
     }
 
     .section-copy {
-      color: var(--muted);
       margin: 12px 0 0;
-      line-height: 1.85;
+      color: var(--muted);
       font-size: 15px;
+      line-height: 1.85;
+      max-width: 920px;
     }
 
-    .info-grid {
+    .founders-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .founder-card {
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--surface-soft);
+      border: 1px solid rgba(47, 93, 58, 0.10);
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      min-height: 100%;
+    }
+
+    .founder-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      object-fit: cover;
+    }
+
+    .founder-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .founder-role {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(47, 93, 58, 0.09);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .founder-content h3 {
+      margin: 16px 0 0;
+      font-size: 28px;
+      line-height: 1.1;
+      color: var(--green-dark);
+    }
+
+    .founder-credentials {
+      margin-top: 8px;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .founder-content p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.82;
+    }
+
+    .bullet-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .bullet-list li+li {
+      margin-top: 6px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .team-card {
+      border-radius: 26px;
+      overflow: hidden;
+      background: var(--surface-soft);
+      border: 1px solid rgba(47, 93, 58, 0.10);
+      transition: 0.22s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .team-card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+    }
+
+    .team-card .content {
+      padding: 18px;
+      display: block;
+    }
+
+    .team-card h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.15;
+      color: var(--green-dark);
+    }
+
+    .team-card .role {
+      margin-top: 8px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .team-card p {
+      margin: 12px 0 0;
+      font-size: 14px;
+      line-height: 1.78;
+      color: var(--muted);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
       margin-top: 22px;
     }
 
-    .info-card {
-      border: 1px solid rgba(47, 93, 58, 0.10);
-      background: var(--surface-soft);
+    .value-card {
       border-radius: 24px;
+      background: linear-gradient(135deg, #f8fbf8, #ffffff);
+      border: 1px solid rgba(47, 93, 58, 0.10);
       padding: 20px;
-      transition: 0.22s ease;
     }
 
-    .info-card:hover {
-      transform: translateY(-2px);
-    }
-
-    .info-card .icon {
+    .value-icon {
       width: 52px;
       height: 52px;
       border-radius: 18px;
@@ -376,190 +474,55 @@
       font-size: 22px;
     }
 
-    .info-card h3 {
+    .value-card h3 {
       margin: 16px 0 0;
-      color: var(--green-dark);
       font-size: 18px;
+      color: var(--green-dark);
     }
 
-    .info-card p {
+    .value-card p {
       margin: 8px 0 0;
-      color: var(--muted);
       font-size: 14px;
       line-height: 1.75;
-    }
-
-    .form-shell {
-      margin-top: 22px;
-      display: grid;
-      gap: 16px;
-    }
-
-    .field-grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .field label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #79857d;
-    }
-
-    .input,
-    .select,
-    .textarea {
-      width: 100%;
-      border: 1px solid rgba(20, 20, 20, 0.10);
-      background: #fff;
-      border-radius: 18px;
-      padding: 15px 16px;
-      outline: none;
-      transition: 0.18s ease;
-    }
-
-    .textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .input:focus,
-    .select:focus,
-    .textarea:focus {
-      border-color: rgba(47, 93, 58, 0.34);
-      box-shadow: 0 0 0 3px rgba(47, 93, 58, 0.08);
-    }
-
-    .help-text {
-      margin-top: -2px;
-      font-size: 13px;
-      color: #849088;
-    }
-
-    .checkbox-row {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 16px;
-      border-radius: 20px;
-      background: var(--surface-soft);
-      border: 1px solid rgba(47, 93, 58, 0.08);
-    }
-
-    .checkbox-row input {
-      margin-top: 4px;
-      transform: scale(1.15);
-    }
-
-    .checkbox-row label {
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
     }
 
-    .notice,
-    .error,
-    .success {
-      border-radius: 18px;
-      padding: 14px 16px;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .notice {
-      background: #fff7ec;
-      color: #9b5f09;
-      border: 1px solid rgba(242, 140, 40, 0.25);
-    }
-
-    .error {
-      background: var(--danger-soft);
-      color: var(--danger);
-      border: 1px solid rgba(201, 71, 71, 0.18);
-    }
-
-    .success {
-      background: var(--success-soft);
-      color: var(--success);
-      border: 1px solid rgba(47, 122, 74, 0.16);
-    }
-
-    .status {
-      display: none;
-    }
-
-    .status.show {
-      display: block;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      margin-top: 4px;
-    }
-
-    .note-block {
-      margin-top: 22px;
-      border-radius: 24px;
+    .cta-block {
+      margin-top: 24px;
+      border-radius: 28px;
       background: linear-gradient(135deg, var(--green), var(--green-dark));
       color: white;
-      padding: 22px;
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      align-items: center;
     }
 
-    .note-block h3 {
+    .cta-block h3 {
       margin: 0;
-      font-size: 26px;
-      line-height: 1.2;
+      font-size: 32px;
+      line-height: 1.08;
     }
 
-    .note-block p {
+    .cta-block p {
       margin: 10px 0 0;
       color: rgba(255, 255, 255, 0.84);
       font-size: 14px;
-      line-height: 1.8;
+      line-height: 1.85;
+      max-width: 720px;
     }
 
-    .quick-links {
-      margin-top: 16px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .quick-link {
+    .cta-actions {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      text-decoration: none;
-      border-radius: 20px;
-      padding: 16px 18px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.10);
+      gap: 12px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .cta-block .btn-outline {
       color: white;
-    }
-
-    .quick-link strong {
-      display: block;
-      font-size: 15px;
-    }
-
-    .quick-link span {
-      display: block;
-      margin-top: 4px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.75);
+      border-color: rgba(255, 255, 255, 0.18);
     }
 
     footer {
@@ -572,16 +535,18 @@
       font-size: 14px;
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1180px) {
 
       .hero-grid,
-      .content {
+      .cta-block,
+      .founders-grid,
+      .team-grid,
+      .values-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-badges,
-      .info-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .founder-card {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -598,7 +563,9 @@
       }
 
       .hero,
-      .panel {
+      .panel,
+      .cta-block,
+      footer {
         border-radius: 24px;
       }
 
@@ -606,24 +573,21 @@
         padding: 20px;
       }
 
-      .panel {
+      .panel,
+      .cta-block {
         padding: 18px;
       }
 
-      .hero-badges,
-      .info-grid,
-      .field-grid-2 {
+      .hero-badges {
         grid-template-columns: 1fr;
       }
 
-      .actions {
-        flex-direction: column;
-        align-items: stretch;
+      .cta-actions {
+        justify-content: stretch;
       }
 
       .btn,
-      .btn-outline,
-      .btn-ghost {
+      .btn-outline {
         width: 100%;
       }
     }
@@ -1121,14 +1085,14 @@
 <body>
   <div class="aa-header" role="banner">
     <div class="aa-header__inner">
-      <a class="aa-header__brand" href="Landing page 2.html">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
+      <a class="aa-header__brand" href="index.html">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
       <nav aria-label="Main navigation" class="aa-header__nav">
-        <a class="aa-header__link" href="Landing page 2.html">Home</a>
-        <details class="aa-dd">
+        <a class="aa-header__link" href="index.html">Home</a>
+        <details class="aa-dd is-active">
           <summary>About</summary>
           <div class="aa-dd__menu">
-            <a href="Our Story.html">Our Story</a>
-            <a href="Meet the Team Page.html">Team Page</a>
+            <a class="is-active" href="Our Story.html">Our Story</a>
+            <a class="is-active" href="Meet the Team Page.html">Team Page</a>
           </div>
         </details>
         <details class="aa-dd">
@@ -1149,353 +1113,217 @@
             <a href="FAQs.html">FAQs</a>
             <a href="Career page.html">Careers</a>
             <a href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a>
-            <a href="#">Blog</a>
+            <a href="blog.html">Blog</a>
           </div>
         </details>
       </nav>
-      <a class="aa-header__cta" href="Contact Us page.html">Contact Us</a>
+      <a class="aa-header__cta" href="contact.html">Contact Us</a>
     </div>
   </div>
   <div class="shell">
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">Contact Active Adventure</div>
-          <h1>Premium support for bespoke family care requests.</h1>
+          <div class="eyebrow">Meet the Team</div>
+          <h1>The professionals behind our premium care architecture.</h1>
           <p>
-            Connect with our team for urgent care coordination, premium booking guidance, hotel and travel support,
-            or founder-led conversations about complex family requirements.
+            Active Adventure is built around experienced, values-led professionals who bring together clinical insight,
+            educational depth, structured family support, and founder-led accountability. Our team is carefully selected
+            not only for professional training, but for the way they engage children, support families, and represent
+            our standard of care in every environment.
           </p>
           <div class="hero-badges">
             <div class="mini-card">
-              <div class="icon">✦</div>
-              <strong>Founder-Led Review</strong>
-              <span>Complex requests can be escalated directly for bespoke planning and operational oversight.</span>
+              <div class="mini-icon">⚕</div>
+              <strong>Clinically Informed</strong>
+              <span>Nurse-led safety awareness supports our standards in complex, overnight, and health-sensitive
+                environments.</span>
             </div>
             <div class="mini-card">
-              <div class="icon">⚕</div>
-              <strong>Clinical &amp; Educational Expertise</strong>
-              <span>Requests are handled with dual-led awareness across safety, learning, and family routine
-                needs.</span>
+              <div class="mini-icon">⌘</div>
+              <strong>Education-Led</strong>
+              <span>Qualified teaching oversight shapes our approach to structure, development, and active
+                engagement.</span>
             </div>
             <div class="mini-card">
-              <div class="icon">↗</div>
-              <strong>Fast Response Pathway</strong>
-              <span>Urgent requests, travel bookings, and premium support cases are prioritised for response
-                routing.</span>
+              <div class="mini-icon">✦</div>
+              <strong>Founder-Governed</strong>
+              <span>Every placement reflects a managed-agency model with intentional matching and premium
+                accountability.</span>
             </div>
           </div>
         </div>
         <div class="hero-panel">
-          <img alt="Premium family care consultation"
+          <img alt="Active Adventure team discussion"
             src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
           <div class="panel-copy">
-            <h3>Direct access to our care coordination team.</h3>
+            <h3>Not a marketplace — a managed professional team.</h3>
             <p>
-              Whether you need a same-day consultation, premium travel support, or a founder-led discussion for a more
-              specialised request, our contact route is designed to move you quickly into the right care pathway.
+              We do not simply list caregivers. We build a coordinated team structure around trust, governance, and
+              specialist alignment, so families receive care that feels thoughtful, elevated, and operationally strong
+              from the first conversation.
             </p>
-            <div class="contact-meta">
+            <div class="meta-stack">
               <div class="meta-row">
-                <div class="label">Response Window</div>
-                <div class="value">Priority same-day review</div>
+                <div class="label">Leadership Model</div>
+                <div class="value">Founder-led oversight</div>
               </div>
               <div class="meta-row">
-                <div class="label">Coverage</div>
-                <div class="value">London, UK, hotels &amp; travel-led support</div>
+                <div class="label">Team Standard</div>
+                <div class="value">Clinical, educational &amp; behavioural insight</div>
               </div>
               <div class="meta-row">
-                <div class="label">Support Route</div>
-                <div class="value">Enquiry → review → tailored coordination</div>
+                <div class="label">Care Philosophy</div>
+                <div class="value">Active, structured, premium family support</div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <div class="content">
-      <section class="panel">
-        <div class="section-title">Direct Contact</div>
-        <h2 class="section-heading">Reach the right team quickly.</h2>
-        <p class="section-copy">
-          Use the enquiry form for general bookings, premium consultations, hotel or travel support, founder-led
-          reviews, or partnership enquiries. This upgraded version is backend-ready and can post directly to your server
-          endpoint.
-        </p>
-        <div class="info-grid">
-          <div class="info-card">
-            <div class="icon">✉</div>
-            <h3>Email</h3>
-            <p>contact@activeadventure.co.uk</p>
+    <section class="panel" id="founders">
+      <div class="section-title">Founders</div>
+      <h2 class="section-heading">The dual-lead vision shaping every placement.</h2>
+      <p class="section-copy">
+        Our leadership combines healthcare, education, and a premium service mindset. This dual-lead model is one of the
+        defining differentiators of Active Adventure — helping us support families with both emotional intelligence and
+        professional rigour.
+      </p>
+      <div class="founders-grid">
+        <article class="founder-card">
+          <img alt="Founder and nursing lead"
+            src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
+          <div class="founder-content">
+            <div class="founder-role">Founder &amp; Clinical Lead</div>
+            <h3>Clinical Safety, Regulation &amp; Family Reassurance</h3>
+            <div class="founder-credentials">NHS Registered Nurse Leadership</div>
+            <p>
+              Our clinical leadership ensures that safety is not treated as a marketing claim, but as an operational
+              discipline. This perspective supports our overnight services, travel care, complex family requirements,
+              and premium reassurance model.
+            </p>
+            <ul class="bullet-list">
+              <li>Guides safeguarding, safety standards, and escalation pathways.</li>
+              <li>Brings confidence to families requiring medically aware support.</li>
+              <li>Supports calm, structured decision-making for complex cases.</li>
+            </ul>
           </div>
-          <div class="info-card">
-            <div class="icon">☎</div>
-            <h3>Phone</h3>
-            <p>+44 7XXX XXX XXX</p>
+        </article>
+        <article class="founder-card">
+          <img alt="Founder and education lead"
+            src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
+          <div class="founder-content">
+            <div class="founder-role">Founder &amp; Education Lead</div>
+            <h3>Development, Engagement &amp; Structured Care Design</h3>
+            <div class="founder-credentials">Qualified Teaching &amp; Curriculum Perspective</div>
+            <p>
+              Our educational leadership shapes the way we think about children’s time, attention, curiosity, and
+              developmental rhythm. This is why our care style goes beyond supervision and into active, meaningful
+              engagement.
+            </p>
+            <ul class="bullet-list">
+              <li>Guides activity structure, routine design, and developmental quality.</li>
+              <li>Ensures care remains engaging, intentional, and age-considered.</li>
+              <li>Supports service design across Explorer, Executive, and Tourist care models.</li>
+            </ul>
           </div>
-          <div class="info-card">
-            <div class="icon">⌚</div>
-            <h3>Priority Hours</h3>
-            <p>Rapid response handling for premium, urgent, and travel-led requests.</p>
+        </article>
+      </div>
+    </section>
+    <section class="panel" id="specialists">
+      <div class="section-title">Specialist Team</div>
+      <h2 class="section-heading">Our professional care tiers.</h2>
+      <p class="section-copy">
+        Our wider team is organised through a clearly defined tiering system, allowing families to understand the
+        calibre and suitability of the professional supporting them. Each tier plays a different role within our care
+        architecture, while still operating inside the same premium standards framework.
+      </p>
+      <div class="team-grid">
+        <article class="team-card">
+          <img alt="Registered Nurse specialist"
+            src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
+          <div class="content">
+            <h3>NHS RN Specialist</h3>
+            <div class="role">Clinical Tier</div>
+            <p>
+              Our Registered Nurse specialists are best suited to overnight cases, medically aware environments,
+              travel-related complexity, and situations where parents value an elevated level of clinical reassurance.
+            </p>
           </div>
-          <div class="info-card">
-            <div class="icon">⌂</div>
-            <h3>Service Environments</h3>
-            <p>Private homes, hotels, event venues, travel settings, and bespoke family itineraries.</p>
+        </article>
+        <article class="team-card">
+          <img alt="Qualified teacher specialist"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
+          <div class="content">
+            <h3>Qualified Teacher (QTS)</h3>
+            <div class="role">Educational Tier</div>
+            <p>
+              Our teacher-led professionals support children through learning-minded engagement, outdoor structure,
+              curiosity-led activities, routine support, and thoughtful developmental pacing.
+            </p>
           </div>
+        </article>
+        <article class="team-card">
+          <img alt="Specialised support worker"
+            src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
+          <div class="content">
+            <h3>Specialised Support Worker</h3>
+            <div class="role">Behavioural &amp; Routine Tier</div>
+            <p>
+              Our support specialists bring consistency, practical family assistance, behavioural awareness, and
+              reliable routine continuity for families requiring structured and adaptable support.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="panel" id="values">
+      <div class="section-title">What Defines Our Team</div>
+      <h2 class="section-heading">The standards we hire for.</h2>
+      <p class="section-copy">
+        Credentials matter, but they are not enough on their own. Every member of our team is evaluated through the lens
+        of presence, professionalism, active engagement, and the ability to represent our brand with warmth and
+        confidence inside real family environments.
+      </p>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">✓</div>
+          <h3>Calm Professionalism</h3>
+          <p>Families trust us in private spaces, under pressure, and during change. We hire people who bring confidence
+            without friction.</p>
         </div>
-        <div class="note-block">
-          <h3>Prefer direct escalation?</h3>
-          <p>
-            For urgent hotel support, premium travel coordination, 4+ child enquiries, or high-complexity requests,
-            route the enquiry to founder review so the case can be triaged more carefully.
-          </p>
-          <div class="quick-links">
-            <a class="quick-link" href="mailto:contact@activeadventure.co.uk">
-              <div>
-                <strong>Email the team</strong>
-                <span>For premium and standard enquiry routing</span>
-              </div>
-              <div>→</div>
-            </a>
-            <a class="quick-link" href="tel:+447000000000">
-              <div>
-                <strong>Call priority line</strong>
-                <span>For urgent family care coordination</span>
-              </div>
-              <div>→</div>
-            </a>
-          </div>
+        <div class="value-card">
+          <div class="value-icon">↗</div>
+          <h3>Active Engagement</h3>
+          <p>We favour professionals who know how to truly engage children, not simply supervise them passively.</p>
         </div>
-      </section>
-      <section class="panel" id="contact-form">
-        <div class="section-title">Premium Enquiry Form</div>
-        <h2 class="section-heading">Submit your request</h2>
-        <p class="section-copy">
-          This form is designed to connect directly to your backend. Update the endpoint constant in the script to your
-          production API route, for example <code>/api/contact</code>.
+        <div class="value-card">
+          <div class="value-icon">⌂</div>
+          <h3>Family Sensitivity</h3>
+          <p>Our team understands the emotional texture of home, hotel, and travel-based childcare environments.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">✦</div>
+          <h3>Founder Standard</h3>
+          <p>Every placement should feel consistent with the level of care, polish, and accountability our founders
+            stand for.</p>
+        </div>
+      </div>
+    </section>
+    <section class="cta-block" id="contact">
+      <div>
+        <h3>Want to speak with the team directly?</h3>
+        <p>
+          Whether you are looking for premium booking guidance, founder-led review, or a tailored care recommendation,
+          our team can help you identify the right service path and the right professional fit.
         </p>
-        <form class="form-shell" id="premiumContactForm" novalidate="">
-          <div class="field-grid-2">
-            <div class="field">
-              <label for="fullName">Full Name</label>
-              <input class="input" id="fullName" name="fullName" placeholder="Your full name" required="" />
-            </div>
-            <div class="field">
-              <label for="email">Email Address</label>
-              <input class="input" id="email" name="email" placeholder="name@example.com" required="" type="email" />
-            </div>
-          </div>
-          <div class="field-grid-2">
-            <div class="field">
-              <label for="phone">Phone Number</label>
-              <input class="input" id="phone" name="phone" placeholder="+44 ..." required="" type="tel" />
-            </div>
-            <div class="field">
-              <label for="enquiryType">Enquiry Type</label>
-              <select class="select" id="enquiryType" name="enquiryType" required="">
-                <option value="">Select enquiry type</option>
-                <option value="booking">General booking enquiry</option>
-                <option value="premium_consultation">Premium consultation</option>
-                <option value="founder_review">Founder-led review</option>
-                <option value="hotel_travel">Hotel / travel support</option>
-                <option value="partnership">Partnership / collaboration</option>
-              </select>
-            </div>
-          </div>
-          <div class="field-grid-2">
-            <div class="field">
-              <label for="serviceInterest">Service Interest</label>
-              <select class="select" id="serviceInterest" name="serviceInterest" required="">
-                <option value="">Select service</option>
-                <option value="explorer">The Explorer</option>
-                <option value="executive">The Executive</option>
-                <option value="tourist">The Tourist</option>
-                <option value="overnight">The Overnight Companion</option>
-                <option value="unsure">Unsure / need guidance</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="locationType">Location Type</label>
-              <select class="select" id="locationType" name="locationType" required="">
-                <option value="">Select location</option>
-                <option value="private_home">Private Home</option>
-                <option value="hotel">Hotel</option>
-                <option value="travel">Travel / itinerary based</option>
-                <option value="event_venue">Event venue</option>
-              </select>
-            </div>
-          </div>
-          <div class="field-grid-2">
-            <div class="field">
-              <label for="childCount">Number of Children</label>
-              <input class="input" id="childCount" min="1" name="childCount" placeholder="Enter number" required=""
-                step="1" type="number" />
-              <div class="help-text">Required for operational review and staffing routing.</div>
-            </div>
-            <div class="field">
-              <label for="urgency">Request Urgency</label>
-              <select class="select" id="urgency" name="urgency" required="">
-                <option value="">Select urgency</option>
-                <option value="standard">Standard</option>
-                <option value="priority">Priority</option>
-                <option value="urgent_same_day">Urgent / same day</option>
-              </select>
-            </div>
-          </div>
-          <div class="notice" id="founderReviewNotice" style="display:none;">
-            Booking for 4+ children requires a second staff member. Please contact the Founder Lead.
-          </div>
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea class="textarea" id="message" name="message"
-              placeholder="Tell us about your family needs, preferred dates, schedule, environment, hotel or travel details, and any priorities..."
-              required=""></textarea>
-          </div>
-          <div class="checkbox-row">
-            <input id="consent" name="consent" required="" type="checkbox" />
-            <label for="consent">
-              I confirm that the details provided are accurate and I consent to being contacted by Active Adventure
-              regarding this enquiry.
-            </label>
-          </div>
-          <div class="error status" id="formError"></div>
-          <div class="success status" id="formSuccess"></div>
-          <div class="actions">
-            <div class="help-text">Backend-ready submission: posts JSON to your configured API endpoint.</div>
-            <button class="btn" id="submitBtn" type="submit">Send Premium Enquiry</button>
-          </div>
-        </form>
-      </section>
-    </div>
+      </div>
+      <div class="cta-actions">
+        <a class="btn" href="#">Contact Us</a>
+        <a class="btn-outline" href="#">Book a Consultation</a>
+      </div>
+    </section>
   </div>
-  <script>
-    const CONTACT_API_ENDPOINT = '/api/contact';
-
-    const form = document.getElementById('premiumContactForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const errorBox = document.getElementById('formError');
-    const successBox = document.getElementById('formSuccess');
-    const childCountInput = document.getElementById('childCount');
-    const founderReviewNotice = document.getElementById('founderReviewNotice');
-
-    function showStatus(element, message) {
-      element.textContent = message;
-      element.classList.add('show');
-    }
-
-    function hideStatus(element) {
-      element.textContent = '';
-      element.classList.remove('show');
-    }
-
-    function validateEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-    }
-
-    function validatePhone(phone) {
-      return phone.replace(/\D/g, '').length >= 10;
-    }
-
-    function updateFounderNotice() {
-      const count = Number(childCountInput.value || 0);
-      founderReviewNotice.style.display = count > 3 ? 'block' : 'none';
-    }
-
-    childCountInput.addEventListener('input', updateFounderNotice);
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      hideStatus(errorBox);
-      hideStatus(successBox);
-
-      const formData = new FormData(form);
-      const payload = {
-        fullName: String(formData.get('fullName') || '').trim(),
-        email: String(formData.get('email') || '').trim(),
-        phone: String(formData.get('phone') || '').trim(),
-        enquiryType: String(formData.get('enquiryType') || '').trim(),
-        serviceInterest: String(formData.get('serviceInterest') || '').trim(),
-        locationType: String(formData.get('locationType') || '').trim(),
-        childCount: Number(formData.get('childCount') || 0),
-        urgency: String(formData.get('urgency') || '').trim(),
-        message: String(formData.get('message') || '').trim(),
-        consent: formData.get('consent') === 'on',
-        requiresFounderReview: Number(formData.get('childCount') || 0) > 3,
-        source: 'contact_page'
-      };
-
-      if (!payload.fullName || payload.fullName.length < 2) {
-        showStatus(errorBox, 'Please enter your full name.');
-        return;
-      }
-
-      if (!validateEmail(payload.email)) {
-        showStatus(errorBox, 'Please enter a valid email address.');
-        return;
-      }
-
-      if (!validatePhone(payload.phone)) {
-        showStatus(errorBox, 'Please enter a valid phone number.');
-        return;
-      }
-
-      if (!payload.enquiryType || !payload.serviceInterest || !payload.locationType || !payload.urgency) {
-        showStatus(errorBox, 'Please complete all required selection fields.');
-        return;
-      }
-
-      if (!payload.childCount || payload.childCount < 1) {
-        showStatus(errorBox, 'Please enter the number of children.');
-        return;
-      }
-
-      if (!payload.message || payload.message.length < 20) {
-        showStatus(errorBox,
-          'Please provide a little more detail in your message so the team can triage your enquiry properly.');
-        return;
-      }
-
-      if (!payload.consent) {
-        showStatus(errorBox, 'Please confirm consent before submitting your enquiry.');
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-
-      try {
-        const response = await fetch(CONTACT_API_ENDPOINT, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) {
-          let message = 'Your enquiry could not be submitted right now. Please try again.';
-          try {
-            const errorData = await response.json();
-            if (errorData && errorData.message) message = errorData.message;
-          } catch (_) {}
-          throw new Error(message);
-        }
-
-        showStatus(successBox, payload.requiresFounderReview ?
-          'Your enquiry has been submitted and flagged for founder review. A member of the team will contact you shortly.' :
-          'Your enquiry has been submitted successfully. A member of the team will contact you shortly.');
-
-        form.reset();
-        updateFounderNotice();
-      } catch (error) {
-        showStatus(errorBox, error.message || 'Something went wrong while sending your enquiry.');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Premium Enquiry';
-      }
-    });
-  </script>
 
   <footer class="site-footer">
     <div class="footer-shell">

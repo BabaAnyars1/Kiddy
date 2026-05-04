@@ -152,11 +152,38 @@ if (bookingForm) {
   });
 }
 
+const contactFormStatus = document.getElementById('contact-form-status');
+
 if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    alert('Thank you for reaching out! We will reply to your message shortly.');
+    const formData = new FormData(contactForm);
+    const name = formData.get('name')?.trim();
+    const email = formData.get('email')?.trim();
+    const subject = formData.get('subject')?.trim();
+    const message = formData.get('message')?.trim();
+
+    if (!name || !email || !subject || !message) {
+      contactFormStatus.textContent = 'Please complete all required fields before sending your message.';
+      contactFormStatus.className = 'form-status error';
+      return;
+    }
+
+    contactFormStatus.textContent = `Thanks, ${name}! Your message has been received. We will reply to ${email} shortly.`;
+    contactFormStatus.className = 'form-status success';
     contactForm.reset();
+
+    setTimeout(() => {
+      contactFormStatus.textContent = '';
+      contactFormStatus.className = 'form-status';
+    }, 9000);
+  });
+}
+
+if (contactForm && contactFormStatus) {
+  contactForm.addEventListener('input', () => {
+    contactFormStatus.textContent = '';
+    contactFormStatus.className = 'form-status';
   });
 }
 
