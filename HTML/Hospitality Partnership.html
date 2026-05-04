@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hospitality & Concierge Partnerships | Active Adventure</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e7;
+  --surface:#ffffff;
+  --surface-soft:#f8fbf8;
+  --text:#223027;
+  --muted:#627067;
+  --green:#2f5d3a;
+  --green-dark:#1f3d28;
+  --orange:#f28c28;
+  --border:rgba(20,20,20,.08);
+  --shadow:0 18px 45px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+
+/* Unified header */
+.aa-header,.aa-header *{box-sizing:border-box}
+.aa-header{position:sticky;top:0;z-index:1000;width:100%;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(20,20,20,.08);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.aa-header__inner{max-width:1360px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.aa-header__brand{color:#2f5d3a;text-decoration:none;font-weight:700;letter-spacing:.08em;line-height:1.05;white-space:nowrap;flex:0 0 auto;font-size:20px}
+.aa-header__brand small{display:block;margin-top:4px;color:#8b958e;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.aa-header__nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.aa-header__link,.aa-header details>summary{list-style:none;cursor:pointer;color:#57645c;text-decoration:none;font-size:14px;font-weight:500;line-height:1.2;padding:8px 0;position:relative;white-space:nowrap;background:none;border:none}
+.aa-header details>summary::-webkit-details-marker{display:none}
+.aa-header__link:hover,.aa-header details>summary:hover,.aa-header details[open]>summary,.aa-header__link.is-active,.aa-header details.is-active>summary{color:#1f3d28}
+.aa-header__link.is-active::after,.aa-header details.is-active>summary::after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:2px;border-radius:999px;background:#f28c28}
+.aa-dd{position:relative}
+.aa-dd__menu{position:absolute;top:calc(100% + 10px);left:0;min-width:250px;max-width:min(280px,calc(100vw - 32px));background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:18px;box-shadow:0 18px 38px rgba(0,0,0,.10);padding:10px;display:none}
+.aa-dd--right .aa-dd__menu{left:auto;right:0}
+.aa-dd[open] .aa-dd__menu{display:block}
+.aa-dd__menu a{display:block;padding:10px 12px;border-radius:12px;text-decoration:none;color:#33423a;font-size:14px;line-height:1.4}
+.aa-dd__menu a:hover,.aa-dd__menu a.is-active{background:#f8fbf8;color:#2f5d3a}
+.aa-header__cta{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:999px;background:#f28c28;color:#fff;text-decoration:none;font-weight:600;white-space:nowrap;box-shadow:0 12px 24px rgba(242,140,40,.24);transition:transform .22s ease,box-shadow .22s ease}
+.aa-header__cta:hover{transform:translateY(-1px);box-shadow:0 14px 26px rgba(242,140,40,.28)}
+
+.shell{max-width:1320px;margin:auto;padding:0 16px 36px}
+.btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:999px;font-weight:600;transition:.22s ease;cursor:pointer;text-decoration:none}
+.btn{background:var(--orange);color:#fff;box-shadow:0 12px 24px rgba(242,140,40,.24)}
+.btn-outline{border:1px solid rgba(47,93,58,.16);color:var(--green);background:transparent}
+.btn:hover,.btn-outline:hover{transform:translateY(-1px)}
+
+.hero{margin-top:18px;border-radius:34px;border:1px solid rgba(47,93,58,.1);background:linear-gradient(135deg,#e6efe4 0%,#f6f1e7 62%,#ffffff 100%);box-shadow:var(--shadow);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;padding:28px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange)}
+h1{margin:10px 0 0;font-size:clamp(2.35rem,4vw,4.6rem);line-height:1.02;color:var(--green-dark)}
+.hero p{margin:16px 0 0;max-width:780px;color:var(--muted);font-size:16px;line-height:1.85}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.quick-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+.stat{border:1px solid rgba(47,93,58,.1);border-radius:22px;background:rgba(255,255,255,.74);padding:18px}
+.stat strong{display:block;color:var(--green-dark);font-size:15px}
+.stat span{display:block;margin-top:6px;color:var(--muted);font-size:13px;line-height:1.7}
+.hero-panel{background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.75);border-radius:28px;padding:20px}
+.hero-panel img{width:100%;height:285px;object-fit:cover;border-radius:24px}
+.hero-panel-copy{margin-top:18px;padding:18px;border-radius:22px;background:var(--surface-soft);border:1px solid rgba(47,93,58,.09)}
+.hero-panel-copy h3{margin:0;font-size:24px;line-height:1.2;color:var(--green-dark)}
+.hero-panel-copy p{margin:10px 0 0;font-size:14px;line-height:1.8;color:var(--muted)}
+
+.panel{margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);padding:24px}
+.section-title{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#8a948d;font-weight:700}
+.section-heading{margin:8px 0 0;font-size:2rem;line-height:1.12;color:var(--green-dark)}
+.section-copy{margin:12px 0 0;max-width:920px;color:var(--muted);font-size:15px;line-height:1.85}
+
+.partner-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+.partner-card{border-radius:26px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:22px;transition:.22s ease;min-height:100%}
+.partner-card:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(0,0,0,.06)}
+.partner-icon{width:56px;height:56px;border-radius:18px;background:rgba(47,93,58,.09);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:24px}
+.partner-card h3{margin:16px 0 0;font-size:22px;color:var(--green-dark);line-height:1.2}
+.partner-card p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
+.partner-card ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:14px;line-height:1.8}
+
+.dark-panel{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff}
+.dark-panel .section-title,.dark-panel .section-heading{color:#fff}
+.dark-panel .section-copy{color:rgba(255,255,255,.84)}
+.dark-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:22px}
+.dark-card{border-radius:24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:20px}
+.dark-card h3{margin:0;color:#fff;font-size:18px}
+.dark-card p{margin:10px 0 0;color:rgba(255,255,255,.82);font-size:14px;line-height:1.8}
+
+.process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:22px}
+.process-card{position:relative;border-radius:24px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:20px;overflow:hidden}
+.process-num{position:absolute;top:12px;right:16px;font-size:42px;font-weight:700;color:rgba(47,93,58,.08);line-height:1}
+.process-card h3{margin:18px 0 0;color:var(--green-dark);font-size:20px}
+.process-card p{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
+
+.form-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px;margin-top:22px}
+.form-card{border-radius:28px;background:var(--surface-soft);border:1px solid rgba(47,93,58,.1);padding:22px}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#79857d}
+.input,.select,.textarea{width:100%;border:1px solid rgba(20,20,20,.1);background:#fff;border-radius:18px;padding:14px 16px;outline:none;color:var(--text)}
+.textarea{min-height:130px;resize:vertical}
+.input:focus,.select:focus,.textarea:focus{border-color:rgba(47,93,58,.34);box-shadow:0 0 0 3px rgba(47,93,58,.08)}
+.info-card{border-radius:28px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;padding:24px}
+.info-card h3{margin:0;font-size:28px;line-height:1.1}
+.info-card p{margin:12px 0 0;color:rgba(255,255,255,.84);font-size:14px;line-height:1.82}
+.info-list{display:grid;gap:12px;margin-top:18px}
+.info-row{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.info-row strong{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.info-row span{display:block;margin-top:6px;color:#fff;font-size:14px;line-height:1.7}
+
+.cta{margin-top:24px;border-radius:28px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:white;padding:26px;display:grid;grid-template-columns:1.08fr .92fr;gap:20px;align-items:center}
+.cta h3{margin:0;font-size:32px;line-height:1.08}
+.cta p{margin:12px 0 0;color:rgba(255,255,255,.84);font-size:14px;line-height:1.84;max-width:720px}
+.cta-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
+.cta .btn-outline{color:white;border-color:rgba(255,255,255,.18)}
+
+/* Unified footer */
+.site-footer{margin-top:28px;background:linear-gradient(135deg,#163123,#1f3d28);color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.06);width:100vw;margin-left:calc(50% - 50vw);border-radius:0}
+.site-footer .footer-shell{max-width:1360px;margin:0 auto;padding:0 20px}
+.site-footer .footer-top{padding:34px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.08)}
+.site-footer .footer-brand-card,.site-footer .footer-news-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:24px;backdrop-filter:blur(8px)}
+.site-footer .footer-brand-mark{font-weight:700;letter-spacing:.08em;color:#fff;font-size:20px}
+.site-footer .footer-brand-mark small{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.site-footer .footer-brand-copy{margin:14px 0 0;color:rgba(255,255,255,.66);line-height:1.8;max-width:720px}
+.site-footer .footer-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.site-footer .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.site-footer .footer-news-title{margin:0;font-size:22px;color:#fff}
+.site-footer .footer-news-copy{margin:10px 0 0;color:rgba(255,255,255,.66);line-height:1.8}
+.site-footer .footer-form{display:flex;gap:10px;margin-top:18px}
+.site-footer .footer-input{flex:1;min-height:50px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.10);color:#fff;padding:0 16px;outline:none}
+.site-footer .footer-input::placeholder{color:rgba(255,255,255,.52)}
+.site-footer .footer-btn{min-height:50px;padding:0 18px;border:none;border-radius:999px;background:var(--orange);color:#fff;font-weight:600;cursor:pointer;white-space:nowrap}
+.site-footer .footer-middle{padding:28px 0;display:grid;grid-template-columns:1.05fr .8fr .8fr .85fr;gap:24px}
+.site-footer .footer-col-title{margin:0 0 14px;color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.site-footer .footer-col-copy{color:rgba(255,255,255,.66);line-height:1.8;margin:0}
+.site-footer .footer-links{list-style:none;margin:0;padding:0}
+.site-footer .footer-links li+li{margin-top:10px}
+.site-footer .footer-links a{color:rgba(255,255,255,.66);text-decoration:none;transition:.2s ease}
+.site-footer .footer-links a:hover{color:#fff}
+.site-footer .footer-contact-item{margin-bottom:12px}
+.site-footer .footer-contact-label{display:block;color:rgba(255,255,255,.48);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+.site-footer .footer-contact-value{color:rgba(255,255,255,.88);line-height:1.7}
+.site-footer .footer-bottom{padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.site-footer .footer-bottom-copy{color:rgba(255,255,255,.66);font-size:13px}
+.site-footer .footer-bottom-links{display:flex;flex-wrap:wrap;gap:14px}
+.site-footer .footer-bottom-links a{color:rgba(255,255,255,.66);font-size:13px;text-decoration:none}
+.site-footer .footer-bottom-links a:hover{color:#fff}
+
+@media (max-width:1180px){.hero-grid,.quick-stats,.partner-grid,.dark-grid,.process-grid,.form-grid,.cta,.site-footer .footer-top,.site-footer .footer-middle{grid-template-columns:1fr}}
+@media (max-width:980px){.aa-header__inner{flex-wrap:wrap;align-items:flex-start}.aa-header__nav{order:3;width:100%;justify-content:flex-start;gap:14px 18px}.aa-header__cta{margin-left:auto}}
+@media (max-width:760px){.hero,.panel,.cta{border-radius:24px}.hero-grid,.panel,.cta{padding:20px}.field-grid{grid-template-columns:1fr}.btn,.btn-outline{width:100%}.cta-actions{justify-content:stretch}.site-footer .footer-shell{padding:0 16px}.site-footer .footer-brand-card,.site-footer .footer-news-card{padding:20px;border-radius:20px}.site-footer .footer-form{flex-direction:column}.site-footer .footer-btn,.site-footer .footer-input{width:100%}.site-footer .footer-bottom{align-items:flex-start;flex-direction:column}}
+@media (max-width:640px){.aa-header__inner{padding:14px 16px}.aa-header__brand{width:100%}.aa-header__nav{width:100%;gap:12px 16px}.aa-dd{width:100%}.aa-dd__menu{position:static;min-width:unset;max-width:none;margin-top:8px;box-shadow:none}.aa-header__cta{width:100%}}
+</style>
+</head>
+<body>
+<div class="aa-header" role="banner">
+  <div class="aa-header__inner">
+    <a class="aa-header__brand" href="#">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
+    <nav aria-label="Main navigation" class="aa-header__nav">
+      <a class="aa-header__link" href="#">Home</a>
+      <details class="aa-dd">
+        <summary>About</summary>
+        <div class="aa-dd__menu">
+          <a href="#">Our Story</a>
+          <a href="#">Team Page</a>
+        </div>
+      </details>
+      <details class="aa-dd">
+        <summary>Services</summary>
+        <div class="aa-dd__menu">
+          <a href="#">The Executive</a>
+          <a href="#">The Overnight Companion</a>
+          <a href="#">The Tourist</a>
+          <a href="#">The Explorer</a>
+        </div>
+      </details>
+      <a class="aa-header__link" href="#">Pricing</a>
+      <a class="aa-header__link" href="#">Booking</a>
+      <details class="aa-dd aa-dd--right is-active">
+        <summary>Insights</summary>
+        <div class="aa-dd__menu">
+          <a href="#">Insight Hub</a>
+          <a href="#">FAQs</a>
+          <a href="#">Careers</a>
+          <a href="#">Safety &amp; Trust</a>
+          <a href="#">Blog</a>
+        </div>
+      </details>
+    </nav>
+    <a class="aa-header__cta" href="#">Contact Us</a>
+  </div>
+</div>
+
+<div class="shell">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Hospitality Partnership</div>
+        <h1>Luxury childcare support for hotels, concierge teams, and premium guest experiences.</h1>
+        <p>Active Adventure partners with hotels, private concierges, serviced residences, and hospitality teams to provide trusted childcare for families requiring professional, discreet, and structured support during their stay.</p>
+        <div class="hero-actions">
+          <a href="#partnership-enquiry" class="btn">Request Partnership Call</a>
+          <a href="#partnership-model" class="btn-outline">Explore the Model</a>
+        </div>
+        <div class="quick-stats">
+          <div class="stat"><strong>Guest-Ready Care</strong><span>Designed for hotel rooms, suites, residences, events, and changing itineraries.</span></div>
+          <div class="stat"><strong>Professional Tiers</strong><span>Registered Nurses, Qualified Teachers, and Specialist Support Workers.</span></div>
+          <div class="stat"><strong>Concierge Alignment</strong><span>A polished process built to support hospitality service standards.</span></div>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80" alt="Luxury hotel concierge setting">
+        <div class="hero-panel-copy">
+          <h3>Designed to complement premium hospitality.</h3>
+          <p>Our role is to extend the guest experience with childcare that feels discreet, reassuring, and professionally managed — not outsourced or improvised.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="partnership-model">
+    <div class="section-title">Partnership Model</div>
+    <h2 class="section-heading">A childcare extension for high-touch hospitality teams.</h2>
+    <p class="section-copy">Hotels and concierge teams need partners who can respond with discretion, speed, and professional quality. Our partnership model gives your team a trusted childcare pathway for families who expect exceptional standards throughout their stay.</p>
+    <div class="partner-grid">
+      <article class="partner-card">
+        <div class="partner-icon">🏨</div>
+        <h3>Hotel Guest Childcare</h3>
+        <p>Professional childcare support for families staying in hotels, suites, serviced apartments, and private residences.</p>
+        <ul>
+          <li>In-room care support</li>
+          <li>Evening and event coverage</li>
+          <li>Family itinerary assistance</li>
+        </ul>
+      </article>
+      <article class="partner-card">
+        <div class="partner-icon">🎩</div>
+        <h3>Concierge Referral Pathway</h3>
+        <p>A clear referral process for concierge desks, guest relations teams, private assistants, and lifestyle managers.</p>
+        <ul>
+          <li>Simple enquiry route</li>
+          <li>Structured intake questions</li>
+          <li>Professional matching review</li>
+        </ul>
+      </article>
+      <article class="partner-card">
+        <div class="partner-icon">🛡</div>
+        <h3>Trust-Led Delivery</h3>
+        <p>Care delivered with safeguarding awareness, professional conduct, privacy sensitivity, and premium service expectations.</p>
+        <ul>
+          <li>Enhanced professionalism</li>
+          <li>Safety-first thinking</li>
+          <li>Discreet communication</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel dark-panel">
+    <div class="section-title">Why Hospitality Teams Choose Us</div>
+    <h2 class="section-heading">A premium partner for moments when guest trust matters most.</h2>
+    <p class="section-copy">Childcare requests are high-trust, high-sensitivity enquiries. Our role is to help hospitality teams respond with confidence while preserving the standard of care and presentation expected by premium guests.</p>
+    <div class="dark-grid">
+      <article class="dark-card"><h3>Discretion</h3><p>Care delivered with privacy, calm communication, and awareness of hotel guest expectations.</p></article>
+      <article class="dark-card"><h3>Professional Fit</h3><p>Families can be matched to Registered Nurses, Qualified Teachers, or Specialist Support Workers.</p></article>
+      <article class="dark-card"><h3>Operational Ease</h3><p>Structured intake reduces friction for concierge and guest relations teams.</p></article>
+      <article class="dark-card"><h3>Brand Protection</h3><p>A premium care partner helps protect the guest experience when families request trusted childcare.</p></article>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title">Guest Scenarios</div>
+    <h2 class="section-heading">Where the partnership creates immediate value.</h2>
+    <p class="section-copy">Our hospitality childcare model is designed for family travel moments where reliability, professionalism, and discretion are essential.</p>
+    <div class="partner-grid">
+      <article class="partner-card">
+        <div class="partner-icon">🌙</div>
+        <h3>Evening Coverage</h3>
+        <p>Trusted childcare while parents attend dinner reservations, events, receptions, or private functions.</p>
+      </article>
+      <article class="partner-card">
+        <div class="partner-icon">✈️</div>
+        <h3>International Families</h3>
+        <p>Support for families visiting London who need reliable, professional care in an unfamiliar city.</p>
+      </article>
+      <article class="partner-card">
+        <div class="partner-icon">⚕️</div>
+        <h3>Specialist Reassurance</h3>
+        <p>RN-led or specialist support pathways for families who need added reassurance or more complex care consideration.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title">Referral Journey</div>
+    <h2 class="section-heading">A simple process for concierge and guest relations teams.</h2>
+    <p class="section-copy">The experience is structured so hospitality teams can introduce the service smoothly without managing the childcare details themselves.</p>
+    <div class="process-grid">
+      <article class="process-card"><div class="process-num">01</div><h3>Guest Request</h3><p>The concierge or guest relations team receives a childcare request from a family.</p></article>
+      <article class="process-card"><div class="process-num">02</div><h3>Referral</h3><p>The request is passed through a simple enquiry pathway with dates, timing, location, and requirements.</p></article>
+      <article class="process-card"><div class="process-num">03</div><h3>Care Match</h3><p>Active Adventure reviews the request and identifies the most suitable professional tier.</p></article>
+      <article class="process-card"><div class="process-num">04</div><h3>Confirmed Support</h3><p>The family receives a structured booking experience and confirmed care support.</p></article>
+    </div>
+  </section>
+
+  <section class="panel" id="partnership-enquiry">
+    <div class="section-title">Partnership Enquiry</div>
+    <h2 class="section-heading">Start a hospitality partnership conversation.</h2>
+    <p class="section-copy">Use this section as a partner intake area for hotels, concierges, private assistants, and hospitality groups interested in a trusted childcare referral pathway.</p>
+    <div class="form-grid">
+      <div class="form-card">
+        <div class="field-grid">
+          <div class="field">
+            <label for="hotelName">Hotel / Organisation</label>
+            <input id="hotelName" class="input" type="text" placeholder="Hotel or company name">
+          </div>
+          <div class="field">
+            <label for="contactName">Contact Name</label>
+            <input id="contactName" class="input" type="text" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" class="input" type="email" placeholder="name@example.com">
+          </div>
+          <div class="field">
+            <label for="role">Role</label>
+            <select id="role" class="select">
+              <option>Concierge</option>
+              <option>Guest Relations</option>
+              <option>Hotel Manager</option>
+              <option>Private Assistant</option>
+              <option>Luxury Travel / Lifestyle Manager</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="message">Partnership Interest</label>
+            <textarea id="message" class="textarea" placeholder="Tell us about the type of guest requests you receive and the partnership support you are looking for."></textarea>
+          </div>
+        </div>
+        <div style="margin-top:16px"><a href="#" class="btn">Submit Partnership Enquiry</a></div>
+      </div>
+      <div class="info-card">
+        <h3>Partnership expectations</h3>
+        <p>Our hospitality partnership model is designed to protect the guest experience, support concierge teams, and provide families with a professional care pathway.</p>
+        <div class="info-list">
+          <div class="info-row"><strong>Best suited for</strong><span>Luxury hotels, serviced residences, private concierges, lifestyle managers, and premium travel teams.</span></div>
+          <div class="info-row"><strong>Service style</strong><span>Discreet, professional, family-sensitive childcare support aligned with premium hospitality standards.</span></div>
+          <div class="info-row"><strong>Guest benefit</strong><span>Families receive a structured, trusted alternative to informal or last-minute childcare arrangements.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h3>Bring trusted childcare into your hospitality experience.</h3>
+      <p>For hotels and concierge teams, Active Adventure provides a refined childcare referral pathway that supports families while protecting your service standard.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#partnership-enquiry" class="btn">Request Partnership Call</a>
+      <a href="#" class="btn-outline">Download Partner Overview</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div class="footer-top">
+        <div class="footer-brand-card">
+          <div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div>
+          <p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers across homes, hotels, and travel environments.</p>
+          <div class="footer-trust-row">
+            <span class="footer-pill">NHS RN-Led</span>
+            <span class="footer-pill">Qualified Teachers</span>
+            <span class="footer-pill">Specialised Support</span>
+            <span class="footer-pill">Managed Agency</span>
+          </div>
+        </div>
+        <div class="footer-news-card">
+          <h3 class="footer-news-title">Stay connected</h3>
+          <p class="footer-news-copy">Receive updates on services, family resources, availability, and premium childcare insights.</p>
+          <form class="footer-form">
+            <input class="footer-input" type="email" placeholder="Enter your email address" />
+            <button class="footer-btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-middle">
+        <div>
+          <h4 class="footer-col-title">About</h4>
+          <p class="footer-col-copy">We provide premium, structured childcare through a carefully matched team of Registered Nurses, Qualified Teachers, and Specialised Support Workers.</p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#">The Explorer</a></li>
+            <li><a href="#">The Executive</a></li>
+            <li><a href="#">The Tourist</a></li>
+            <li><a href="#">Overnight Companion</a></li>
+            <li><a href="#">Booking</a></li>
+            <li><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Insights</h4>
+          <ul class="footer-links">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Insights Hub</a></li>
+            <li><a href="#">Parent Resources</a></li>
+            <li><a href="#">Media &amp; Press</a></li>
+            <li><a href="#">Documents</a></li>
+            <li><a href="#">Safety &amp; Trust</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <div class="footer-contact-item"><span class="footer-contact-label">Email</span><div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div></div>
+          <div class="footer-contact-item"><span class="footer-contact-label">Location</span><div class="footer-contact-value">London, United Kingdom</div></div>
+          <div class="footer-contact-item"><span class="footer-contact-label">Page</span><div class="footer-contact-value"><a href="#">Contact Us</a></div></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div>
+        <div class="footer-bottom-links"><a href="#">Safeguarding</a><a href="#">Support</a><a href="#">Contact</a></div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const headerDropdowns = document.querySelectorAll('.aa-header .aa-dd');
+headerDropdowns.forEach((dropdown) => {
+  dropdown.addEventListener('toggle', () => {
+    if (dropdown.open) {
+      headerDropdowns.forEach((other) => {
+        if (other !== dropdown) other.open = false;
+      });
+    }
+  });
+});
+
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.aa-header')) {
+    headerDropdowns.forEach((dropdown) => {
+      dropdown.open = false;
+    });
+  }
+});
+</script>
+</body>
+</html>

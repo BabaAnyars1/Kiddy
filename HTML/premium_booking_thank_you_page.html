@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Booking Request Received | Active Adventure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e7;--surface:#ffffff;--surface-soft:#f8fbf8;--text:#223027;--muted:#627067;--green:#2f5d3a;--green-dark:#1f3d28;--orange:#f28c28;--border:rgba(20,20,20,.08);--shadow:0 24px 60px rgba(0,0,0,.08)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.85;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+
+/* Exact unified header */
+.aa-header,.aa-header *{box-sizing:border-box}
+.aa-header{position:sticky;top:0;z-index:1000;width:100%;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(20,20,20,.08);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.aa-header__inner{max-width:1360px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.aa-header__brand{color:#2f5d3a;text-decoration:none;font-weight:700;letter-spacing:.08em;line-height:1.05;white-space:nowrap;flex:0 0 auto;font-size:20px}
+.aa-header__brand small{display:block;margin-top:4px;color:#8b958e;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.aa-header__nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.aa-header__link,.aa-header details>summary{list-style:none;cursor:pointer;color:#57645c;text-decoration:none;font-size:14px;font-weight:500;line-height:1.2;padding:8px 0;position:relative;white-space:nowrap;background:none;border:none}
+.aa-header details>summary::-webkit-details-marker{display:none}
+.aa-header__link:hover,.aa-header details>summary:hover,.aa-header details[open]>summary,.aa-header__link.is-active,.aa-header details.is-active>summary{color:#1f3d28}
+.aa-header__link.is-active::after,.aa-header details.is-active>summary::after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:2px;border-radius:999px;background:#f28c28}
+.aa-dd{position:relative}
+.aa-dd__menu{position:absolute;top:calc(100% + 10px);left:0;min-width:250px;max-width:min(280px,calc(100vw - 32px));background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:18px;box-shadow:0 18px 38px rgba(0,0,0,.10);padding:10px;display:none}
+.aa-dd--right .aa-dd__menu{left:auto;right:0}
+.aa-dd[open] .aa-dd__menu{display:block}
+.aa-dd__menu a{display:block;padding:10px 12px;border-radius:12px;text-decoration:none;color:#33423a;font-size:14px;line-height:1.4}
+.aa-dd__menu a:hover,.aa-dd__menu a.is-active{background:#f8fbf8;color:#2f5d3a}
+.aa-header__cta{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:999px;background:#f28c28;color:#fff;text-decoration:none;font-weight:600;white-space:nowrap;box-shadow:0 12px 24px rgba(242,140,40,.24);transition:transform .22s ease,box-shadow .22s ease}
+.aa-header__cta:hover{transform:translateY(-1px);box-shadow:0 14px 26px rgba(242,140,40,.28)}
+
+.shell{max-width:1220px;margin:0 auto;padding:0 16px 44px}
+.confirm-hero{margin-top:18px;border-radius:34px;border:1px solid rgba(47,93,58,.1);background:linear-gradient(135deg,#e6efe4 0%,#f6f1e7 58%,#fff 100%);box-shadow:var(--shadow);overflow:hidden;position:relative}
+.confirm-hero::before{content:'✓';position:absolute;right:-20px;bottom:-90px;font-size:260px;line-height:1;color:rgba(47,93,58,.055);font-weight:700;pointer-events:none}
+.confirm-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;padding:38px;position:relative;z-index:1}
+.status-pill{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:#fff;border:1px solid rgba(47,93,58,.1);color:var(--green);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.status-dot{width:10px;height:10px;border-radius:999px;background:var(--orange);box-shadow:0 0 0 6px rgba(242,140,40,.13)}
+h1{margin:16px 0 0;font-size:clamp(2.4rem,4.6vw,4.8rem);line-height:1.02;color:var(--green-dark);letter-spacing:-.04em}
+.confirm-hero p{margin:16px 0 0;max-width:760px;color:var(--muted);font-size:16px;line-height:1.9}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:999px;font-weight:600;transition:.22s ease;cursor:pointer;text-decoration:none}
+.btn{background:var(--orange);color:#fff;box-shadow:0 12px 24px rgba(242,140,40,.24)}
+.btn-outline{border:1px solid rgba(47,93,58,.16);color:var(--green);background:rgba(255,255,255,.58)}
+.btn:hover,.btn-outline:hover{transform:translateY(-1px)}
+.confirm-card{background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.78);border-radius:28px;padding:24px;box-shadow:0 14px 34px rgba(0,0,0,.05)}
+.confirm-card h2{margin:0;color:var(--green-dark);font-size:26px;line-height:1.15}
+.confirm-list{display:grid;gap:14px;margin-top:18px}
+.confirm-item{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start;padding:14px;border-radius:18px;background:var(--surface-soft);border:1px solid rgba(47,93,58,.08)}
+.confirm-icon{width:42px;height:42px;border-radius:15px;background:rgba(47,93,58,.09);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:18px;font-weight:700}
+.confirm-item strong{display:block;color:var(--green-dark);font-size:14px;line-height:1.3}
+.confirm-item span{display:block;margin-top:4px;color:var(--muted);font-size:13px;line-height:1.65}
+
+.panel{margin-top:24px;background:#fff;border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);padding:28px}
+.section-title{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#8a948d;font-weight:700}
+.section-heading{margin:8px 0 0;font-size:2rem;line-height:1.12;color:var(--green-dark)}
+.section-copy{margin:12px 0 0;max-width:900px;color:var(--muted);font-size:15px;line-height:1.85}
+.journey-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:22px}
+.journey-card{position:relative;border-radius:24px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:22px;overflow:hidden}
+.journey-num{position:absolute;right:16px;top:10px;font-size:44px;font-weight:700;color:rgba(47,93,58,.08);line-height:1}
+.journey-card h3{margin:20px 0 0;color:var(--green-dark);font-size:20px;line-height:1.2}
+.journey-card p{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
+.prep-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+.prep-card{border-radius:24px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:22px}
+.prep-icon{width:54px;height:54px;border-radius:18px;background:rgba(47,93,58,.09);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:23px;margin-bottom:14px}
+.prep-card h3{margin:0;color:var(--green-dark);font-size:20px;line-height:1.25}
+.prep-card p{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
+.notice{margin-top:22px;border-radius:22px;background:#fff7ec;border:1px solid rgba(242,140,40,.24);color:#8b5c14;padding:18px 20px;font-size:14px;line-height:1.8}
+
+.cta{margin-top:24px;border-radius:28px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;padding:30px;display:grid;grid-template-columns:1.08fr .92fr;gap:20px;align-items:center}
+.cta h3{margin:0;font-size:32px;line-height:1.08}
+.cta p{margin:12px 0 0;color:rgba(255,255,255,.84);font-size:14px;line-height:1.84;max-width:720px}
+.cta-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}.cta .btn-outline{color:#fff;border-color:rgba(255,255,255,.22);background:transparent}
+
+/* Exact advanced footer */
+.site-footer{margin-top:28px;background:linear-gradient(135deg,#163123,#1f3d28);color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.06);width:100vw;margin-left:calc(50% - 50vw);border-radius:0}
+.site-footer .footer-shell{max-width:1360px;margin:0 auto;padding:0 20px}
+.site-footer .footer-top{padding:34px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.08)}
+.site-footer .footer-brand-card,.site-footer .footer-news-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:24px;backdrop-filter:blur(8px)}
+.site-footer .footer-brand-mark{font-weight:700;letter-spacing:.08em;color:#fff;font-size:20px}
+.site-footer .footer-brand-mark small{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.site-footer .footer-brand-copy{margin:14px 0 0;color:rgba(255,255,255,.66);line-height:1.8;max-width:720px}
+.site-footer .footer-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.site-footer .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.site-footer .footer-news-title{margin:0;font-size:22px;color:#fff}
+.site-footer .footer-news-copy{margin:10px 0 0;color:rgba(255,255,255,.66);line-height:1.8}
+.site-footer .footer-form{display:flex;gap:10px;margin-top:18px}
+.site-footer .footer-input{flex:1;min-height:50px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.10);color:#fff;padding:0 16px;outline:none}
+.site-footer .footer-input::placeholder{color:rgba(255,255,255,.52)}
+.site-footer .footer-btn{min-height:50px;padding:0 18px;border:none;border-radius:999px;background:var(--orange);color:#fff;font-weight:600;cursor:pointer;white-space:nowrap}
+.site-footer .footer-middle{padding:28px 0;display:grid;grid-template-columns:1.05fr .8fr .8fr .85fr;gap:24px}
+.site-footer .footer-col-title{margin:0 0 14px;color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.site-footer .footer-col-copy{color:rgba(255,255,255,.66);line-height:1.8;margin:0}
+.site-footer .footer-links{list-style:none;margin:0;padding:0}
+.site-footer .footer-links li+li{margin-top:10px}
+.site-footer .footer-links a{color:rgba(255,255,255,.66);text-decoration:none;transition:.2s ease}
+.site-footer .footer-links a:hover{color:#fff}
+.site-footer .footer-contact-item{margin-bottom:12px}
+.site-footer .footer-contact-label{display:block;color:rgba(255,255,255,.48);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+.site-footer .footer-contact-value{color:rgba(255,255,255,.88);line-height:1.7}
+.site-footer .footer-bottom{padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.site-footer .footer-bottom-copy{color:rgba(255,255,255,.66);font-size:13px}
+.site-footer .footer-bottom-links{display:flex;flex-wrap:wrap;gap:14px}
+.site-footer .footer-bottom-links a{color:rgba(255,255,255,.66);font-size:13px;text-decoration:none}
+.site-footer .footer-bottom-links a:hover{color:#fff}
+
+@media (max-width:1180px){.confirm-grid,.journey-grid,.prep-grid,.cta,.site-footer .footer-top,.site-footer .footer-middle{grid-template-columns:1fr}}
+@media (max-width:980px){.aa-header__inner{flex-wrap:wrap;align-items:flex-start}.aa-header__nav{order:3;width:100%;justify-content:flex-start;gap:14px 18px}.aa-header__cta{margin-left:auto}}
+@media (max-width:760px){.confirm-hero,.panel,.cta{border-radius:24px}.confirm-grid,.panel,.cta{padding:22px}.hero-actions,.cta-actions{justify-content:stretch}.btn,.btn-outline{width:100%}.site-footer .footer-shell{padding:0 16px}.site-footer .footer-brand-card,.site-footer .footer-news-card{padding:20px;border-radius:20px}.site-footer .footer-form{flex-direction:column}.site-footer .footer-btn,.site-footer .footer-input{width:100%}.site-footer .footer-bottom{align-items:flex-start;flex-direction:column}}
+@media (max-width:640px){.aa-header__inner{padding:14px 16px}.aa-header__brand{width:100%}.aa-header__nav{width:100%;gap:12px 16px}.aa-dd{width:100%}.aa-dd__menu{position:static;min-width:unset;max-width:none;margin-top:8px;box-shadow:none}.aa-header__cta{width:100%}.shell{padding:0 16px 36px}}
+</style>
+</head>
+<body>
+<div class="aa-header" role="banner">
+  <div class="aa-header__inner">
+    <a class="aa-header__brand" href="#">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
+    <nav aria-label="Main navigation" class="aa-header__nav">
+      <a class="aa-header__link" href="#">Home</a>
+      <details class="aa-dd"><summary>About</summary><div class="aa-dd__menu"><a href="#">Our Story</a><a href="#">Team Page</a></div></details>
+      <details class="aa-dd"><summary>Services</summary><div class="aa-dd__menu"><a href="#">The Executive</a><a href="#">The Overnight Companion</a><a href="#">The Tourist</a><a href="#">The Explorer</a></div></details>
+      <a class="aa-header__link" href="#">Pricing</a>
+      <a class="aa-header__link is-active" href="#">Booking</a>
+      <details class="aa-dd aa-dd--right"><summary>Insights</summary><div class="aa-dd__menu"><a href="#">Insight Hub</a><a href="#">FAQs</a><a href="#">Careers</a><a href="#">Safety &amp; Trust</a><a href="#">Blog</a></div></details>
+    </nav>
+    <a class="aa-header__cta" href="#">Contact Us</a>
+  </div>
+</div>
+
+<div class="shell">
+  <section class="confirm-hero">
+    <div class="confirm-grid">
+      <div>
+        <div class="status-pill"><span class="status-dot"></span>Booking Request Received</div>
+        <h1>Thank you — your care request is now under review.</h1>
+        <p>Your booking request has been received successfully. Our team will now review the details, confirm suitability, and prepare the next step of your Active Adventure care journey.</p>
+        <p>For premium childcare, the confirmation process is intentionally structured. We review the environment, timings, child details, and professional match before finalising care.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn">Return to Home</a>
+          <a href="#next-steps" class="btn-outline">View Next Steps</a>
+        </div>
+      </div>
+      <aside class="confirm-card">
+        <h2>What happens immediately?</h2>
+        <div class="confirm-list">
+          <div class="confirm-item"><div class="confirm-icon">1</div><div><strong>Request captured</strong><span>Your submitted details are now ready for review.</span></div></div>
+          <div class="confirm-item"><div class="confirm-icon">2</div><div><strong>Care pathway checked</strong><span>We assess service type, location, timing, and support needs.</span></div></div>
+          <div class="confirm-item"><div class="confirm-icon">3</div><div><strong>Professional match considered</strong><span>We identify the appropriate RN, Teacher, or Support Worker pathway.</span></div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="panel" id="next-steps">
+    <div class="section-title">Next Steps</div>
+    <h2 class="section-heading">Your booking now moves through a premium review journey.</h2>
+    <p class="section-copy">The next stage is designed to protect quality, safety, and fit. We review each care request carefully before confirming the final arrangement.</p>
+    <div class="journey-grid">
+      <article class="journey-card"><div class="journey-num">01</div><h3>Review</h3><p>We review your requested service, date, time, location, child count, and any special considerations.</p></article>
+      <article class="journey-card"><div class="journey-num">02</div><h3>Clarify</h3><p>If anything requires confirmation, we may contact you for additional information before proceeding.</p></article>
+      <article class="journey-card"><div class="journey-num">03</div><h3>Match</h3><p>We consider the appropriate professional pathway based on your family’s care needs and environment.</p></article>
+      <article class="journey-card"><div class="journey-num">04</div><h3>Confirm</h3><p>Once reviewed, you receive confirmation and any final instructions needed before care begins.</p></article>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title">Prepare for Care</div>
+    <h2 class="section-heading">Helpful details to have ready.</h2>
+    <p class="section-copy">Having these details prepared helps us confirm your booking smoothly and ensure the professional assigned has the information needed to deliver safe, confident support.</p>
+    <div class="prep-grid">
+      <article class="prep-card"><div class="prep-icon">🧒</div><h3>Child details</h3><p>Names, ages, routines, allergies, medical needs, behavioural notes, and comfort preferences.</p></article>
+      <article class="prep-card"><div class="prep-icon">📍</div><h3>Location access</h3><p>Home access, hotel room details, concierge/security contact, parking, and arrival instructions.</p></article>
+      <article class="prep-card"><div class="prep-icon">☎</div><h3>Emergency contacts</h3><p>Parent/guardian contacts, authorised adults, and any relevant care or medical contacts.</p></article>
+    </div>
+    <div class="notice">For hotel-based bookings, please ensure room number, hotel security contact, and concierge or front desk details are available before care begins.</div>
+  </section>
+
+  <section class="cta">
+    <div>
+      <h3>Your request is in safe hands.</h3>
+      <p>Our team will review the booking details and guide you through the next step with clarity and care.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#" class="btn">Return Home</a>
+      <a href="#" class="btn-outline">Contact Our Team</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div class="footer-top">
+        <div class="footer-brand-card">
+          <div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div>
+          <p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers across homes, hotels, and travel environments.</p>
+          <div class="footer-trust-row"><span class="footer-pill">NHS RN-Led</span><span class="footer-pill">Qualified Teachers</span><span class="footer-pill">Specialised Support</span><span class="footer-pill">Managed Agency</span></div>
+        </div>
+        <div class="footer-news-card"><h3 class="footer-news-title">Stay connected</h3><p class="footer-news-copy">Receive updates on services, family resources, availability, and premium childcare insights.</p><form class="footer-form"><input class="footer-input" type="email" placeholder="Enter your email address" /><button class="footer-btn" type="submit">Subscribe</button></form></div>
+      </div>
+      <div class="footer-middle">
+        <div><h4 class="footer-col-title">About</h4><p class="footer-col-copy">We provide premium, structured childcare through a carefully matched team of Registered Nurses, Qualified Teachers, and Specialised Support Workers.</p></div>
+        <div><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="#">The Explorer</a></li><li><a href="#">The Executive</a></li><li><a href="#">The Tourist</a></li><li><a href="#">Overnight Companion</a></li><li><a href="#">Booking</a></li><li><a href="#">Pricing</a></li></ul></div>
+        <div><h4 class="footer-col-title">Insights</h4><ul class="footer-links"><li><a href="#">FAQs</a></li><li><a href="#">Insights Hub</a></li><li><a href="#">Parent Resources</a></li><li><a href="#">Media &amp; Press</a></li><li><a href="#">Documents</a></li><li><a href="#">Safety &amp; Trust</a></li></ul></div>
+        <div><h4 class="footer-col-title">Contact</h4><div class="footer-contact-item"><span class="footer-contact-label">Email</span><div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div></div><div class="footer-contact-item"><span class="footer-contact-label">Location</span><div class="footer-contact-value">London, United Kingdom</div></div><div class="footer-contact-item"><span class="footer-contact-label">Page</span><div class="footer-contact-value"><a href="#">Contact Us</a></div></div></div>
+      </div>
+      <div class="footer-bottom"><div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div><div class="footer-bottom-links"><a href="#">Safeguarding</a><a href="#">Support</a><a href="#">Contact</a></div></div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const headerDropdowns = document.querySelectorAll('.aa-header .aa-dd');
+headerDropdowns.forEach((dropdown) => {
+  dropdown.addEventListener('toggle', () => {
+    if (dropdown.open) {
+      headerDropdowns.forEach((other) => { if (other !== dropdown) other.open = false; });
+    }
+  });
+});
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('.aa-header')) headerDropdowns.forEach((dropdown) => { dropdown.open = false; });
+});
+</script>
+</body>
+</html>
