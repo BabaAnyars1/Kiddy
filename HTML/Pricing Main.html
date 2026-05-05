@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pricing | Active Adventure</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f6f1e7;
+  --surface:#ffffff;
+  --surface-soft:#f8fbf8;
+  --text:#223027;
+  --muted:#627067;
+  --green:#2f5d3a;
+  --green-dark:#1f3d28;
+  --orange:#f28c28;
+  --border:rgba(20,20,20,.08);
+  --shadow:0 18px 45px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.shell{max-width:1320px;margin:auto;padding:0 16px 36px}
+
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.header-inner{max-width:1320px;margin:auto;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.logo{font-weight:700;color:var(--green);letter-spacing:.08em}
+.logo small{display:block;margin-top:2px;font-size:11px;color:#8b958e;letter-spacing:.2em;text-transform:uppercase}
+.nav{display:flex;gap:24px;align-items:center;color:#5b6860;font-size:14px;font-weight:500;flex-wrap:wrap;justify-content:center}
+.btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:999px;font-weight:600;transition:.22s ease;cursor:pointer}
+.btn{background:var(--orange);color:#fff;box-shadow:0 12px 24px rgba(242,140,40,.24)}
+.btn-outline{border:1px solid rgba(47,93,58,.16);color:var(--green);background:transparent}
+.btn:hover,.btn-outline:hover{transform:translateY(-1px)}
+
+.hero{margin-top:18px;border-radius:34px;border:1px solid rgba(47,93,58,.1);background:linear-gradient(135deg,#e6efe4 0%,#f6f1e7 62%,#ffffff 100%);box-shadow:var(--shadow);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:24px;padding:28px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange)}
+h1{margin:10px 0 0;font-size:clamp(2.25rem,4vw,4.5rem);line-height:1.02;color:var(--green-dark)}
+.hero p{margin:16px 0 0;max-width:760px;color:var(--muted);font-size:16px;line-height:1.85}
+.quick-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+.stat{border:1px solid rgba(47,93,58,.1);border-radius:22px;background:rgba(255,255,255,.74);padding:18px}
+.stat strong{display:block;color:var(--green-dark);font-size:15px}.stat span{display:block;margin-top:6px;color:var(--muted);font-size:13px;line-height:1.7}
+.hero-panel{background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.75);border-radius:28px;padding:20px}
+.hero-panel img{width:100%;height:240px;object-fit:cover;border-radius:24px}
+.hero-panel-copy{margin-top:18px;padding:18px;border-radius:22px;background:var(--surface-soft);border:1px solid rgba(47,93,58,.09)}
+.hero-panel-copy h3{margin:0;font-size:24px;line-height:1.2;color:var(--green-dark)}
+.hero-panel-copy p{margin:10px 0 0;font-size:14px;line-height:1.8;color:var(--muted)}
+
+.panel{margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);padding:24px}
+.section-title{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#8a948d;font-weight:700}
+.section-heading{margin:8px 0 0;font-size:2rem;line-height:1.12;color:var(--green-dark)}
+.section-copy{margin:12px 0 0;max-width:900px;color:var(--muted);font-size:15px;line-height:1.85}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:22px}
+.price-card{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(180deg,#ffffff 0%,#f8fbf8 100%);border:1px solid rgba(47,93,58,.1);padding:22px;transition:.24s ease;min-height:100%;cursor:pointer}
+.price-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(0,0,0,.06)}
+.price-card.active{background:linear-gradient(135deg,var(--green),var(--green-dark));color:white;border-color:rgba(255,255,255,.08);box-shadow:0 18px 34px rgba(0,0,0,.10)}
+.price-card.active h3,.price-card.active .price,.price-card.active .subtitle{color:white}
+.price-card.active p,.price-card.active li,.price-card.active .per{color:rgba(255,255,255,.84)}
+.badge{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;background:rgba(47,93,58,.08);color:var(--green);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.price-card.active .badge{background:rgba(255,255,255,.12);color:white}
+.price-card h3{margin:16px 0 0;font-size:24px;line-height:1.12;color:var(--green-dark)}
+.subtitle{margin-top:8px;color:var(--orange);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.price{margin-top:16px;font-size:42px;font-weight:700;color:var(--green-dark);line-height:1}
+.per{margin-top:6px;font-size:13px;color:var(--muted)}
+.price-card p{margin:14px 0 0;font-size:14px;line-height:1.8;color:var(--muted)}
+.price-card ul{margin:16px 0 0;padding-left:18px;font-size:14px;line-height:1.75;color:var(--muted)}
+.price-card li+li{margin-top:6px}
+.inline-link{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange)}
+
+.tier-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+.tier-card{border-radius:26px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:22px;transition:.22s ease}
+.tier-card:hover{transform:translateY(-2px)}
+.tier-card .icon{width:54px;height:54px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:rgba(47,93,58,.09);color:var(--green);font-size:22px}
+.tier-card h3{margin:16px 0 0;font-size:22px;color:var(--green-dark)}
+.tier-card .price{font-size:38px}
+.tier-card p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
+
+.calculator{display:grid;grid-template-columns:.92fr 1.08fr;gap:18px;margin-top:22px}
+.calc-card{border-radius:28px;border:1px solid rgba(47,93,58,.1);background:var(--surface-soft);padding:22px}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#79857d}
+.select,.input{width:100%;border:1px solid rgba(20,20,20,.1);background:#fff;border-radius:18px;padding:14px 16px;outline:none}
+.select:focus,.input:focus{border-color:rgba(47,93,58,.34);box-shadow:0 0 0 3px rgba(47,93,58,.08)}
+.notice{margin-top:16px;border-radius:18px;padding:14px 16px;font-size:14px;line-height:1.65;background:#fff7ec;color:#9b5f09;border:1px solid rgba(242,140,40,.25)}
+.result-card{border-radius:28px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:white;padding:24px}
+.result-card h3{margin:0;font-size:28px;line-height:1.1}
+.result-card p{margin:12px 0 0;color:rgba(255,255,255,.84);font-size:14px;line-height:1.82}
+.result-stack{display:grid;gap:12px;margin-top:18px}
+.result-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.result-row:last-child{border-bottom:none}
+.result-row .label{font-size:13px;color:rgba(255,255,255,.72);text-transform:uppercase;letter-spacing:.16em;font-weight:700}
+.result-row .value{text-align:right;font-size:15px;font-weight:600}
+.total{margin-top:18px;border-radius:22px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);padding:18px}
+.total .amount{font-size:42px;font-weight:700;line-height:1;margin-top:6px}
+.mini-note{margin-top:10px;font-size:13px;color:rgba(255,255,255,.74)}
+
+.notes-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:22px}
+.note-card{border-radius:24px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:20px}
+.note-card h3{margin:0;font-size:18px;color:var(--green-dark)}
+.note-card p{margin:8px 0 0;font-size:14px;line-height:1.75;color:var(--muted)}
+
+.cta{margin-top:24px;border-radius:28px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:white;padding:26px;display:grid;grid-template-columns:1.08fr .92fr;gap:20px;align-items:center}
+.cta h3{margin:0;font-size:32px;line-height:1.08}
+.cta p{margin:12px 0 0;color:rgba(255,255,255,.84);font-size:14px;line-height:1.84;max-width:720px}
+.cta-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}.cta .btn-outline{color:white;border-color:rgba(255,255,255,.18)}
+.site-footer{margin-top:28px;background:linear-gradient(135deg,#163123,#1f3d28);color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.06);width:100vw;margin-left:calc(50% - 50vw);border-radius:0}
+.site-footer .footer-shell{max-width:1360px;margin:0 auto;padding:0 20px}
+.site-footer .footer-top{padding:34px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.08)}
+.site-footer .footer-brand-card,.site-footer .footer-news-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:24px;backdrop-filter:blur(8px)}
+.site-footer .footer-brand-mark{font-weight:700;letter-spacing:.08em;color:#fff;font-size:20px}
+.site-footer .footer-brand-mark small{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.site-footer .footer-brand-copy{margin:14px 0 0;color:rgba(255,255,255,.66);line-height:1.8;max-width:720px}
+.site-footer .footer-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.site-footer .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
+.site-footer .footer-news-title{margin:0;font-size:22px;color:#fff}
+.site-footer .footer-news-copy{margin:10px 0 0;color:rgba(255,255,255,.66);line-height:1.8}
+.site-footer .footer-form{display:flex;gap:10px;margin-top:18px}
+.site-footer .footer-input{flex:1;min-height:50px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.10);color:#fff;padding:0 16px;outline:none}
+.site-footer .footer-input::placeholder{color:rgba(255,255,255,.52)}
+.site-footer .footer-btn{min-height:50px;padding:0 18px;border:none;border-radius:999px;background:var(--orange);color:#fff;font-weight:600;cursor:pointer;white-space:nowrap}
+.site-footer .footer-middle{padding:28px 0;display:grid;grid-template-columns:1.05fr .8fr .8fr .85fr;gap:24px}
+.site-footer .footer-col-title{margin:0 0 14px;color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.site-footer .footer-col-copy{color:rgba(255,255,255,.66);line-height:1.8;margin:0}
+.site-footer .footer-links{list-style:none;margin:0;padding:0}
+.site-footer .footer-links li+li{margin-top:10px}
+.site-footer .footer-links a{color:rgba(255,255,255,.66);text-decoration:none;transition:.2s ease}
+.site-footer .footer-links a:hover{color:#fff}
+.site-footer .footer-contact-item{margin-bottom:12px}
+.site-footer .footer-contact-label{display:block;color:rgba(255,255,255,.48);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+.site-footer .footer-contact-value{color:rgba(255,255,255,.88);line-height:1.7}
+.site-footer .footer-bottom{padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.site-footer .footer-bottom-copy{color:rgba(255,255,255,.66);font-size:13px}
+.site-footer .footer-bottom-links{display:flex;flex-wrap:wrap;gap:14px}
+.site-footer .footer-bottom-links a{color:rgba(255,255,255,.66);font-size:13px;text-decoration:none}
+.site-footer .footer-bottom-links a:hover{color:#fff}
+
+@media (max-width:1180px){.hero-grid,.pricing-grid,.tier-grid,.calculator,.notes-grid,.cta,.quick-stats{grid-template-columns:1fr}}
+@media (max-width:760px){.header-inner{flex-direction:column;align-items:stretch}.nav{gap:14px 18px}.hero,.panel,.cta,footer{border-radius:24px}.hero-grid,.panel,.cta{padding:20px}.field-grid{grid-template-columns:1fr}.btn,.btn-outline{width:100%}.cta-actions{justify-content:stretch}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo">ACTIVE ADVENTURE<small>Premium Pricing</small></div>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#tiers">Professional Tiers</a>
+      <a href="#calculator">Estimator</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#calculator" class="btn">Estimate Your Care</a>
+  </div>
+</header>
+
+<div class="shell">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Pricing</div>
+        <h1>Pricing designed around considered care, professional calibre, and tailored service delivery.</h1>
+        <p>Our pricing reflects the level of professional assigned, the environment in which care is delivered, and the degree of flexibility required — all shaped to ensure the right fit rather than a one-size approach. This page offers a refined overview of how our services are structured, while preserving the flexibility to design care around your family’s specific needs.</p>
+        <div class="quick-stats">
+          <div class="stat"><strong>Service-Led Pricing</strong><span>Clear guidance across Explorer, Executive, Tourist, and Overnight care.</span></div>
+          <div class="stat"><strong>Professional Tiers</strong><span>Pricing shaped by NHS RN, Qualified Teacher, or Support Worker level.</span></div>
+          <div class="stat"><strong>Interactive Estimate</strong><span>Use the live estimator below to model likely pricing before enquiry.</span></div>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80" alt="Active Adventure pricing overview">
+        <div class="hero-panel-copy">
+          <h3>Transparent guidance with room for bespoke review.</h3>
+          <p>Families often need an early sense of pricing before moving into a booking conversation. This page balances clarity and premium flexibility, while still reflecting specialist variables such as travel, hotel care, late-hour support, and multi-child complexity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="services">
+    <div class="section-title">Service Pricing</div>
+    <h2 class="section-heading">Four care architectures with distinct pricing logic.</h2>
+    <p class="section-copy">These service ranges provide an initial view of how each care model is positioned. They are intended as guidance before a more considered booking review is completed.</p>
+    <div class="pricing-grid">
+      <article class="price-card" data-service-card="explorer">
+        <div class="badge">Explorer</div>
+        <h3>The Explorer</h3>
+        <div class="subtitle">Outdoor Focus</div>
+        <div class="price">£25+</div>
+        <div class="per">per hour</div>
+        <p>Designed for active, outdoor-led care with strong engagement, routine, and developmental structure during daytime bookings.</p>
+        <ul>
+          <li>Best suited to daytime home-based or activity-led support</li>
+          <li>Ideal when families want energetic, structured engagement</li>
+          <li>Commonly paired with Qualified Teacher support</li>
+        </ul>
+        <div class="inline-link">Select Service <span>→</span></div>
+      </article>
+
+      <article class="price-card active" data-service-card="executive">
+        <div class="badge">Executive</div>
+        <h3>The Executive</h3>
+        <div class="subtitle">Short & Long Hours</div>
+        <div class="price">£30+</div>
+        <div class="per">per hour</div>
+        <p>Our most flexible service architecture for high-pressure households requiring premium, responsive support across changing schedules.</p>
+        <ul>
+          <li>Suitable for short notice, longer shifts, and busy routines</li>
+          <li>Used across homes, premium households, and event-led schedules</li>
+          <li>Strong fit for Teacher or Support Worker placements</li>
+        </ul>
+        <div class="inline-link">Select Service <span>→</span></div>
+      </article>
+
+      <article class="price-card" data-service-card="tourist">
+        <div class="badge">Tourist</div>
+        <h3>The Tourist</h3>
+        <div class="subtitle">Holiday Traveller Care</div>
+        <div class="price">£35+</div>
+        <div class="per">per hour</div>
+        <p>Built for hotel-based, travel-aware support with added flexibility for unfamiliar environments, itinerary shifts, and premium concierge expectations.</p>
+        <ul>
+          <li>Hotel and travel settings often require higher operational oversight</li>
+          <li>Useful for international visitors and family itineraries</li>
+          <li>Frequently paired with RN or Teacher-led support</li>
+        </ul>
+        <div class="inline-link">Select Service <span>→</span></div>
+      </article>
+
+      <article class="price-card" data-service-card="overnight">
+        <div class="badge">Overnight</div>
+        <h3>Overnight Companion</h3>
+        <div class="subtitle">Specialised Care</div>
+        <div class="price">£300+</div>
+        <div class="per">per night / from overnight structure</div>
+        <p>Created for overnight support, specialist routines, and care environments where continuity, sleep oversight, and reassurance are priorities.</p>
+        <ul>
+          <li>Minimum overnight rule applies depending on professional type</li>
+          <li>RN or SSW with Overnight Companion requires 12-hour minimum</li>
+          <li>Clinical, behavioural, or hotel complexity can increase pricing</li>
+        </ul>
+        <div class="inline-link">Select Service <span>→</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="tiers">
+    <div class="section-title">Professional Tiers</div>
+    <h2 class="section-heading">Pricing shaped by the calibre of professional assigned.</h2>
+    <p class="section-copy">Service architecture matters, but so does the calibre of the specialist matched to the booking. These tiers help families understand why different services may scale differently in price.</p>
+    <div class="tier-grid">
+      <article class="tier-card">
+        <div class="icon">⚕</div>
+        <h3>Registered Nurse (RN)</h3>
+        <div class="price">£45+</div>
+        <div class="per">per hour</div>
+        <p>Our highest specialist tier, used for clinically aware environments, overnight oversight, travel complexity, and bookings where reassurance and medical confidence matter most.</p>
+      </article>
+
+      <article class="tier-card">
+        <div class="icon">⌘</div>
+        <h3>Qualified Teacher (QTS)</h3>
+        <div class="price">£35+</div>
+        <div class="per">per hour</div>
+        <p>Ideal for structured day support, educational engagement, outdoor-focused care, and routines where developmental quality is a visible priority.</p>
+      </article>
+
+      <article class="tier-card">
+        <div class="icon">✓</div>
+        <h3>Support Worker</h3>
+        <div class="price">£25+</div>
+        <div class="per">per hour</div>
+        <p>Best for consistent routine support, practical family assistance, and flexible shift coverage in lower-complexity or structure-led care settings.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="location-logic">
+    <div class="section-title">Environment-Based Pricing</div>
+    <h2 class="section-heading">Why pricing varies by location</h2>
+    <p class="section-copy">Different environments require different levels of coordination, awareness, and professional expertise. Rather than charging more arbitrarily, pricing reflects what is required to deliver the same high standard of care in each setting.</p>
+
+    <div class="notes-grid">
+      <article class="note-card">
+        <h3>Environment Complexity</h3>
+        <p>Private homes offer familiarity and stability. Hotels and travel settings introduce new surroundings, requiring greater awareness, adaptability, and safeguarding oversight.</p>
+      </article>
+
+      <article class="note-card">
+        <h3>Operational Coordination</h3>
+        <p>Hotel and travel bookings involve additional coordination such as concierge interaction, access management, and schedule alignment behind the scenes.</p>
+      </article>
+
+      <article class="note-card">
+        <h3>Professional Matching</h3>
+        <p>More complex environments often require higher-calibre professionals, such as Registered Nurses or experienced travel-aware carers.</p>
+      </article>
+
+      <article class="note-card">
+        <h3>Flexibility & Responsiveness</h3>
+        <p>Travel and hotel care frequently involves dynamic schedules, extended availability, and responsive adjustments throughout the booking.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="panel" id="calculator">
+    <div class="section-title">Interactive Estimator</div>
+    <h2 class="section-heading">Estimate your likely price before enquiry.</h2>
+    <p class="section-copy">This estimator provides an indicative planning view rather than a final confirmed quote. Care is designed in meaningful time blocks, with a minimum engagement of 4 hours. It is designed to help families understand how service type, professional tier, hours, and child count may affect pricing.</p>
+
+    <div class="calculator">
+      <div class="calc-card">
+        <div class="field-grid">
+          <div class="field">
+            <label for="serviceSelect">Service</label>
+            <select id="serviceSelect" class="select">
+              <option value="explorer">The Explorer</option>
+              <option value="executive">The Executive</option>
+              <option value="tourist">The Tourist</option>
+              <option value="overnight">Overnight Companion</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="tierSelect">Professional Tier</label>
+            <select id="tierSelect" class="select">
+              <option value="support">Support Worker</option>
+              <option value="teacher">Qualified Teacher (QTS)</option>
+              <option value="rn">Registered Nurse (RN)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="hoursInput">Hours</label>
+            <input id="hoursInput" class="input" type="number" min="4" step="1" value="6" />
+          </div>
+          <div class="field">
+            <label for="childrenInput">Children</label>
+            <input id="childrenInput" class="input" type="number" min="1" step="1" value="1" />
+          </div>
+          <div class="field">
+            <label for="locationSelect">Location</label>
+            <select id="locationSelect" class="select">
+              <option value="home">Private Home</option>
+              <option value="hotel">Hotel</option>
+              <option value="travel">Travel / Itinerary</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="paymentSelect">Payment Preference</label>
+            <select id="paymentSelect" class="select">
+              <option value="deposit">50% Deposit</option>
+              <option value="full">100% Full Payment</option>
+            </select>
+          </div>
+        </div>
+        <div id="estimateNotice" class="notice">This is a planning estimate. Final pricing is confirmed after booking review and scheduling checks.</div>
+      </div>
+
+      <div class="result-card">
+        <h3>Your Estimated Price</h3>
+        <p>The live estimate below adjusts as you change the booking variables. It applies your current rules, including the 12-hour minimum for RN or SSW assigned to Overnight Companion.</p>
+        <div class="result-stack">
+          <div class="result-row"><div class="label">Service</div><div class="value" id="resultService">The Explorer</div></div>
+          <div class="result-row"><div class="label">Professional</div><div class="value" id="resultTier">Support Worker</div></div>
+          <div class="result-row"><div class="label">Pricing Logic</div><div class="value" id="resultLogic">Standard hourly estimate</div></div>
+          <div class="result-row"><div class="label">Estimated Hours</div><div class="value" id="resultHours">6 hours</div></div>
+          <div class="result-row"><div class="label">Estimated Total</div><div class="value" id="resultTotal">£150</div></div>
+          <div class="result-row"><div class="label">Payment Due Now</div><div class="value" id="resultDueNow">£75</div></div>
+        </div>
+        <div class="total">
+          <div class="label" style="font-size:13px;color:rgba(255,255,255,.72);letter-spacing:.16em;text-transform:uppercase;font-weight:700">Recommended Budget</div>
+          <div class="amount" id="resultAmountLarge">£150</div>
+          <div class="mini-note" id="resultMiniNote">Estimate only. Final price may change with complexity, location, or founder review requirements.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-title">Important Pricing Notes</div>
+    <h2 class="section-heading">Considerations that shape your final care plan.</h2>
+    <p class="section-copy">These points explain how your final care plan may differ from a simple hourly estimate. They are also useful for setting expectations before a booking conversation begins.</p>
+    <div class="notes-grid">
+      <article class="note-card">
+        <h3>Overnight Care Structure</h3>
+        <p>Overnight care is structured to ensure continuity and professional oversight, with extended time blocks applied depending on the professional assigned.</p>
+      </article>
+      <article class="note-card">
+        <h3>Larger Family Groups</h3>
+        <p>Bookings involving 5 or more children are carefully structured with additional staffing considerations to ensure quality and safety.</p>
+      </article>
+      <article class="note-card">
+        <h3>Environment Consideration</h3>
+        <p>Hotel and travel-based care may involve additional coordination to ensure a seamless and professional experience.</p>
+      </article>
+      <article class="note-card">
+        <h3>Tailored Care Design</h3>
+        <p>Each care plan is refined following a detailed review of timing, environment, and professional match to ensure the right level of support.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div>
+      <h3>Design a care plan tailored to your family</h3>
+      <p>For a precise proposal shaped around your schedule, environment, and preferred level of support, speak directly with our team. We can turn your preferred structure into a confirmed care plan.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#" class="btn">Contact Us</a>
+      <a href="#" class="btn-outline">Start Booking</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+  <div class="footer-shell">
+    <div class="footer-top">
+      <div class="footer-brand-card">
+        <div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div>
+        <p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers across homes, hotels, and travel environments.</p>
+        <div class="footer-trust-row">
+          <span class="footer-pill">NHS RN-Led</span>
+          <span class="footer-pill">Qualified Teachers</span>
+          <span class="footer-pill">Specialised Support</span>
+          <span class="footer-pill">Managed Agency</span>
+        </div>
+      </div>
+      <div class="footer-news-card">
+        <h3 class="footer-news-title">Stay connected</h3>
+        <p class="footer-news-copy">Receive updates on services, family resources, availability, and premium childcare insights.</p>
+        <form class="footer-form">
+          <input class="footer-input" type="email" placeholder="Enter your email address" />
+          <button class="footer-btn" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-middle">
+      <div>
+        <h4 class="footer-col-title">About</h4>
+        <p class="footer-col-copy">We provide premium, structured childcare through a carefully matched team of Registered Nurses, Qualified Teachers, and Specialised Support Workers.</p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Services</h4>
+        <ul class="footer-links">
+          <li><a href="#">The Explorer</a></li>
+          <li><a href="#">The Executive</a></li>
+          <li><a href="#">The Tourist</a></li>
+          <li><a href="#">Overnight Companion</a></li>
+          <li><a href="#">Booking</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Insights</h4>
+        <ul class="footer-links">
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Insights Hub</a></li>
+          <li><a href="#">Parent Resources</a></li>
+          <li><a href="#">Media &amp; Press</a></li>
+          <li><a href="#">Documents</a></li>
+          <li><a href="#">Safety &amp; Trust</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Contact</h4>
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">Email</span>
+          <div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">Location</span>
+          <div class="footer-contact-value">London, United Kingdom</div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">Page</span>
+          <div class="footer-contact-value"><a href="#">Contact Us</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Safeguarding</a>
+        <a href="#">Support</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script>
+const serviceData = {
+  explorer: { name: 'The Explorer', base: 25, logic: 'Outdoor-focused daytime pricing' },
+  executive: { name: 'The Executive', base: 30, logic: 'Flexible premium household support' },
+  tourist: { name: 'The Tourist', base: 35, logic: 'Travel and hotel-aware support pricing' },
+  overnight: { name: 'Overnight Companion', base: 300, logic: 'Overnight service structure' }
+};
+
+const tierData = {
+  support: { name: 'Support Worker', hourly: 25 },
+  teacher: { name: 'Qualified Teacher (QTS)', hourly: 35 },
+  rn: { name: 'Registered Nurse (RN)', hourly: 45 }
+};
+
+const serviceSelect = document.getElementById('serviceSelect');
+const tierSelect = document.getElementById('tierSelect');
+const hoursInput = document.getElementById('hoursInput');
+const childrenInput = document.getElementById('childrenInput');
+const locationSelect = document.getElementById('locationSelect');
+const paymentSelect = document.getElementById('paymentSelect');
+const estimateNotice = document.getElementById('estimateNotice');
+const serviceCards = document.querySelectorAll('[data-service-card]');
+
+function formatMoney(value){
+  return `£${Math.round(value)}`;
+}
+
+function syncActiveServiceCard(){
+  serviceCards.forEach(card => {
+    card.classList.toggle('active', card.getAttribute('data-service-card') === serviceSelect.value);
+  });
+}
+
+function calculateEstimate(){
+  const service = serviceData[serviceSelect.value];
+  const tier = tierData[tierSelect.value];
+  let hours = Math.max(4, Number(hoursInput.value || 4));
+  const children = Math.max(1, Number(childrenInput.value || 1));
+  const location = locationSelect.value;
+  const payment = paymentSelect.value;
+
+  let logicText = 'Standard hourly estimate';
+  let total = 0;
+  let notes = [];
+
+  if(serviceSelect.value === 'overnight'){
+    if(tierSelect.value === 'rn' || tierSelect.value === 'support'){
+      if(hours < 12) hours = 12;
+      logicText = '12-hour minimum applied for Overnight Companion with RN or Support Worker';
+      notes.push('12-hour minimum rule applied.');
+    } else {
+      logicText = 'Overnight estimate using selected professional tier';
+    }
+    total = Math.max(service.base, tier.hourly * hours);
+  } else {
+    total = Math.max(service.base * hours / 1, tier.hourly * hours);
+    logicText = service.logic;
+  }
+
+  if(location === 'hotel'){
+    total += 25;
+    notes.push('Hotel environment uplift applied.');
+  }
+  if(location === 'travel'){
+    total += 40;
+    notes.push('Travel coordination uplift applied.');
+  }
+  if(children > 4){
+    notes.push('Founder review required for 5+ children.');
+  }
+
+  const founderReviewRequired = children > 4;
+  const dueNow = founderReviewRequired ? 0 : (payment === 'deposit' ? total * 0.5 : total);
+
+  document.getElementById('resultService').textContent = service.name;
+  document.getElementById('resultTier').textContent = tier.name;
+  document.getElementById('resultLogic').textContent = logicText;
+  document.getElementById('resultHours').textContent = `${hours} hours`;
+  document.getElementById('resultTotal').textContent = founderReviewRequired ? 'Custom Quote' : formatMoney(total);
+  document.getElementById('resultDueNow').textContent = founderReviewRequired ? 'Founder Review' : formatMoney(dueNow);
+  document.getElementById('resultAmountLarge').textContent = founderReviewRequired ? 'Custom Quote' : formatMoney(total);
+  document.getElementById('resultMiniNote').textContent = founderReviewRequired
+    ? 'Booking for 5+ children requires a second staff member. Please contact the Founder Lead for a tailored quote.'
+    : (notes.length ? notes.join(' ') : 'Estimate only. Final price may change with complexity, location, or founder review requirements.');
+
+  estimateNotice.innerHTML = founderReviewRequired
+    ? 'Booking for 5+ children requires a second staff member. Please contact the Founder Lead for a tailored quote.'
+    : 'This is a planning estimate. Final pricing is confirmed after booking review and scheduling checks.';
+  syncActiveServiceCard();
+}
+
+serviceCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const selectedService = card.getAttribute('data-service-card');
+    if (selectedService) {
+      serviceSelect.value = selectedService;
+      calculateEstimate();
+      document.getElementById('calculator').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+[serviceSelect, tierSelect, hoursInput, childrenInput, locationSelect, paymentSelect].forEach(el => {
+  el.addEventListener('input', calculateEstimate);
+  el.addEventListener('change', calculateEstimate);
+});
+
+calculateEstimate();
+</script>
+</body>
+</html>
