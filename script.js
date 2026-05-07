@@ -207,3 +207,19 @@ function escapeText(text) {
   div.textContent = text;
   return div.innerHTML;
 }
+
+// Dropdown menu hover functionality
+document.querySelectorAll('.aa-dd').forEach(dd => {
+  let closeTimeout;
+  
+  dd.addEventListener('mouseenter', () => {
+    clearTimeout(closeTimeout);
+    dd.setAttribute('open', '');
+  });
+  
+  dd.addEventListener('mouseleave', () => {
+    closeTimeout = setTimeout(() => {
+      dd.removeAttribute('open');
+    }, 300);
+  });
+});
