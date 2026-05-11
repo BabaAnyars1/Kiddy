@@ -118,7 +118,6 @@
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr);
-      grid-template-rows: 1fr;
       gap: 34px;
       align-items: center;
       padding: 54px 24px 72px;
@@ -1310,7 +1309,6 @@
       grid-template-columns: 1.08fr 0.92fr;
       gap: 24px;
       padding: 28px;
-      align-items: center;
     }
 
     .hero-badges {
