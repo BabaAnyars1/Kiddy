@@ -1,587 +1,1599 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Careers | Active Adventure</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<style>
-:root{
-  --bg:#f6f1e7;
-  --surface:#ffffff;
-  --soft:#f8fbf8;
-  --text:#223027;
-  --muted:#627067;
-  --green:#2f5d3a;
-  --dark:#1f3d28;
-  --orange:#f28c28;
-  --border:rgba(0,0,0,.08);
-  --shadow:0 18px 45px rgba(0,0,0,.07)
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-a{text-decoration:none;color:inherit}
-button,input,select,textarea{font:inherit}
-.shell{max-width:1320px;margin:auto;padding:0 16px 40px}
-header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:20}
-.header-inner{max-width:1320px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px}
-.logo{font-weight:700;color:var(--green);letter-spacing:.08em}
-.logo small{display:block;margin-top:2px;font-size:11px;color:#8b958e;letter-spacing:.2em;text-transform:uppercase}
-.nav{display:flex;gap:24px;align-items:center;color:#5b6860;font-size:14px;font-weight:500;flex-wrap:wrap;justify-content:center}
-.btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:999px;font-weight:600;transition:.22s ease;cursor:pointer}
-.btn{background:var(--orange);color:#fff;box-shadow:0 12px 24px rgba(242,140,40,.24);border:none}
-.btn-outline{border:1px solid rgba(47,93,58,.16);color:var(--green);background:transparent}
-.btn:hover,.btn-outline:hover{transform:translateY(-1px)}
-.hero,.panel,.cta,footer{margin-top:20px;border-radius:30px;border:1px solid rgba(47,93,58,.1);background:#fff;box-shadow:var(--shadow)}
-.hero{background:linear-gradient(135deg,#e6efe4 0%,#f6f1e7 62%,#fff 100%);overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:24px;padding:28px}
-.eyebrow,.section-title{font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--orange)}
-h1{margin:10px 0 0;font-size:clamp(2.2rem,4vw,4.4rem);line-height:1.02;color:var(--dark)}
-.hero p,.section-copy,.card p,.role-card p,.info-card p,.timeline-card p,.cta p{color:var(--muted);line-height:1.85}
-.hero-badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
-.mini-card{border:1px solid rgba(47,93,58,.1);border-radius:22px;background:rgba(255,255,255,.74);padding:18px}
-.mini-card strong{display:block;color:var(--dark);font-size:15px}
-.mini-card span{display:block;margin-top:6px;color:var(--muted);font-size:13px;line-height:1.72}
-.hero-panel{background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.75);border-radius:26px;padding:20px}
-.hero-panel img{width:100%;height:250px;object-fit:cover;border-radius:22px}
-.hero-panel-copy{margin-top:18px;padding:18px;border-radius:20px;background:var(--soft);border:1px solid rgba(47,93,58,.09)}
-.hero-panel-copy h3{margin:0;font-size:24px;line-height:1.18;color:var(--dark)}
-.panel{padding:24px}
-.section-heading{margin:8px 0 0;font-size:2rem;line-height:1.12;color:var(--green)}
-.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
-.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:22px}
-.card,.role-card,.info-card,.timeline-card{border-radius:24px;background:linear-gradient(135deg,#fff,#f8fbf8);border:1px solid rgba(47,93,58,.1);padding:22px;transition:.22s ease}
-.card:hover,.role-card:hover,.info-card:hover,.timeline-card:hover{transform:translateY(-2px)}
-.tag{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;background:rgba(47,93,58,.08);color:var(--green);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.card h3,.role-card h3,.info-card h3,.timeline-card h3{margin:14px 0 0;color:var(--dark);font-size:22px;line-height:1.14}
-.sub{margin-top:8px;color:var(--orange);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.icon{width:54px;height:54px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:rgba(47,93,58,.09);color:var(--green);font-size:22px}
-.role-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.pill{display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid rgba(47,93,58,.1);font-size:12px;font-weight:600;color:var(--green-dark)}
-.inline-link{margin-top:16px;display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
-.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:22px}
-.timeline-number{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
-.apply-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;margin-top:22px}
-.apply-panel{border-radius:28px;background:linear-gradient(135deg,var(--green),var(--dark));color:#fff;padding:24px}
-.apply-panel h3{margin:0;font-size:30px;line-height:1.08}
-.apply-panel p{margin:12px 0 0;color:rgba(255,255,255,.84);font-size:14px;line-height:1.85}
-.form-shell{border-radius:28px;border:1px solid rgba(47,93,58,.1);background:var(--soft);padding:22px}
-.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
-.field{display:flex;flex-direction:column;gap:8px}
-.field label{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#79857d}
-.input,.select,.textarea{width:100%;border:1px solid rgba(20,20,20,.1);background:#fff;border-radius:18px;padding:14px 16px;outline:none}
-.textarea{min-height:130px;resize:vertical}
-.input:focus,.select:focus,.textarea:focus{border-color:rgba(47,93,58,.34);box-shadow:0 0 0 3px rgba(47,93,58,.08)}
-.checkbox-row{display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:16px;border-radius:20px;background:#fff;border:1px solid rgba(47,93,58,.08)}
-.checkbox-row input{margin-top:4px;transform:scale(1.1)}
-.file-upload{margin-top:16px;border-radius:22px;border:1px dashed rgba(47,93,58,.22);background:#fff;padding:18px}
-.file-upload label{display:block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#79857d;margin-bottom:10px}
-.file-upload input[type="file"]{width:100%;border:1px solid rgba(20,20,20,.08);background:#fff;border-radius:16px;padding:14px 16px}
-.file-meta{margin-top:10px;font-size:13px;color:var(--muted);line-height:1.7}
-
-.guide-selected{margin-top:14px;border-radius:18px;padding:14px 16px;font-size:14px;line-height:1.65;background:#fff;border:1px solid rgba(47,93,58,.1);color:var(--green-dark)}
-.guide-selected strong{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#79857d;margin-bottom:6px}
-.notice,.success{margin-top:16px;border-radius:18px;padding:14px 16px;font-size:14px;line-height:1.65}
-.notice{background:#fff7ec;color:#9b5f09;border:1px solid rgba(242,140,40,.25)}
-.success{background:#eef8f1;color:#2f7a4a;border:1px solid rgba(47,122,74,.16)}
-.form-actions{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
-.cta{padding:26px;display:grid;grid-template-columns:1.08fr .92fr;gap:20px;align-items:center;background:linear-gradient(135deg,var(--green),var(--dark));color:#fff}
-.cta h3{margin:0;font-size:32px;line-height:1.08}
-.cta p{margin:12px 0 0;color:rgba(255,255,255,.84);max-width:700px}
-.cta-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
-.cta .btn-outline{color:#fff;border-color:rgba(255,255,255,.18)}
-footer{background:var(--dark);color:rgba(255,255,255,.84);padding:22px;text-align:center;font-size:14px}
-@media (max-width:1180px){.hero-grid,.grid-3,.grid-4,.two-col,.timeline,.apply-layout,.cta,.hero-badges{grid-template-columns:1fr}}
-@media(max-width:760px){.header-inner{flex-direction:column;align-items:stretch}.nav{gap:14px 18px}.hero,.panel,.cta,footer,.apply-panel,.form-shell{border-radius:24px}.hero-grid,.panel,.cta{padding:20px}.field-grid{grid-template-columns:1fr}.btn,.btn-outline{width:100%}.cta-actions,.form-actions{justify-content:stretch}}
-
-/* Unified site header */
-/* Standardized advanced footer */
-.site-footer{margin-top:48px;background:linear-gradient(135deg,#163123,#1f3d28);color:rgba(255,255,255,.88);border-top:1px solid rgba(255,255,255,.06)}
-.site-footer .footer-shell{max-width:1320px;margin:0 auto;padding:0 20px}
-.site-footer .footer-top{padding:34px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;border-bottom:1px solid rgba(255,255,255,.08)}
-.site-footer .footer-brand-card,.site-footer .footer-news-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:24px;padding:24px;backdrop-filter:blur(8px)}
-.site-footer .footer-brand-mark{font-weight:700;letter-spacing:.08em;color:#fff;font-size:20px}
-.site-footer .footer-brand-mark small{display:block;margin-top:4px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
-.site-footer .footer-brand-copy{margin:14px 0 0;color:rgba(255,255,255,.66);line-height:1.8;max-width:720px}
-.site-footer .footer-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.site-footer .footer-pill{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em}
-.site-footer .footer-news-title{margin:0;font-size:22px;color:#fff}
-.site-footer .footer-news-copy{margin:10px 0 0;color:rgba(255,255,255,.66);line-height:1.8}
-.site-footer .footer-form{display:flex;gap:10px;margin-top:18px}
-.site-footer .footer-input{flex:1;min-height:50px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.10);color:#fff;padding:0 16px;outline:none}
-.site-footer .footer-input::placeholder{color:rgba(255,255,255,.52)}
-.site-footer .footer-input:focus{border-color:rgba(242,140,40,.55);box-shadow:0 0 0 3px rgba(242,140,40,.12)}
-.site-footer .footer-btn{min-height:50px;padding:0 18px;border:none;border-radius:999px;background:#f28c28;color:#fff;font-weight:600;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
-.site-footer .footer-middle{padding:28px 0;display:grid;grid-template-columns:1.05fr .8fr .8fr .85fr;gap:24px}
-.site-footer .footer-col-title{margin:0 0 14px;color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
-.site-footer .footer-col-copy{color:rgba(255,255,255,.66);line-height:1.8;margin:0}
-.site-footer .footer-links{list-style:none;margin:0;padding:0}
-.site-footer .footer-links li+li{margin-top:10px}
-.site-footer .footer-links a{color:rgba(255,255,255,.66);text-decoration:none;transition:.2s ease}
-.site-footer .footer-links a:hover{color:#fff}
-.site-footer .footer-contact-item{margin-bottom:12px}
-.site-footer .footer-contact-label{display:block;color:rgba(255,255,255,.48);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
-.site-footer .footer-contact-value{color:rgba(255,255,255,.88);line-height:1.7}
-.site-footer .footer-bottom{padding:18px 0 28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
-.site-footer .footer-bottom-copy{color:rgba(255,255,255,.66);font-size:13px}
-.site-footer .footer-bottom-links{display:flex;flex-wrap:wrap;gap:14px}
-.site-footer .footer-bottom-links a{color:rgba(255,255,255,.66);font-size:13px;text-decoration:none}
-.site-footer .footer-bottom-links a:hover{color:#fff}
-@media (max-width:980px){.site-footer .footer-top,.site-footer .footer-middle{grid-template-columns:1fr}}
-@media (max-width:640px){.site-footer .footer-shell{padding:0 16px}.site-footer .footer-top{padding:24px 0 20px}.site-footer .footer-brand-card,.site-footer .footer-news-card{padding:20px;border-radius:20px}.site-footer .footer-form{flex-direction:column}.site-footer .footer-btn,.site-footer .footer-input{width:100%}.site-footer .footer-middle{padding:22px 0;gap:18px}.site-footer .footer-bottom{padding:16px 0 24px;align-items:flex-start;flex-direction:column}}
-
-
-
-
-/* Unified AA Header Start */
-html, body { overflow-x: hidden; }
-.aa-header, .aa-header * { box-sizing: border-box; }
-.aa-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  width:100%;
-  background:rgba(255,255,255,.94);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(20,20,20,.08);
-  box-shadow:0 2px 12px rgba(0,0,0,.04);
-}
-.aa-header__inner{
-  max-width:1360px;
-  margin:0 auto;
-  padding:16px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-}
-.aa-header__brand{
-  color:#2f5d3a;
-  text-decoration:none;
-  font-weight:700;
-  letter-spacing:.08em;
-  line-height:1.05;
-  white-space:nowrap;
-  flex:0 0 auto;
-  font-size:20px;
-}
-.aa-header__brand small{
-  display:block;
-  margin-top:4px;
-  color:#8b958e;
-  font-size:11px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-}
-.aa-header__nav{
-  flex:1 1 auto;
-  min-width:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:28px;
-  flex-wrap:wrap;
-}
-.aa-header__link,
-.aa-header details > summary{
-  list-style:none;
-  cursor:pointer;
-  color:#57645c;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:500;
-  line-height:1.2;
-  padding:8px 0;
-  position:relative;
-  white-space:nowrap;
-  background:none;
-  border:none;
-}
-.aa-header details > summary::-webkit-details-marker{display:none;}
-.aa-header__link:hover,
-.aa-header details > summary:hover,
-.aa-header details[open] > summary,
-.aa-header__link.is-active,
-.aa-header details.is-active > summary{
-  color:#1f3d28;
-}
-.aa-header__link.is-active::after,
-.aa-header details.is-active > summary::after{
-  content:'';
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-8px;
-  height:2px;
-  border-radius:999px;
-  background:#f28c28;
-}
-.aa-dd{position:relative;}
-.aa-dd__menu{
-  position:absolute;
-  top:calc(100% + 10px);
-  left:0;
-  min-width:250px;
-  max-width:min(280px, calc(100vw - 32px));
-  background:#fff;
-  border:1px solid rgba(20,20,20,.08);
-  border-radius:18px;
-  box-shadow:0 18px 38px rgba(0,0,0,.10);
-  padding:10px;
-  display:none;
-}
-.aa-dd--right .aa-dd__menu{left:auto; right:0;}
-.aa-dd[open] .aa-dd__menu{display:block;}
-.aa-dd__menu a{
-  display:block;
-  padding:10px 12px;
-  border-radius:12px;
-  text-decoration:none;
-  color:#33423a;
-  font-size:14px;
-  line-height:1.4;
-}
-.aa-dd__menu a:hover,
-.aa-dd__menu a.is-active{
-  background:#f8fbf8;
-  color:#2f5d3a;
-}
-.aa-header__cta{
-  flex:0 0 auto;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:48px;
-  padding:12px 18px;
-  border-radius:999px;
-  background:#f28c28;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  white-space:nowrap;
-  box-shadow:0 12px 24px rgba(242,140,40,.24);
-  transition:transform .22s ease, box-shadow .22s ease;
-}
-.aa-header__cta:hover{transform:translateY(-1px); box-shadow:0 14px 26px rgba(242,140,40,.28);}
-@media (max-width: 980px){
-  .aa-header__inner{flex-wrap:wrap; align-items:flex-start;}
-  .aa-header__nav{order:3; width:100%; justify-content:flex-start; gap:14px 18px;}
-  .aa-header__cta{margin-left:auto;}
-}
-@media (max-width: 640px){
-  .aa-header__inner{padding:14px 16px;}
-  .aa-header__brand{width:100%;}
-  .aa-header__nav{width:100%; gap:12px 16px;}
-  .aa-dd{width:100%;}
-  .aa-dd__menu{position:static; min-width:unset; max-width:none; margin-top:8px; box-shadow:none;}
-  .aa-header__cta{width:100%;}
-}
-/* Unified AA Header End */
-
-</style>
-</head>
-<body>
-<div class="aa-header" role="banner">
-<div class="aa-header__inner">
-<a class="aa-header__brand" href="index.html">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
-<nav aria-label="Main navigation" class="aa-header__nav">
-<a class="aa-header__link" href="index.html">Home</a>
-<details class="aa-dd">
-<summary>About</summary>
-<div class="aa-dd__menu">
-<a href="Our Story.html">Our Story</a>
-<a href="Meet the Team Page.html">Team Page</a>
-</div>
-</details>
-<details class="aa-dd">
-<summary>Services</summary>
-<div class="aa-dd__menu">
-<a href="The Executive.html">The Executive</a>
-<a href="The Overnight Companion.html">The Overnight Companion</a>
-<a href="The Tourist.html">The Tourist</a>
-<a href="The Explorer.html">The Explorer</a>
-</div>
-</details>
-<a class="aa-header__link" href="Pricing Main.html">Pricing</a>
-<a class="aa-header__link" href="Booking.html">Booking</a>
-<details class="aa-dd aa-dd--right is-active">
-<summary>Insights</summary>
-<div class="aa-dd__menu">
-<a class="is-active" href="Insight Hub.html">Insight Hub</a>
-<a class="is-active" href="FAQs.html">FAQs</a>
-<a class="is-active" href="Career page.html">Careers</a>
-<a class="is-active" href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a>
-<a class="is-active" href="blog.html">Blog</a>
-</div>
-</details>
-</nav>
-<a class="aa-header__cta" href="contact.html">Contact Us</a>
-</div>
-</div>
-<div class="shell">
-<section class="hero">
-<div class="hero-grid">
-<div>
-<div class="eyebrow">Careers</div>
-<h1>Join a premium care team built on trust, professionalism, and founder-led standards.</h1>
-<p>Active Adventure is not a listing platform or a casual childcare marketplace. We are a managed premium agency built around structured governance, specialist matching, and high-trust family environments. We recruit professionals who want to deliver meaningful care inside a system that values excellence, consistency, and operational support.</p>
-<div class="hero-badges">
-<div class="mini-card"><strong>Managed Agency Model</strong><span>You are supported inside a structured system with clear standards, not left to operate alone.</span></div>
-<div class="mini-card"><strong>Premium Client Environments</strong><span>Work with families who value professionalism, care quality, and thoughtful support.</span></div>
-<div class="mini-card"><strong>Defined Professional Tiers</strong><span>Roles are aligned to expertise, helping applicants understand where they best fit.</span></div>
-</div>
-</div>
-<div class="hero-panel">
-<img alt="Active Adventure recruitment" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80"/>
-<div class="hero-panel-copy">
-<h3>We recruit for alignment, not availability alone.</h3>
-<p>Our hiring model looks beyond credentials alone. We assess professionalism, communication, values, active engagement style, and the ability to represent the brand confidently inside private homes, hotels, and premium family environments.</p>
-</div>
-</div>
-</div>
-</section>
-<section class="panel" id="roles">
-<div class="section-title">Professional Pathways</div>
-<h2 class="section-heading">Our core recruitment tracks.</h2>
-<p class="section-copy">Each role category reflects a distinct level of responsibility, expertise, and service fit. Applicants can express interest in one pathway or multiple pathways depending on background and experience.</p>
-<div class="grid-3">
-<article class="role-card">
-<div class="tag">Clinical Tier</div>
-<h3>Registered Nurse (RN)</h3>
-<div class="sub">Overnight, complex and reassurance-led support</div>
-<p>Ideal for applicants with clinical confidence, calm decision-making, and experience supporting families in sensitive or higher-complexity environments.</p>
-<div class="role-meta">
-<span class="pill">NHS RN profile</span>
-<span class="pill">Overnight support</span>
-<span class="pill">Health-aware care</span>
-</div>
-<a class="inline-link pathway-link" data-pathway="Registered Nurse (RN)" href="#apply">Apply for RN Pathway <span>→</span></a>
-</article>
-<article class="role-card">
-<div class="tag">Educational Tier</div>
-<h3>Qualified Teacher (QTS)</h3>
-<div class="sub">Structured engagement and developmental quality</div>
-<p>Best suited to professionals who can bring energy, structure, outdoor leadership, and educational thoughtfulness into family care settings.</p>
-<div class="role-meta">
-<span class="pill">QTS / PGCE-aligned</span>
-<span class="pill">Explorer service fit</span>
-<span class="pill">Routine support</span>
-</div>
-<a class="inline-link pathway-link" data-pathway="Qualified Teacher (QTS)" href="#apply">Apply for Teacher Pathway <span>→</span></a>
-</article>
-<article class="role-card">
-<div class="tag">Support Tier</div>
-<h3>Specialised Support Worker</h3>
-<div class="sub">Practical reliability, routine continuity, flexible care</div>
-<p>Suitable for strong carers who bring stability, family awareness, professional presence, and adaptable support across changing schedules and environments.</p>
-<div class="role-meta">
-<span class="pill">Behavioural awareness</span>
-<span class="pill">Flexible scheduling</span>
-<span class="pill">Executive service fit</span>
-</div>
-<a class="inline-link pathway-link" data-pathway="Specialised Support Worker" href="#apply">Apply for Support Pathway <span>→</span></a>
-</article>
-</div>
-</section>
-<section class="panel">
-<div class="section-title">Why Work With Us</div>
-<h2 class="section-heading">A more structured, premium way to work in childcare.</h2>
-<p class="section-copy">Our recruitment system is designed to attract professionals who want higher standards, stronger brand alignment, and better operational clarity.</p>
-<div class="grid-4">
-<article class="info-card"><div class="icon">⌘</div><h3>Managed Placements</h3><p>Assignments are structured within a managed system, giving professionals more support and clearer expectations.</p></article>
-<article class="info-card"><div class="icon">✦</div><h3>Premium Households</h3><p>Work with families who are looking for calm, polished, high-trust childcare support rather than transactional coverage.</p></article>
-<article class="info-card"><div class="icon">↗</div><h3>Professional Pathways</h3><p>Applicants can align to clinical, educational, or structured support pathways depending on background and strengths.</p></article>
-<article class="info-card"><div class="icon">✓</div><h3>Brand Standards</h3><p>We prioritise communication quality, presence, values, and engagement style alongside formal qualifications.</p></article>
-</div>
-</section>
-<section class="panel" id="process">
-<div class="section-title">Recruitment Process</div>
-<h2 class="section-heading">How we select and onboard the right professionals.</h2>
-<p class="section-copy">Our process is intentionally selective because trust is central to the environments we work in. We assess both competency and fit with the way Active Adventure delivers care.</p>
-<div class="timeline">
-<article class="timeline-card"><div class="timeline-number">Step 01</div><h3>Application Review</h3><p>We review your background, qualifications, experience, and general alignment with our service model.</p></article>
-<article class="timeline-card"><div class="timeline-number">Step 02</div><h3>Verification Checks</h3><p>Identity, professional standing, and relevant credentials are checked to ensure suitability and compliance.</p></article>
-<article class="timeline-card"><div class="timeline-number">Step 03</div><h3>Founder Interview</h3><p>A final interview assesses professionalism, communication, care style, and alignment with our premium standards.</p></article>
-<article class="timeline-card"><div class="timeline-number">Step 04</div><h3>Placement Matching</h3><p>Successful candidates are matched to suitable service environments and client needs based on role fit and strengths.</p></article>
-</div>
-</section>
-<section class="panel">
-<div class="section-title">What We Look For</div>
-<h2 class="section-heading">Beyond credentials, we hire for presence and trust.</h2>
-<p class="section-copy">These qualities shape the way families experience our team and are part of the reason our recruitment model is more selective than a generic staffing approach.</p>
-<div class="two-col">
-<article class="card">
-<div class="tag">Professional Qualities</div>
-<h3>Core standards for every applicant</h3>
-<p>We value calm professionalism, emotional intelligence, strong communication, discretion, punctuality, and the ability to represent the brand well inside premium environments.</p>
-</article>
-<article class="card">
-<div class="tag">Care Style</div>
-<h3>Active, thoughtful, family-aware support</h3>
-<p>Applicants should demonstrate more than availability. We look for people who engage meaningfully, support routines well, and understand how to work with care, sensitivity, and structure.</p>
-</article>
-</div>
-</section>
-<section class="panel" id="apply">
-<div class="section-title">Application Route</div>
-<h2 class="section-heading">Start your application</h2>
-<p class="section-copy">This recruitment system page includes a premium application form layout. It is set up to submit directly to your recruitment email inbox using a form relay service, while keeping the page in standalone HTML.</p>
-<div class="apply-layout">
-<div class="apply-panel">
-<h3>Apply to join Active Adventure.</h3>
-<p>Use this application route to express interest in one of our professional pathways. Strong applicants are reviewed not only for qualifications, but also for communication, presence, and service alignment.</p>
-<div class="notice">When you publish this page, submit one test application and confirm the first email sent to your recruitment inbox to activate live submissions.</div>
-</div>
-<form action="https://formsubmit.co/jeffery.owusu@ojstrattech.co.uk" class="form-shell" enctype="multipart/form-data" id="careersApplicationForm" method="POST">
-<div class="field-grid">
-<div class="field">
-<label for="fullName">Full Name</label>
-<input class="input" id="fullName" name="full_name" placeholder="Your full name" required=""/>
-</div>
-<div class="field">
-<label for="email">Email Address</label>
-<input class="input" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
-</div>
-<div class="field">
-<label for="phone">Phone Number</label>
-<input class="input" id="phone" name="phone" placeholder="+44 ..." required="" type="tel"/>
-</div>
-<div class="field">
-<label for="roleSelect">Preferred Pathway</label>
-<select class="select" id="roleSelect" name="preferred_pathway" required="">
-<option>Registered Nurse (RN)</option>
-<option>Qualified Teacher (QTS)</option>
-<option>Specialised Support Worker</option>
-<option>Open to multiple pathways</option>
-</select>
-</div>
-<div class="field">
-<label for="experience">Years of Relevant Experience</label>
-<input class="input" id="experience" min="0" name="years_experience" placeholder="Enter years" required="" step="1" type="number"/>
-</div>
-<div class="field">
-<label for="location">Preferred Working Area</label>
-<input class="input" id="location" name="preferred_working_area" placeholder="London / flexible / travel" required=""/>
-</div>
-</div>
-<div class="field" style="margin-top:16px">
-<label for="statement">Professional Statement</label>
-<textarea class="textarea" id="statement" name="professional_statement" placeholder="Tell us about your background, the environments you work best in, and why you would be a strong fit for Active Adventure." required=""></textarea>
-</div>
-<div class="file-upload">
-<label for="resumeUpload">Upload Resume / CV</label>
-<input accept=".pdf,.doc,.docx" id="resumeUpload" name="resume_cv" required="" type="file"/>
-<div class="file-meta" id="resumeMeta">Accepted formats: PDF, DOC, DOCX. Your selected file will be sent with the application after form submission.</div>
-</div>
-<div class="guide-selected" id="selectedGuideInfo">
-<strong>Selected Role Guide</strong>
-          Full Recruitment Pack will be used unless a specific pathway is selected.
-        </div>
-<div class="checkbox-row">
-<input id="consent" name="consent_confirmed" required="" type="checkbox"/>
-<label for="consent">I confirm that the information provided is accurate and I consent to being contacted about recruitment opportunities with Active Adventure.</label>
-</div>
-<div class="success">Applications are configured to route to recruitment email. Replace the placeholder document links below with your final files and create the thank-you page referenced in the form settings.</div>
-<input name="_subject" type="hidden" value="New Active Adventure Careers Application"/>
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_template" type="hidden" value="table"/>
-<input name="_next" type="hidden" value="thank-you.html"/>
-<div class="form-actions">
-<button class="btn" type="submit">Submit Application</button>
-<a class="btn-outline" download="" href="HTML/Insight Downloadable documents page.html">Download Recruitment Pack</a>
-<button class="btn-outline" id="downloadRoleGuide" type="button">Download Full Recruitment Pack</button>
-</div>
-</form>
-</div>
-</section>
-<section class="cta" id="contact">
-<div>
-<h3>Want to discuss recruitment or role fit first?</h3>
-<p>If you are unsure which pathway best matches your background, or you want to ask about premium client environments, travel-led care, or overnight support roles, you can speak with the team before applying.</p>
-</div>
-<div class="cta-actions">
-<a class="btn" href="contact.html">Contact Recruitment</a>
-<a class="btn-outline" href="Meet the Team Page.html">View Team Page</a>
-</div>
-</section>
-</div>
-<script>
-const pathwayLinks = document.querySelectorAll('.pathway-link');
-const careersApplicationForm = document.getElementById('careersApplicationForm');
-const roleSelect = document.getElementById('roleSelect');
-const applySection = document.getElementById('apply');
-const resumeUpload = document.getElementById('resumeUpload');
-const resumeMeta = document.getElementById('resumeMeta');
-const downloadRoleGuide = document.getElementById('downloadRoleGuide');
-const selectedGuideInfo = document.getElementById('selectedGuideInfo');
-
-pathwayLinks.forEach((link) => {
-  link.addEventListener('click', (event) => {
-    event.preventDefault();
-    const selectedPathway = link.getAttribute('data-pathway');
-    if (selectedPathway && roleSelect) {
-      roleSelect.value = selectedPathway;
-      updateGuideUI();
-      // pathway selected; UI handled by guide-selected block
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Careers | Active Adventure</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f1e7;
+      --surface: #ffffff;
+      --soft: #f8fbf8;
+      --text: #223027;
+      --muted: #627067;
+      --green: #2f5d3a;
+      --dark: #1f3d28;
+      --orange: #f28c28;
+      --border: rgba(0, 0, 0, .08);
+      --shadow: 0 18px 45px rgba(0, 0, 0, .07)
     }
-    applySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
 
-resumeUpload.addEventListener('change', () => {
-  const file = resumeUpload.files && resumeUpload.files[0];
-  if (!file) {
-    resumeMeta.textContent = 'Accepted formats: PDF, DOC, DOCX. Your selected file will be sent with the application after form submission.';
-    return;
-  }
-  resumeMeta.textContent = `Selected file: ${file.name} (${Math.round(file.size / 1024)} KB). This file will be included with the application email submission.`;
-});
+    * {
+      box-sizing: border-box
+    }
 
-function updateGuideUI() {
-  const selectedRole = roleSelect.value;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility
+    }
 
-  if (selectedRole.includes('Nurse')) {
-    selectedGuideInfo.innerHTML = '<strong>Selected Role Guide</strong>Registered Nurse (RN) Role Guide & Employment Details';
-    downloadRoleGuide.textContent = 'Download RN Role Guide';
-  } else if (selectedRole.includes('Teacher')) {
-    selectedGuideInfo.innerHTML = '<strong>Selected Role Guide</strong>Qualified Teacher (QTS) Role Guide & Employment Details';
-    downloadRoleGuide.textContent = 'Download Teacher Role Guide';
-  } else if (selectedRole.includes('Support')) {
-    selectedGuideInfo.innerHTML = '<strong>Selected Role Guide</strong>Specialised Support Worker Role Guide & Employment Details';
-    downloadRoleGuide.textContent = 'Download Support Role Guide';
-  } else {
-    selectedGuideInfo.innerHTML = '<strong>Selected Role Guide</strong>Full Recruitment Pack';
-    downloadRoleGuide.textContent = 'Download Full Recruitment Pack';
-  }
-}
+    a {
+      text-decoration: none;
+      color: inherit
+    }
 
-careersApplicationForm.addEventListener('submit', () => {
-  selectedGuideInfo.innerHTML = '<strong>Status</strong>Submitting application... please wait while your application and CV are sent.';
-});
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit
+    }
 
-downloadRoleGuide.addEventListener('click', () => {
-  const selectedRole = roleSelect.value;
-  let filePath = 'HTML/Insight Downloadable documents page.html';
+    .shell {
+      max-width: 1320px;
+      margin: auto;
+      padding: 0 16px 40px
+    }
 
-  if (selectedRole.includes('Nurse')) {
-    filePath = 'HTML/Insight Downloadable documents page.html';
-  } else if (selectedRole.includes('Teacher')) {
-    filePath = 'HTML/Insight Downloadable documents page.html';
-  } else if (selectedRole.includes('Support')) {
-    filePath = 'HTML/Insight Downloadable documents page.html';
-  }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 20
+    }
 
-  window.open(filePath, '_blank');
-});
+    .header-inner {
+      max-width: 1320px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px
+    }
 
-roleSelect.addEventListener('change', updateGuideUI);
-updateGuideUI();
-</script>
+    .logo {
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: .08em
+    }
 
-<footer class="site-footer"><div class="footer-shell"><div class="footer-top"><div class="footer-brand-card"><div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div><p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers across homes, hotels, and travel environments.</p><div class="footer-trust-row"><span class="footer-pill">NHS RN-Led</span><span class="footer-pill">Qualified Teachers (QTS)</span><span class="footer-pill">Specialised Support</span><span class="footer-pill">London Coverage</span></div></div><div class="footer-news-card"><h3 class="footer-news-title">Stay connected</h3><p class="footer-news-copy">Receive updates on services, availability, and premium childcare insights.</p><form action="#" class="footer-form" method="post"><input class="footer-input" placeholder="Enter your email" type="email"/><button class="footer-btn" type="submit">Subscribe</button></form></div></div><div class="footer-middle"><div><h4 class="footer-col-title">Company</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="HTML/About Us.html">About Us</a></li><li><a href="Our Story.html">Our Story</a></li><li><a href="Meet the Team Page.html">Meet the Team</a></li><li><a href="Career page.html">Careers</a></li></ul></div><div><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="The Explorer.html">The Explorer</a></li><li><a href="The Executive.html">The Executive</a></li><li><a href="The Tourist.html">The Tourist</a></li><li><a href="The Overnight Companion.html">Overnight Companion</a></li><li><a href="Booking.html">Book Now</a></li><li><a href="Pricing Main.html">Pricing</a></li></ul></div><div><h4 class="footer-col-title">Insights</h4><ul class="footer-links"><li><a href="FAQs.html">FAQs</a></li><li><a href="Insight Hub.html">Insights Hub</a></li><li><a href="HTML/Insight Parent Resources_page.html">Parent Resources</a></li><li><a href="Insight Media &amp; Press page.html">Media &amp; Press</a></li><li><a href="HTML/Insight Downloadable documents page.html">Documents</a></li><li><a href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a></li><li><a href="blog.html">Blog</a></li></ul></div><div><h4 class="footer-col-title">Contact</h4><div class="footer-contact-item"><span class="footer-contact-label">Email</span><div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div></div><div class="footer-contact-item"><span class="footer-contact-label">Location</span><div class="footer-contact-value">London, United Kingdom</div></div><div style="margin-top:12px;"><a class="footer-btn" href="contact.html">Contact Us</a></div></div></div><div class="footer-bottom"><div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div><div class="footer-bottom-links"><a href="Safety &amp; Trust - Main.html">Safeguarding</a><a href="FAQs.html">Support</a><a href="contact.html">Contact</a></div></div></div></footer>  <script src="script.js"></script>`n</body>
+    .logo small {
+      display: block;
+      margin-top: 2px;
+      font-size: 11px;
+      color: #8b958e;
+      letter-spacing: .2em;
+      text-transform: uppercase
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: #5b6860;
+      font-size: 14px;
+      font-weight: 500;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+
+    .btn,
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: .22s ease;
+      cursor: pointer
+    }
+
+    .btn {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(242, 140, 40, .24);
+      border: none
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(47, 93, 58, .16);
+      color: var(--green);
+      background: transparent
+    }
+
+    .btn:hover,
+    .btn-outline:hover {
+      transform: translateY(-1px)
+    }
+
+    .hero,
+    .panel,
+    .cta,
+    footer {
+      margin-top: 20px;
+      border-radius: 30px;
+      border: 1px solid rgba(47, 93, 58, .1);
+      background: #fff;
+      box-shadow: var(--shadow)
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #e6efe4 0%, #f6f1e7 62%, #fff 100%);
+      overflow: hidden
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.06fr .94fr;
+      gap: 24px;
+      padding: 28px
+    }
+
+    .eyebrow,
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--orange)
+    }
+
+    h1 {
+      margin: 10px 0 0;
+      font-size: clamp(2.2rem, 4vw, 4.4rem);
+      line-height: 1.02;
+      color: var(--dark)
+    }
+
+    .hero p,
+    .section-copy,
+    .card p,
+    .role-card p,
+    .info-card p,
+    .timeline-card p,
+    .cta p {
+      color: var(--muted);
+      line-height: 1.85
+    }
+
+    .hero-badges {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px
+    }
+
+    .mini-card {
+      border: 1px solid rgba(47, 93, 58, .1);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .74);
+      padding: 18px
+    }
+
+    .mini-card strong {
+      display: block;
+      color: var(--dark);
+      font-size: 15px
+    }
+
+    .mini-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.72
+    }
+
+    .hero-panel {
+      background: rgba(255, 255, 255, .82);
+      border: 1px solid rgba(255, 255, 255, .75);
+      border-radius: 26px;
+      padding: 20px
+    }
+
+    .hero-panel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 22px
+    }
+
+    .hero-panel-copy {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 20px;
+      background: var(--soft);
+      border: 1px solid rgba(47, 93, 58, .09)
+    }
+
+    .hero-panel-copy h3 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.18;
+      color: var(--dark)
+    }
+
+    .panel {
+      padding: 24px
+    }
+
+    .section-heading {
+      margin: 8px 0 0;
+      font-size: 2rem;
+      line-height: 1.12;
+      color: var(--green)
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px
+    }
+
+    .card,
+    .role-card,
+    .info-card,
+    .timeline-card {
+      border-radius: 24px;
+      background: linear-gradient(135deg, #fff, #f8fbf8);
+      border: 1px solid rgba(47, 93, 58, .1);
+      padding: 22px;
+      transition: .22s ease
+    }
+
+    .card:hover,
+    .role-card:hover,
+    .info-card:hover,
+    .timeline-card:hover {
+      transform: translateY(-2px)
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(47, 93, 58, .08);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase
+    }
+
+    .card h3,
+    .role-card h3,
+    .info-card h3,
+    .timeline-card h3 {
+      margin: 14px 0 0;
+      color: var(--dark);
+      font-size: 22px;
+      line-height: 1.14
+    }
+
+    .sub {
+      margin-top: 8px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(47, 93, 58, .09);
+      color: var(--green);
+      font-size: 22px
+    }
+
+    .role-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(47, 93, 58, .1);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green-dark)
+    }
+
+    .inline-link {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px
+    }
+
+    .timeline-number {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--orange)
+    }
+
+    .apply-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+      margin-top: 22px
+    }
+
+    .apply-panel {
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--green), var(--dark));
+      color: #fff;
+      padding: 24px
+    }
+
+    .apply-panel h3 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.08
+    }
+
+    .apply-panel p {
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, .84);
+      font-size: 14px;
+      line-height: 1.85
+    }
+
+    .form-shell {
+      border-radius: 28px;
+      border: 1px solid rgba(47, 93, 58, .1);
+      background: var(--soft);
+      padding: 22px
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #79857d
+    }
+
+    .input,
+    .select,
+    .textarea {
+      width: 100%;
+      border: 1px solid rgba(20, 20, 20, .1);
+      background: #fff;
+      border-radius: 18px;
+      padding: 14px 16px;
+      outline: none
+    }
+
+    .textarea {
+      min-height: 130px;
+      resize: vertical
+    }
+
+    .input:focus,
+    .select:focus,
+    .textarea:focus {
+      border-color: rgba(47, 93, 58, .34);
+      box-shadow: 0 0 0 3px rgba(47, 93, 58, .08)
+    }
+
+    .checkbox-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(47, 93, 58, .08)
+    }
+
+    .checkbox-row input {
+      margin-top: 4px;
+      transform: scale(1.1)
+    }
+
+    .file-upload {
+      margin-top: 16px;
+      border-radius: 22px;
+      border: 1px dashed rgba(47, 93, 58, .22);
+      background: #fff;
+      padding: 18px
+    }
+
+    .file-upload label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #79857d;
+      margin-bottom: 10px
+    }
+
+    .file-upload input[type="file"] {
+      width: 100%;
+      border: 1px solid rgba(20, 20, 20, .08);
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 16px
+    }
+
+    .file-meta {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7
+    }
+
+    .guide-selected {
+      margin-top: 14px;
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 14px;
+      line-height: 1.65;
+      background: #fff;
+      border: 1px solid rgba(47, 93, 58, .1);
+      color: var(--green-dark)
+    }
+
+    .guide-selected strong {
+      display: block;
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #79857d;
+      margin-bottom: 6px
+    }
+
+    .notice,
+    .success {
+      margin-top: 16px;
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 14px;
+      line-height: 1.65
+    }
+
+    .notice {
+      background: #fff7ec;
+      color: #9b5f09;
+      border: 1px solid rgba(242, 140, 40, .25)
+    }
+
+    .success {
+      background: #eef8f1;
+      color: #2f7a4a;
+      border: 1px solid rgba(47, 122, 74, .16)
+    }
+
+    .form-actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .cta {
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 20px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--green), var(--dark));
+      color: #fff
+    }
+
+    .cta h3 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.08
+    }
+
+    .cta p {
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, .84);
+      max-width: 700px
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      flex-wrap: wrap
+    }
+
+    .cta .btn-outline {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .18)
+    }
+
+    footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, .84);
+      padding: 22px;
+      text-align: center;
+      font-size: 14px
+    }
+
+    @media (max-width:1180px) {
+
+      .hero-grid,
+      .grid-3,
+      .grid-4,
+      .two-col,
+      .timeline,
+      .apply-layout,
+      .cta,
+      .hero-badges {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:760px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch
+      }
+
+      .nav {
+        gap: 14px 18px
+      }
+
+      .hero,
+      .panel,
+      .cta,
+      footer,
+      .apply-panel,
+      .form-shell {
+        border-radius: 24px
+      }
+
+      .hero-grid,
+      .panel,
+      .cta {
+        padding: 20px
+      }
+
+      .field-grid {
+        grid-template-columns: 1fr
+      }
+
+      .btn,
+      .btn-outline {
+        width: 100%
+      }
+
+      .cta-actions,
+      .form-actions {
+        justify-content: stretch
+      }
+    }
+
+    /* Unified site header */
+    /* Standardized advanced footer */
+    .site-footer {
+      margin-top: 48px;
+      background: linear-gradient(135deg, #163123, #1f3d28);
+      color: rgba(255, 255, 255, .88);
+      border-top: 1px solid rgba(255, 255, 255, .06)
+    }
+
+    .site-footer .footer-shell {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    .site-footer .footer-top {
+      padding: 34px 0 26px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+      align-items: stretch;
+      border-bottom: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .site-footer .footer-brand-card,
+    .site-footer .footer-news-card {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .10);
+      border-radius: 24px;
+      padding: 24px;
+      backdrop-filter: blur(8px)
+    }
+
+    .site-footer .footer-brand-mark {
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: #fff;
+      font-size: 20px
+    }
+
+    .site-footer .footer-brand-mark small {
+      display: block;
+      margin-top: 4px;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .66)
+    }
+
+    .site-footer .footer-brand-copy {
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, .66);
+      line-height: 1.8;
+      max-width: 720px
+    }
+
+    .site-footer .footer-trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px
+    }
+
+    .site-footer .footer-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .08);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em
+    }
+
+    .site-footer .footer-news-title {
+      margin: 0;
+      font-size: 22px;
+      color: #fff
+    }
+
+    .site-footer .footer-news-copy {
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, .66);
+      line-height: 1.8
+    }
+
+    .site-footer .footer-form {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px
+    }
+
+    .site-footer .footer-input {
+      flex: 1;
+      min-height: 50px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(255, 255, 255, .10);
+      color: #fff;
+      padding: 0 16px;
+      outline: none
+    }
+
+    .site-footer .footer-input::placeholder {
+      color: rgba(255, 255, 255, .52)
+    }
+
+    .site-footer .footer-input:focus {
+      border-color: rgba(242, 140, 40, .55);
+      box-shadow: 0 0 0 3px rgba(242, 140, 40, .12)
+    }
+
+    .site-footer .footer-btn {
+      min-height: 50px;
+      padding: 0 18px;
+      border: none;
+      border-radius: 999px;
+      background: #f28c28;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .site-footer .footer-middle {
+      padding: 28px 0;
+      display: grid;
+      grid-template-columns: 1.05fr .8fr .8fr .85fr;
+      gap: 24px
+    }
+
+    .site-footer .footer-col-title {
+      margin: 0 0 14px;
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: .18em;
+      text-transform: uppercase
+    }
+
+    .site-footer .footer-col-copy {
+      color: rgba(255, 255, 255, .66);
+      line-height: 1.8;
+      margin: 0
+    }
+
+    .site-footer .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    .site-footer .footer-links li+li {
+      margin-top: 10px
+    }
+
+    .site-footer .footer-links a {
+      color: rgba(255, 255, 255, .66);
+      text-decoration: none;
+      transition: .2s ease
+    }
+
+    .site-footer .footer-links a:hover {
+      color: #fff
+    }
+
+    .site-footer .footer-contact-item {
+      margin-bottom: 12px
+    }
+
+    .site-footer .footer-contact-label {
+      display: block;
+      color: rgba(255, 255, 255, .48);
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 4px
+    }
+
+    .site-footer .footer-contact-value {
+      color: rgba(255, 255, 255, .88);
+      line-height: 1.7
+    }
+
+    .site-footer .footer-bottom {
+      padding: 18px 0 28px;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .site-footer .footer-bottom-copy {
+      color: rgba(255, 255, 255, .66);
+      font-size: 13px
+    }
+
+    .site-footer .footer-bottom-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px
+    }
+
+    .site-footer .footer-bottom-links a {
+      color: rgba(255, 255, 255, .66);
+      font-size: 13px;
+      text-decoration: none
+    }
+
+    .site-footer .footer-bottom-links a:hover {
+      color: #fff
+    }
+
+    @media (max-width:980px) {
+
+      .site-footer .footer-top,
+      .site-footer .footer-middle {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media (max-width:640px) {
+      .site-footer .footer-shell {
+        padding: 0 16px
+      }
+
+      .site-footer .footer-top {
+        padding: 24px 0 20px
+      }
+
+      .site-footer .footer-brand-card,
+      .site-footer .footer-news-card {
+        padding: 20px;
+        border-radius: 20px
+      }
+
+      .site-footer .footer-form {
+        flex-direction: column
+      }
+
+      .site-footer .footer-btn,
+      .site-footer .footer-input {
+        width: 100%
+      }
+
+      .site-footer .footer-middle {
+        padding: 22px 0;
+        gap: 18px
+      }
+
+      .site-footer .footer-bottom {
+        padding: 16px 0 24px;
+        align-items: flex-start;
+        flex-direction: column
+      }
+    }
+
+
+
+
+    /* Unified AA Header Start */
+    html,
+    body {
+      overflow-x: hidden;
+    }
+
+    .aa-header,
+    .aa-header * {
+      box-sizing: border-box;
+    }
+
+    .aa-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(20, 20, 20, .08);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
+    }
+
+    .aa-header__inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .aa-header__brand {
+      color: #2f5d3a;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: .08em;
+      line-height: 1.05;
+      white-space: nowrap;
+      flex: 0 0 auto;
+      font-size: 20px;
+    }
+
+    .aa-header__brand small {
+      display: block;
+      margin-top: 4px;
+      color: #8b958e;
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .aa-header__nav {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .aa-header__link,
+    .aa-header details>summary {
+      list-style: none;
+      cursor: pointer;
+      color: #57645c;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.2;
+      padding: 8px 0;
+      position: relative;
+      white-space: nowrap;
+      background: none;
+      border: none;
+    }
+
+    .aa-header details>summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .aa-header__link:hover,
+    .aa-header details>summary:hover,
+    .aa-header details[open]>summary,
+    .aa-header__link.is-active,
+    .aa-header details.is-active>summary {
+      color: #1f3d28;
+    }
+
+    .aa-header__link.is-active::after,
+    .aa-header details.is-active>summary::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 2px;
+      border-radius: 999px;
+      background: #f28c28;
+    }
+
+    .aa-dd {
+      position: relative;
+    }
+
+    .aa-dd__menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      min-width: 250px;
+      max-width: min(280px, calc(100vw - 32px));
+      background: #fff;
+      border: 1px solid rgba(20, 20, 20, .08);
+      border-radius: 18px;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, .10);
+      padding: 10px;
+      display: none;
+    }
+
+    .aa-dd--right .aa-dd__menu {
+      left: auto;
+      right: 0;
+    }
+
+    .aa-dd[open] .aa-dd__menu {
+      display: block;
+    }
+
+    .aa-dd__menu a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #33423a;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .aa-dd__menu a:hover,
+    .aa-dd__menu a.is-active {
+      background: #f8fbf8;
+      color: #2f5d3a;
+    }
+
+    .aa-header__cta {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #f28c28;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 12px 24px rgba(242, 140, 40, .24);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .aa-header__cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(242, 140, 40, .28);
+    }
+
+    @media (max-width: 980px) {
+      .aa-header__inner {
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+
+      .aa-header__nav {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 14px 18px;
+      }
+
+      .aa-header__cta {
+        margin-left: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .aa-header__inner {
+        padding: 14px 16px;
+      }
+
+      .aa-header__brand {
+        width: 100%;
+      }
+
+      .aa-header__nav {
+        width: 100%;
+        gap: 12px 16px;
+      }
+
+      .aa-dd {
+        width: 100%;
+      }
+
+      .aa-dd__menu {
+        position: static;
+        min-width: unset;
+        max-width: none;
+        margin-top: 8px;
+        box-shadow: none;
+      }
+
+      .aa-header__cta {
+        width: 100%;
+      }
+    }
+
+    /* Unified AA Header End */
+  </style>
+</head>
+
+<body>
+  <div class="aa-header" role="banner">
+    <div class="aa-header__inner">
+      <a class="aa-header__brand" href="index.html">ACTIVE ADVENTURE<small>Premium Home Childcare</small></a>
+      <nav aria-label="Main navigation" class="aa-header__nav">
+        <a class="aa-header__link" href="index.html">Home</a>
+        <details class="aa-dd">
+          <summary>About</summary>
+          <div class="aa-dd__menu">
+            <a href="Our Story.html">Our Story</a>
+            <a href="Meet the Team Page.html">Team Page</a>
+          </div>
+        </details>
+        <details class="aa-dd">
+          <summary>Services</summary>
+          <div class="aa-dd__menu">
+            <a href="The Executive.html">The Executive</a>
+            <a href="The Overnight Companion.html">The Overnight Companion</a>
+            <a href="The Tourist.html">The Tourist</a>
+            <a href="The Explorer.html">The Explorer</a>
+          </div>
+        </details>
+        <a class="aa-header__link" href="Pricing Main.html">Pricing</a>
+        <a class="aa-header__link" href="Booking.html">Booking</a>
+        <details class="aa-dd aa-dd--right is-active">
+          <summary>Insights</summary>
+          <div class="aa-dd__menu">
+            <a class="is-active" href="Insight Hub.html">Insight Hub</a>
+            <a class="is-active" href="FAQs.html">FAQs</a>
+            <a class="is-active" href="Career page.html">Careers</a>
+            <a class="is-active" href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a>
+            <a class="is-active" href="blog.html">Blog</a>
+          </div>
+        </details>
+      </nav>
+      <a class="aa-header__cta" href="contact.html">Contact Us</a>
+    </div>
+  </div>
+  <div class="shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Careers</div>
+          <h1>Join a premium care team built on trust, professionalism, and founder-led standards.</h1>
+          <p>Active Adventure is not a listing platform or a casual childcare marketplace. We are a managed premium
+            agency built around structured governance, specialist matching, and high-trust family environments. We
+            recruit professionals who want to deliver meaningful care inside a system that values excellence,
+            consistency, and operational support.</p>
+          <div class="hero-badges">
+            <div class="mini-card"><strong>Managed Agency Model</strong><span>You are supported inside a structured
+                system with clear standards, not left to operate alone.</span></div>
+            <div class="mini-card"><strong>Premium Client Environments</strong><span>Work with families who value
+                professionalism, care quality, and thoughtful support.</span></div>
+            <div class="mini-card"><strong>Defined Professional Tiers</strong><span>Roles are aligned to expertise,
+                helping applicants understand where they best fit.</span></div>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <img alt="Active Adventure recruitment"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
+          <div class="hero-panel-copy">
+            <h3>We recruit for alignment, not availability alone.</h3>
+            <p>Our hiring model looks beyond credentials alone. We assess professionalism, communication, values, active
+              engagement style, and the ability to represent the brand confidently inside private homes, hotels, and
+              premium family environments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="panel" id="roles">
+      <div class="section-title">Professional Pathways</div>
+      <h2 class="section-heading">Our core recruitment tracks.</h2>
+      <p class="section-copy">Each role category reflects a distinct level of responsibility, expertise, and service
+        fit. Applicants can express interest in one pathway or multiple pathways depending on background and experience.
+      </p>
+      <div class="grid-3">
+        <article class="role-card">
+          <div class="tag">Clinical Tier</div>
+          <h3>Registered Nurse (RN)</h3>
+          <div class="sub">Overnight, complex and reassurance-led support</div>
+          <p>Ideal for applicants with clinical confidence, calm decision-making, and experience supporting families in
+            sensitive or higher-complexity environments.</p>
+          <div class="role-meta">
+            <span class="pill">NHS RN profile</span>
+            <span class="pill">Overnight support</span>
+            <span class="pill">Health-aware care</span>
+          </div>
+          <a class="inline-link pathway-link" data-pathway="Registered Nurse (RN)" href="#apply">Apply for RN Pathway
+            <span>→</span></a>
+        </article>
+        <article class="role-card">
+          <div class="tag">Educational Tier</div>
+          <h3>Qualified Teacher (QTS)</h3>
+          <div class="sub">Structured engagement and developmental quality</div>
+          <p>Best suited to professionals who can bring energy, structure, outdoor leadership, and educational
+            thoughtfulness into family care settings.</p>
+          <div class="role-meta">
+            <span class="pill">QTS / PGCE-aligned</span>
+            <span class="pill">Explorer service fit</span>
+            <span class="pill">Routine support</span>
+          </div>
+          <a class="inline-link pathway-link" data-pathway="Qualified Teacher (QTS)" href="#apply">Apply for Teacher
+            Pathway <span>→</span></a>
+        </article>
+        <article class="role-card">
+          <div class="tag">Support Tier</div>
+          <h3>Specialised Support Worker</h3>
+          <div class="sub">Practical reliability, routine continuity, flexible care</div>
+          <p>Suitable for strong carers who bring stability, family awareness, professional presence, and adaptable
+            support across changing schedules and environments.</p>
+          <div class="role-meta">
+            <span class="pill">Behavioural awareness</span>
+            <span class="pill">Flexible scheduling</span>
+            <span class="pill">Executive service fit</span>
+          </div>
+          <a class="inline-link pathway-link" data-pathway="Specialised Support Worker" href="#apply">Apply for Support
+            Pathway <span>→</span></a>
+        </article>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="section-title">Why Work With Us</div>
+      <h2 class="section-heading">A more structured, premium way to work in childcare.</h2>
+      <p class="section-copy">Our recruitment system is designed to attract professionals who want higher standards,
+        stronger brand alignment, and better operational clarity.</p>
+      <div class="grid-4">
+        <article class="info-card">
+          <div class="icon">⌘</div>
+          <h3>Managed Placements</h3>
+          <p>Assignments are structured within a managed system, giving professionals more support and clearer
+            expectations.</p>
+        </article>
+        <article class="info-card">
+          <div class="icon">✦</div>
+          <h3>Premium Households</h3>
+          <p>Work with families who are looking for calm, polished, high-trust childcare support rather than
+            transactional coverage.</p>
+        </article>
+        <article class="info-card">
+          <div class="icon">↗</div>
+          <h3>Professional Pathways</h3>
+          <p>Applicants can align to clinical, educational, or structured support pathways depending on background and
+            strengths.</p>
+        </article>
+        <article class="info-card">
+          <div class="icon">✓</div>
+          <h3>Brand Standards</h3>
+          <p>We prioritise communication quality, presence, values, and engagement style alongside formal
+            qualifications.</p>
+        </article>
+      </div>
+    </section>
+    <section class="panel" id="process">
+      <div class="section-title">Recruitment Process</div>
+      <h2 class="section-heading">How we select and onboard the right professionals.</h2>
+      <p class="section-copy">Our process is intentionally selective because trust is central to the environments we
+        work in. We assess both competency and fit with the way Active Adventure delivers care.</p>
+      <div class="timeline">
+        <article class="timeline-card">
+          <div class="timeline-number">Step 01</div>
+          <h3>Application Review</h3>
+          <p>We review your background, qualifications, experience, and general alignment with our service model.</p>
+        </article>
+        <article class="timeline-card">
+          <div class="timeline-number">Step 02</div>
+          <h3>Verification Checks</h3>
+          <p>Identity, professional standing, and relevant credentials are checked to ensure suitability and compliance.
+          </p>
+        </article>
+        <article class="timeline-card">
+          <div class="timeline-number">Step 03</div>
+          <h3>Founder Interview</h3>
+          <p>A final interview assesses professionalism, communication, care style, and alignment with our premium
+            standards.</p>
+        </article>
+        <article class="timeline-card">
+          <div class="timeline-number">Step 04</div>
+          <h3>Placement Matching</h3>
+          <p>Successful candidates are matched to suitable service environments and client needs based on role fit and
+            strengths.</p>
+        </article>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="section-title">What We Look For</div>
+      <h2 class="section-heading">Beyond credentials, we hire for presence and trust.</h2>
+      <p class="section-copy">These qualities shape the way families experience our team and are part of the reason our
+        recruitment model is more selective than a generic staffing approach.</p>
+      <div class="two-col">
+        <article class="card">
+          <div class="tag">Professional Qualities</div>
+          <h3>Core standards for every applicant</h3>
+          <p>We value calm professionalism, emotional intelligence, strong communication, discretion, punctuality, and
+            the ability to represent the brand well inside premium environments.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Care Style</div>
+          <h3>Active, thoughtful, family-aware support</h3>
+          <p>Applicants should demonstrate more than availability. We look for people who engage meaningfully, support
+            routines well, and understand how to work with care, sensitivity, and structure.</p>
+        </article>
+      </div>
+    </section>
+    <section class="panel" id="apply">
+      <div class="section-title">Application Route</div>
+      <h2 class="section-heading">Start your application</h2>
+      <p class="section-copy">This recruitment system page includes a premium application form layout. It is set up to
+        submit directly to your recruitment email inbox using a form relay service, while keeping the page in standalone
+        HTML.</p>
+      <div class="apply-layout">
+        <div class="apply-panel">
+          <h3>Apply to join Active Adventure.</h3>
+          <p>Use this application route to express interest in one of our professional pathways. Strong applicants are
+            reviewed not only for qualifications, but also for communication, presence, and service alignment.</p>
+          <div class="notice">When you publish this page, submit one test application and confirm the first email sent
+            to your recruitment inbox to activate live submissions.</div>
+        </div>
+        <form action="https://formsubmit.co/jeffery.owusu@ojstrattech.co.uk" class="form-shell"
+          enctype="multipart/form-data" id="careersApplicationForm" method="POST">
+          <div class="field-grid">
+            <div class="field">
+              <label for="fullName">Full Name</label>
+              <input class="input" id="fullName" name="full_name" placeholder="Your full name" required="" />
+            </div>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input class="input" id="email" name="email" placeholder="name@example.com" required="" type="email" />
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number</label>
+              <input class="input" id="phone" name="phone" placeholder="+44 ..." required="" type="tel" />
+            </div>
+            <div class="field">
+              <label for="roleSelect">Preferred Pathway</label>
+              <select class="select" id="roleSelect" name="preferred_pathway" required="">
+                <option>Registered Nurse (RN)</option>
+                <option>Qualified Teacher (QTS)</option>
+                <option>Specialised Support Worker</option>
+                <option>Open to multiple pathways</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="experience">Years of Relevant Experience</label>
+              <input class="input" id="experience" min="0" name="years_experience" placeholder="Enter years" required=""
+                step="1" type="number" />
+            </div>
+            <div class="field">
+              <label for="location">Preferred Working Area</label>
+              <input class="input" id="location" name="preferred_working_area" placeholder="London / flexible / travel"
+                required="" />
+            </div>
+          </div>
+          <div class="field" style="margin-top:16px">
+            <label for="statement">Professional Statement</label>
+            <textarea class="textarea" id="statement" name="professional_statement"
+              placeholder="Tell us about your background, the environments you work best in, and why you would be a strong fit for Active Adventure."
+              required=""></textarea>
+          </div>
+          <div class="file-upload">
+            <label for="resumeUpload">Upload Resume / CV</label>
+            <input accept=".pdf,.doc,.docx" id="resumeUpload" name="resume_cv" required="" type="file" />
+            <div class="file-meta" id="resumeMeta">Accepted formats: PDF, DOC, DOCX. Your selected file will be sent
+              with the application after form submission.</div>
+          </div>
+          <div class="guide-selected" id="selectedGuideInfo">
+            <strong>Selected Role Guide</strong>
+            Full Recruitment Pack will be used unless a specific pathway is selected.
+          </div>
+          <div class="checkbox-row">
+            <input id="consent" name="consent_confirmed" required="" type="checkbox" />
+            <label for="consent">I confirm that the information provided is accurate and I consent to being contacted
+              about recruitment opportunities with Active Adventure.</label>
+          </div>
+          <div class="success">Applications are configured to route to recruitment email. Replace the placeholder
+            document links below with your final files and create the thank-you page referenced in the form settings.
+          </div>
+          <input name="_subject" type="hidden" value="New Active Adventure Careers Application" />
+          <input name="_captcha" type="hidden" value="false" />
+          <input name="_template" type="hidden" value="table" />
+          <input name="_next" type="hidden" value="thank-you.html" />
+          <div class="form-actions">
+            <button class="btn" type="submit">Submit Application</button>
+            <a class="btn-outline" download="" href="HTML/Insight Downloadable documents page.html">Download Recruitment
+              Pack</a>
+            <button class="btn-outline" id="downloadRoleGuide" type="button">Download Full Recruitment Pack</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="cta" id="contact">
+      <div>
+        <h3>Want to discuss recruitment or role fit first?</h3>
+        <p>If you are unsure which pathway best matches your background, or you want to ask about premium client
+          environments, travel-led care, or overnight support roles, you can speak with the team before applying.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn" href="contact.html">Contact Recruitment</a>
+        <a class="btn-outline" href="Meet the Team Page.html">View Team Page</a>
+      </div>
+    </section>
+  </div>
+  <script>
+    const pathwayLinks = document.querySelectorAll('.pathway-link');
+    const careersApplicationForm = document.getElementById('careersApplicationForm');
+    const roleSelect = document.getElementById('roleSelect');
+    const applySection = document.getElementById('apply');
+    const resumeUpload = document.getElementById('resumeUpload');
+    const resumeMeta = document.getElementById('resumeMeta');
+    const downloadRoleGuide = document.getElementById('downloadRoleGuide');
+    const selectedGuideInfo = document.getElementById('selectedGuideInfo');
+
+    pathwayLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const selectedPathway = link.getAttribute('data-pathway');
+        if (selectedPathway && roleSelect) {
+          roleSelect.value = selectedPathway;
+          updateGuideUI();
+          // pathway selected; UI handled by guide-selected block
+        }
+        applySection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+
+    resumeUpload.addEventListener('change', () => {
+      const file = resumeUpload.files && resumeUpload.files[0];
+      if (!file) {
+        resumeMeta.textContent =
+          'Accepted formats: PDF, DOC, DOCX. Your selected file will be sent with the application after form submission.';
+        return;
+      }
+      resumeMeta.textContent =
+        `Selected file: ${file.name} (${Math.round(file.size / 1024)} KB). This file will be included with the application email submission.`;
+    });
+
+    function updateGuideUI() {
+      const selectedRole = roleSelect.value;
+
+      if (selectedRole.includes('Nurse')) {
+        selectedGuideInfo.innerHTML =
+          '<strong>Selected Role Guide</strong>Registered Nurse (RN) Role Guide & Employment Details';
+        downloadRoleGuide.textContent = 'Download RN Role Guide';
+      } else if (selectedRole.includes('Teacher')) {
+        selectedGuideInfo.innerHTML =
+          '<strong>Selected Role Guide</strong>Qualified Teacher (QTS) Role Guide & Employment Details';
+        downloadRoleGuide.textContent = 'Download Teacher Role Guide';
+      } else if (selectedRole.includes('Support')) {
+        selectedGuideInfo.innerHTML =
+          '<strong>Selected Role Guide</strong>Specialised Support Worker Role Guide & Employment Details';
+        downloadRoleGuide.textContent = 'Download Support Role Guide';
+      } else {
+        selectedGuideInfo.innerHTML = '<strong>Selected Role Guide</strong>Full Recruitment Pack';
+        downloadRoleGuide.textContent = 'Download Full Recruitment Pack';
+      }
+    }
+
+    careersApplicationForm.addEventListener('submit', () => {
+      selectedGuideInfo.innerHTML =
+        '<strong>Status</strong>Submitting application... please wait while your application and CV are sent.';
+    });
+
+    downloadRoleGuide.addEventListener('click', () => {
+      const selectedRole = roleSelect.value;
+      let filePath = 'HTML/Insight Downloadable documents page.html';
+
+      if (selectedRole.includes('Nurse')) {
+        filePath = 'HTML/Insight Downloadable documents page.html';
+      } else if (selectedRole.includes('Teacher')) {
+        filePath = 'HTML/Insight Downloadable documents page.html';
+      } else if (selectedRole.includes('Support')) {
+        filePath = 'HTML/Insight Downloadable documents page.html';
+      }
+
+      window.open(filePath, '_blank');
+    });
+
+    roleSelect.addEventListener('change', updateGuideUI);
+    updateGuideUI();
+  </script>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div class="footer-top">
+        <div class="footer-brand-card">
+          <div class="footer-brand-mark">ACTIVE ADVENTURE<small>Premium Home Childcare</small></div>
+          <p class="footer-brand-copy">Founder-led, premium childcare designed around safety, structure, and
+            professional excellence. Delivered by Registered Nurses, Qualified Teachers, and Specialist Support Workers
+            across homes, hotels, and travel environments.</p>
+          <div class="footer-trust-row"><span class="footer-pill">NHS RN-Led</span><span class="footer-pill">Qualified
+              Teachers (QTS)</span><span class="footer-pill">Specialised Support</span><span class="footer-pill">London
+              Coverage</span></div>
+        </div>
+        <div class="footer-news-card">
+          <h3 class="footer-news-title">Stay connected</h3>
+          <p class="footer-news-copy">Receive updates on services, availability, and premium childcare insights.</p>
+          <form action="#" class="footer-form" method="post"><input class="footer-input" placeholder="Enter your email"
+              type="email" /><button class="footer-btn" type="submit">Subscribe</button></form>
+        </div>
+      </div>
+      <div class="footer-middle">
+        <div>
+          <h4 class="footer-col-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="HTML/About Us.html">About Us</a></li>
+            <li><a href="Our Story.html">Our Story</a></li>
+            <li><a href="Meet the Team Page.html">Meet the Team</a></li>
+            <li><a href="Career page.html">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="The Explorer.html">The Explorer</a></li>
+            <li><a href="The Executive.html">The Executive</a></li>
+            <li><a href="The Tourist.html">The Tourist</a></li>
+            <li><a href="The Overnight Companion.html">Overnight Companion</a></li>
+            <li><a href="Booking.html">Book Now</a></li>
+            <li><a href="Pricing Main.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Insights</h4>
+          <ul class="footer-links">
+            <li><a href="FAQs.html">FAQs</a></li>
+            <li><a href="Insight Hub.html">Insights Hub</a></li>
+            <li><a href="HTML/Insight Parent Resources_page.html">Parent Resources</a></li>
+            <li><a href="HTML/Insight Media &amp; Press page\.html">Media &amp; Press</a></li>
+            <li><a href="HTML/Insight Downloadable documents page.html">Documents</a></li>
+            <li><a href="Safety &amp; Trust - Main.html">Safety &amp; Trust</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <div class="footer-contact-item"><span class="footer-contact-label">Email</span>
+            <div class="footer-contact-value">jeffery.owusu@ojstrattech.co.uk</div>
+          </div>
+          <div class="footer-contact-item"><span class="footer-contact-label">Location</span>
+            <div class="footer-contact-value">London, United Kingdom</div>
+          </div>
+          <div style="margin-top:12px;"><a class="footer-btn" href="contact.html">Contact Us</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-copy">© 2026 Active Adventure Home Childcare. All rights reserved.</div>
+        <div class="footer-bottom-links"><a href="Safety &amp; Trust - Main.html">Safeguarding</a><a
+            href="FAQs.html">Support</a><a href="contact.html">Contact</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>`n
+</body>
+
 </html>
-
-
