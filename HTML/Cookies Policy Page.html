@@ -21,7 +21,7 @@ button,input{font:inherit}
 .aa-header__inner{max-width:1360px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .aa-header__brand{color:#2f5d3a;text-decoration:none;font-weight:700;letter-spacing:.08em;line-height:1.05;white-space:nowrap;flex:0 0 auto;font-size:20px}
 .aa-header__brand small{display:block;margin-top:4px;color:#8b958e;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
-.aa-header__nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.aa-header__nav{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;overflow: visible;}
 .aa-header__link,.aa-header details>summary{list-style:none;cursor:pointer;color:#57645c;text-decoration:none;font-size:14px;font-weight:500;line-height:1.2;padding:8px 0;position:relative;white-space:nowrap;background:none;border:none}
 .aa-header details>summary::-webkit-details-marker{display:none}
 .aa-header__link:hover,.aa-header details>summary:hover,.aa-header details[open]>summary,.aa-header__link.is-active,.aa-header details.is-active>summary{color:#1f3d28}
@@ -30,6 +30,7 @@ button,input{font:inherit}
 .aa-dd__menu{position:absolute;top:calc(100% + 10px);left:0;min-width:250px;max-width:min(280px,calc(100vw - 32px));background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:18px;box-shadow:0 18px 38px rgba(0,0,0,.10);padding:10px;display:none}
 .aa-dd--right .aa-dd__menu{left:auto;right:0}
 .aa-dd[open] .aa-dd__menu{display:block}
+.aa-dd:hover .aa-dd__menu{display:block}
 .aa-dd__menu a{display:block;padding:10px 12px;border-radius:12px;text-decoration:none;color:#33423a;font-size:14px;line-height:1.4}
 .aa-dd__menu a:hover,.aa-dd__menu a.is-active{background:#f8fbf8;color:#2f5d3a}
 .aa-header__cta{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border-radius:999px;background:#f28c28;color:#fff;text-decoration:none;font-weight:600;white-space:nowrap;box-shadow:0 12px 24px rgba(242,140,40,.24);transition:transform .22s ease,box-shadow .22s ease}
@@ -262,6 +263,7 @@ document.addEventListener('click', (event) => {
 });
 </script>
 
+  <script src="../script.js"></script>
 </body>
 </html>
 
