@@ -2398,14 +2398,6 @@
       padding: 24px
     }
 
-    .section-title {
-      font-size: 13px;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-      color: #8a948d;
-      font-weight: 700
-    }
-
     .section-heading {
       font-size: 2rem;
       line-height: 1.12;
@@ -3282,7 +3274,7 @@
   gap: 34px;
   align-items: center;
   padding: 80px 24px;
-  background: url('img/tour guide.jpg') center/cover no-repeat;
+  background: url('img/Landing page.png') center/cover no-repeat;
   background-attachment: fixed;
   overflow: hidden;
   border: 0;
@@ -3361,5 +3353,26 @@
   .home-page .hero-actions .btn,
   .home-page .hero-actions .btn-outline {
     width: 100%;
+  }
+}
+
+.aa-header__brand--logo {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  letter-spacing: 0;
+}
+
+.aa-header__logo {
+  display: block;
+  width: clamp(132px, 13vw, 188px);
+  max-height: 58px;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .aa-header__logo {
+    width: 148px;
+    max-height: 52px;
   }
 }
