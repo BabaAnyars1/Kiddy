@@ -348,8 +348,8 @@
     .icon {
       display: block;
       margin: 0 auto 10px;
-      width: 38px;
-      height: 38px;
+      width: 70px;
+      height: 70px;
       fill: var(--orange);
       animation: iconFloat 3.6s ease-in-out infinite;
       filter: drop-shadow(0 6px 12px rgba(242, 140, 40, .18));
@@ -2269,10 +2269,8 @@
     }
 
     .hero {
-      margin-top: 18px;
       background: linear-gradient(135deg, #e6efe4, #f6f1e7 65%);
       border: 1px solid rgba(47, 93, 58, .1);
-      border-radius: 32px;
       box-shadow: var(--shadow);
       padding: 28px;
       display: grid;
@@ -3275,3 +3273,93 @@
 
     /* Unified AA Header End */
   
+/* Home page hero imported from the tier-focused landing page */
+.home-page .hero {
+  position: relative;
+  min-height: 78vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .9fr);
+  gap: 34px;
+  align-items: center;
+  padding: 80px 24px;
+  background: url('img/tour guide.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.home-page .hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(246, 241, 231, .92) 0%, rgba(246, 241, 231, .75) 40%, rgba(246, 241, 231, .2) 100%);
+}
+
+.home-page .hero>* {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.home-page .hero-visual {
+  display: none;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-page .hero>*:nth-child(1) {
+  animation-delay: .2s;
+}
+
+.home-page .hero>*:nth-child(2) {
+  animation-delay: .4s;
+}
+
+.home-page .hero>*:nth-child(3) {
+  animation-delay: .6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .hero>* {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .home-page .hero {
+    grid-template-columns: 1fr;
+    padding-top: 44px;
+  }
+
+  .home-page .hero-points {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-page .hero {
+    padding-left: 16px;
+    padding-right: 16px;
+    background-attachment: scroll;
+  }
+
+  .home-page .hero-actions {
+    flex-direction: column;
+  }
+
+  .home-page .hero-actions .btn,
+  .home-page .hero-actions .btn-outline {
+    width: 100%;
+  }
+}
