@@ -308,6 +308,7 @@
       font-size: 2rem;
       line-height: 1.12;
       color: var(--green-dark);
+      text-align: center;
     }
 
     .section-copy {
@@ -367,6 +368,7 @@
       font-size: 28px;
       line-height: 1.1;
       color: var(--green-dark);
+      text-align: left;
     }
 
     .founder-credentials {
@@ -374,6 +376,7 @@
       color: var(--orange);
       font-weight: 700;
       font-size: 14px;
+      text-align: left;
     }
 
     .founder-content p {
@@ -423,6 +426,7 @@
     .team-card .content {
       padding: 18px;
       display: block;
+      text-align: center;
     }
 
     .team-card h3 {
@@ -1110,83 +1114,18 @@
   text-align: center;
 }
 
-/* Center section titles, supporting content, and cards */
-.section-title,
-.lead,
-.lead-text,
-.section-copy,
-.cards,
-.service-grid,
-.tier-grid,
-.timeline-grid,
-.metrics,
-.info-grid,
-.hero-cards,
-.grid-4,
-.card,
-.feature-card,
-.tier-card,
-.timeline-card,
-.metric,
-.service-card,
-.professional-card,
-.option-card,
-.mini-card,
-.soft-card,
-.role-card,
-.step-card,
-.logic-card,
-.summary-card,
-.link-card,
-.confirm-card {
-  text-align: center;
-}
+
 
 .lead,
 .lead-text,
 .section-copy {
   margin-left: auto;
   margin-right: auto;
-}
-
-.card ul,
-.feature-card ul,
-.tier-card ul,
-.timeline-card ul,
-.service-card ul,
-.professional-card ul,
-.option-card ul,
-.mini-card ul,
-.soft-card ul,
-.role-card ul,
-.step-card ul,
-.logic-card ul,
-.summary-card ul,
-.link-card ul,
-.confirm-card ul {
-  display: inline-block;
-  padding-left: 0;
-  text-align: left;
-}
-
-/* Center all card content */
-.card,
-[class$="-card"],
-[class*="-card "] {
   text-align: center;
 }
 
-.card ul,
-.card ol,
-[class$="-card"] ul,
-[class$="-card"] ol,
-[class*="-card "] ul,
-[class*="-card "] ol {
-  display: inline-block;
-  padding-left: 0;
-  text-align: center;
-  list-style: none;
-}
+
+
 
 /* Match index-style hero image coverage */
 .hero-grid:has(.hero-panel) {
@@ -1215,64 +1154,6 @@
   }
 }
 
-/* True split hero: image covers the whole hero half */
-@media (min-width: 981px) {
-  .hero:has(.hero-image) {
-    align-items: stretch;
-    gap: 0;
-    min-height: 620px;
-    padding: 0;
-  }
-
-  .hero:has(.hero-image) > div:first-child {
-    align-self: center;
-    padding: 72px 24px;
-  }
-
-  .hero-image {
-    align-self: stretch;
-    min-height: 100%;
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    aspect-ratio: auto;
-    object-fit: cover;
-  }
-
-  .hero-grid:has(.hero-panel) {
-    align-items: stretch;
-    gap: 0;
-    padding: 0;
-  }
-
-  .hero-grid:has(.hero-panel) > div:first-child {
-    align-self: center;
-    padding: clamp(24px, 3vw, 44px);
-  }
-
-  .hero-panel {
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0;
-    padding: 0;
-  }
-
-  .hero-panel > img {
-    width: 100%;
-    flex: 1 1 auto;
-    min-height: 100%;
-    height: auto;
-    border-radius: 0;
-    object-fit: cover;
-  }
-}
 </style>
 </head>
 
@@ -1351,7 +1232,7 @@
         </div>
         <div class="hero-panel">
           <img alt="ELITE ANCHOR team discussion"
-            src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" />
+            src="img/nanny.jpg" />
           <div class="panel-copy">
             <h3>Not a marketplace — a managed professional team.</h3>
             <p>
