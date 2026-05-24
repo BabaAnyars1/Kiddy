@@ -140,6 +140,41 @@ h1{margin:18px 0 0;font-size:clamp(2rem,4vw,3.5rem);line-height:1.06;color:var(-
   margin-right: auto;
 }
 
+
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6,
+.card p,
+.card span,
+[class~="card"] h1,
+[class~="card"] h2,
+[class~="card"] h3,
+[class~="card"] h4,
+[class~="card"] h5,
+[class~="card"] h6,
+[class~="card"] p,
+[class~="card"] span,
+[class$="-card"] h1,
+[class$="-card"] h2,
+[class$="-card"] h3,
+[class$="-card"] h4,
+[class$="-card"] h5,
+[class$="-card"] h6,
+[class$="-card"] p,
+[class$="-card"] span,
+[class*="-card "] h1,
+[class*="-card "] h2,
+[class*="-card "] h3,
+[class*="-card "] h4,
+[class*="-card "] h5,
+[class*="-card "] h6,
+[class*="-card "] p,
+[class*="-card "] span {
+  text-align: center;
+}
 .card ul,
 .feature-card ul,
 .tier-card ul,
@@ -169,6 +204,41 @@ h1{margin:18px 0 0;font-size:clamp(2rem,4vw,3.5rem);line-height:1.06;color:var(-
 
 .card ul,
 .card ol,
+[class$="-card"] ul,
+[class$="-card"] ol,
+[class*="-card "] ul,
+[class*="-card "] ol {
+  display: inline-block;
+  padding-left: 0;
+  text-align: center;
+  list-style: none;
+}
+
+/* Project-wide card content centering */
+.card,
+[class~="card"],
+[class$="-card"],
+[class*="-card "] {
+  text-align: center;
+}
+
+.card .icon,
+.card svg,
+[class~="card"] .icon,
+[class~="card"] svg,
+[class$="-card"] .icon,
+[class$="-card"] svg,
+[class*="-card "] .icon,
+[class*="-card "] svg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card ul,
+.card ol,
+[class~="card"] ul,
+[class~="card"] ol,
 [class$="-card"] ul,
 [class$="-card"] ol,
 [class*="-card "] ul,
