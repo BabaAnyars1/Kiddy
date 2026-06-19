@@ -156,6 +156,14 @@
       line-height: 1.12
     }
 
+    .section-soft {
+      background: #f6f1e7;
+    }
+
+    .section-white {
+      background: #fff;
+    }
+
     .lead {
       color: var(--muted);
       max-width: 860px;
@@ -206,8 +214,7 @@
     }
 
     .card:hover .icon,
-    .process:hover .icon,
-    .promise-panel:hover .icon {
+    .process:hover .icon {
       transform: translateY(-3px) scale(1.05) rotate(-3deg);
       filter: drop-shadow(0 10px 18px rgba(242, 140, 40, .28))
     }
@@ -234,6 +241,14 @@
       50% {
         transform: translateY(-5px) rotate(2deg)
       }
+    }
+
+    .lead-text {
+      max-width: 900px;
+      font-size: 17px;
+      color: #555;
+      text-align: center;
+      margin: auto;
     }
 
     .split {
@@ -306,35 +321,6 @@
       text-align: center
     }
 
-    .promise-wrap {
-      display: grid;
-      gap: 20px;
-      height: 100%;
-      align-items: stretch;
-      grid-auto-rows: 1fr;
-    }
-
-    .promise-panel {
-      background: linear-gradient(180deg, #fff, var(--surface-soft));
-      padding: 28px;
-      border-radius: 24px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(47, 93, 58, .08);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .promise-panel h3 {
-      margin: 12px 0 10px;
-      text-align: center;
-      color: var(--green)
-    }
-
-    .promise-panel p {
-      margin: 0;
-      color: var(--muted);
-      text-align: center;
-    }
 
     .cta {
       padding: 72px 20px;
@@ -380,17 +366,14 @@
       }
 
       .card,
-      .process,
-      .promise-panel {
+      .process {
         transition: none
       }
 
       .card:hover,
       .process:hover,
-      .promise-panel:hover,
       .card:hover .icon,
-      .process:hover .icon,
-      .promise-panel:hover .icon {
+      .process:hover .icon {
         transform: none;
         filter: none;
         box-shadow: var(--shadow-sm)
@@ -409,10 +392,6 @@
 
       .process-grid {
         grid-template-columns: repeat(3, 1fr)
-      }
-
-      .promise-wrap {
-        grid-template-columns: 1.05fr .95fr
       }
 
       .cta-links {
@@ -721,8 +700,61 @@
       }
     }
 
+    .section-dark {
+      background: #2f5d3a;
+      color: #fff;
+    }
+
+    .section-dark .section-title {
+      color: #fff;
+    }
 
 
+    .section-dark .lead-text,
+    .section-dark p {
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+
+    .promise-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .promise-text {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 32px;
+      border-radius: 22px;
+    }
+
+    .promise-points {
+      display: grid;
+      gap: 18px;
+    }
+
+    .promise-item {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 24px;
+      border-radius: 18px;
+    }
+
+    .promise-item h4 {
+      margin: 0 0 8px;
+      color: #f6f1e7;
+      font-size: 18px;
+    }
+
+    @media (max-width: 900px) {
+
+      .story-layout,
+      .promise-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* Unified AA Header Start */
     html,
@@ -981,42 +1013,43 @@
       text-align: center;
     }
 
-    
-.card h1,
-.card h2,
-.card h3,
-.card h4,
-.card h5,
-.card h6,
-.card p,
-.card span,
-[class~="card"] h1,
-[class~="card"] h2,
-[class~="card"] h3,
-[class~="card"] h4,
-[class~="card"] h5,
-[class~="card"] h6,
-[class~="card"] p,
-[class~="card"] span,
-[class$="-card"] h1,
-[class$="-card"] h2,
-[class$="-card"] h3,
-[class$="-card"] h4,
-[class$="-card"] h5,
-[class$="-card"] h6,
-[class$="-card"] p,
-[class$="-card"] span,
-[class*="-card "] h1,
-[class*="-card "] h2,
-[class*="-card "] h3,
-[class*="-card "] h4,
-[class*="-card "] h5,
-[class*="-card "] h6,
-[class*="-card "] p,
-[class*="-card "] span {
-  text-align: center;
-}
-.card ul,
+
+    .card h1,
+    .card h2,
+    .card h3,
+    .card h4,
+    .card h5,
+    .card h6,
+    .card p,
+    .card span,
+    [class~="card"] h1,
+    [class~="card"] h2,
+    [class~="card"] h3,
+    [class~="card"] h4,
+    [class~="card"] h5,
+    [class~="card"] h6,
+    [class~="card"] p,
+    [class~="card"] span,
+    [class$="-card"] h1,
+    [class$="-card"] h2,
+    [class$="-card"] h3,
+    [class$="-card"] h4,
+    [class$="-card"] h5,
+    [class$="-card"] h6,
+    [class$="-card"] p,
+    [class$="-card"] span,
+    [class*="-card "] h1,
+    [class*="-card "] h2,
+    [class*="-card "] h3,
+    [class*="-card "] h4,
+    [class*="-card "] h5,
+    [class*="-card "] h6,
+    [class*="-card "] p,
+    [class*="-card "] span {
+      text-align: center;
+    }
+
+    .card ul,
     .card ol,
     [class$="-card"] ul,
     [class$="-card"] ol,
@@ -1026,6 +1059,13 @@
       padding-left: 0;
       text-align: center;
       list-style: none;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
+      margin-top: 38px;
     }
 
     .hero-image {
@@ -1070,42 +1110,86 @@
         aspect-ratio: 4 / 3;
       }
     }
-  
-/* Project-wide card content centering */
-.card,
-[class~="card"],
-[class$="-card"],
-[class*="-card "] {
-  text-align: center;
-}
 
-.card .icon,
-.card svg,
-[class~="card"] .icon,
-[class~="card"] svg,
-[class$="-card"] .icon,
-[class$="-card"] svg,
-[class*="-card "] .icon,
-[class*="-card "] svg {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+    /* Project-wide card content centering */
+    .card,
+    [class~="card"],
+    [class$="-card"],
+    [class*="-card "] {
+      text-align: center;
+    }
 
-.card ul,
-.card ol,
-[class~="card"] ul,
-[class~="card"] ol,
-[class$="-card"] ul,
-[class$="-card"] ol,
-[class*="-card "] ul,
-[class*="-card "] ol {
-  display: inline-block;
-  padding-left: 0;
-  text-align: center;
-  list-style: none;
-}
-</style>
+    .card .icon,
+    .card svg,
+    [class~="card"] .icon,
+    [class~="card"] svg,
+    [class$="-card"] .icon,
+    [class$="-card"] svg,
+    [class*="-card "] .icon,
+    [class*="-card "] svg {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .card ul,
+    .card ol,
+    [class~="card"] ul,
+    [class~="card"] ol,
+    [class$="-card"] ul,
+    [class$="-card"] ol,
+    [class*="-card "] ul,
+    [class*="-card "] ol {
+      display: inline-block;
+      padding-left: 0;
+      text-align: center;
+      list-style: none;
+    }
+
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .story-panel {
+      background: #fff;
+      padding: 34px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .story-panel h3 {
+      margin-top: 0;
+      color: #2f5d3a;
+      font-size: 24px;
+    }
+
+    @media (max-width: 900px) {
+
+      .story-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #2f5d3a, #1f3d28);
+      color: #fff;
+      padding: 34px;
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .highlight-box h3 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .highlight-box p {
+      color: rgba(255, 255, 255, 0.92);
+    }
+  </style>
 </head>
 
 <body>
@@ -1169,6 +1253,115 @@
       <div class="hero-badge">Built by parents, shaped by professional standards</div>
     </div>
   </section>
+
+  <section class="section section-white" id="story">
+    <div class="container story-layout">
+      <div class="story-panel">
+        <h2 class="section-title">Our Story</h2>
+        <p>Every business has a why. Ours was shaped by years of searching for childcare that truly matched our
+          standards. As a College Teacher and an NHS Registered Nurse, our professional lives have always been
+          built on curriculum, clinical safety, and accountability. At home, as parents to four young boys, we
+          experienced the challenge of finding care that felt both dependable and deeply aligned with what
+          children actually need.</p>
+        <p>We were not looking for someone to simply supervise. We were looking for people we could trust with
+          our whole world — people who understood child development, medical safety, and the value of a
+          stable, nurturing routine.</p>
+      </div>
+      <div class="highlight-box">
+        <h3>Why We Built ELITE ANCHOR</h3>
+        <p>We created the service we could not find ourselves: premium home childcare that combines warmth with
+          professional standards, and flexibility with genuine peace of mind.</p>
+        <p>Everything we offer begins with the same question: would we trust this person and this system with
+          our own children?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="perspective">
+    <div class="container">
+      <h2 class="section-title">The Parent-Professional Perspective</h2>
+      <p class="lead-text">ELITE ANCHOR was born in the quiet, honest moments of parenting — when it became clear
+        that many families were being forced to choose between rigid nursery structures and informal, lightly
+        vetted childcare. We decided to build a third option: a managed professional agency designed around what
+        modern families actually need.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>We Are the Client</h3>
+          <p>We evaluate every staff member against the highest standard possible: would we feel completely
+            confident leaving our own four boys in their care? That standard shapes every hiring decision.
+          </p>
+        </div>
+        <div class="card">
+          <h3>We Are the Experts</h3>
+          <p>Our approach combines NHS clinical governance with educational pedagogy, creating a childcare
+            model that is structured, thoughtful, and intentionally high quality.</p>
+        </div>
+        <div class="card">
+          <h3>We Built the Third Option</h3>
+          <p>Families deserve more than a choice between convenience and trust. Our model delivers flexibility
+            without compromising on oversight, safety, or child development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white" id="pedigree">
+    <div class="container">
+      <h2 class="section-title">Our Triple-Accredited Pedigree</h2>
+      <p class="lead-text">We do not simply hire staff. We curate a team of professionals whose training,
+        judgement, and specialist experience allow us to deliver a higher standard of in-home childcare.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>The Clinical Tier</h3>
+          <p>NHS Nurses who bring hospital-grade safety awareness, medical confidence, allergy management
+            understanding, and calm oversight into the home environment.</p>
+        </div>
+        <div class="card">
+          <h3>The Educational Tier</h3>
+          <p>Certified Teachers who transform daily care into meaningful learning moments, using structured
+            development and engaging experiences to support each child.</p>
+        </div>
+        <div class="card">
+          <h3>The Behavioral Tier</h3>
+          <p>Specialised Support Workers with experience in routine building, neurodivergence support, and
+            household stability during demanding schedules and transitions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark" id="promise">
+    <div class="container">
+      <h2 class="section-title">Our Promise to You</h2>
+      <div class="promise-wrap">
+        <div class="promise-text">
+          <p>We understand what it feels like to keep searching because “good enough” does not feel safe
+            enough. We understand the pressure of long shifts, unpredictable schedules, and the emotional
+            weight of leaving your children in someone else’s care.</p>
+          <p>ELITE ANCHOR is the solution we built for ourselves, and now proudly offer to other families who
+            want more than a service. They want certainty, professionalism, and care they can genuinely rely
+            on.</p>
+        </div>
+        <div class="promise-points">
+          <div class="promise-item">
+            <h4>For Local Professionals</h4>
+            <p>Reliable, structured care that supports demanding routines and changing schedules.</p>
+          </div>
+          <div class="promise-item">
+            <h4>For Executives &amp; High-Performing Families</h4>
+            <p>A premium standard of oversight, flexibility, and confidence when time and trust both matter.
+            </p>
+          </div>
+          <div class="promise-item">
+            <h4>For Visiting Families</h4>
+            <p>Professional in-home childcare in the UK that allows you to settle, work, or travel with
+              peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="gap">
     <div class="container">
       <h2 class="section-title">The Professional Gap</h2>
@@ -1236,39 +1429,7 @@
       </div>
     </div>
   </section>
-  <section class="section" id="promise">
-    <div class="container split">
-      <div class="panel">
-        <h2 class="section-title">Our Promise to You</h2>
-        <p>When you book with us, you are not just hiring a staff member. You are benefiting from a vetting process
-          designed by an NHS Nurse and a College Teacher who built this service around what they would demand for their
-          own children.</p>
-        <p>Before anyone joins our team, we ask one question: <strong>Would we trust this person with our four
-            boys?</strong></p>
-        <p>If the answer is not a resounding yes, they do not wear our uniform.</p>
-      </div>
-      <div class="promise-wrap">
-        <div class="promise-panel">
-          <svg class="icon" viewbox="0 0 24 24">
-            <path
-              d="M12 2C8 2 5 5 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z">
-            </path>
-          </svg>
-          <h3>For Local Families</h3>
-          <p>We created ELITE ANCHOR so you do not have to wait six years for a trusted night off or a few hours of
-            reliable support.</p>
-        </div>
-        <div class="promise-panel">
-          <svg class="icon" viewbox="0 0 24 24">
-            <path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14l4-4h12a2 2 0 0 0 2-2z"></path>
-          </svg>
-          <h3>For Visitors</h3>
-          <p>Whether you are visiting the city or balancing a demanding schedule, we provide elite support that is
-            structured, safe, and genuinely dependable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+
   <section class="cta" id="welcome">
     <h2>Welcome to the family.</h2>
     <p>Because the people who take care of your world should be experts in theirs.</p>
