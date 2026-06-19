@@ -202,6 +202,13 @@
       object-fit: cover
     }
 
+    /* Constrain hero content and ensure comfortable horizontal padding */
+    .hero > div {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -472,6 +479,27 @@
       color: var(--orange)
     }
 
+    /* Normalize paragraph styles inside #tiers and restore visible list items */
+    #tiers .tier-card p {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 12px;
+      line-height: 1.6;
+    }
+
+    #tiers .tier-card ul {
+      list-style: disc;
+      padding-left: 22px;
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    #tiers .tier-card li {
+      margin-bottom: 8px;
+      text-align: left;
+    }
+
     .service-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -593,7 +621,7 @@
     }
 
     .cta {
-      padding: 84px 24px 96px;
+      padding: 84px 24px 64px;
       text-align: center;
       background: var(--surface)
     }
@@ -749,7 +777,7 @@
     /* Unified site header */
     /* Standardized advanced footer */
     .site-footer {
-      margin-top: 48px;
+      margin-top: 0;
       background: linear-gradient(135deg, #163123, #1f3d28);
       color: rgba(255, 255, 255, .88);
       border-top: 1px solid rgba(255, 255, 255, .06)
@@ -2779,7 +2807,7 @@
     /* Unified site header */
     /* Standardized advanced footer */
     .site-footer {
-      margin-top: 48px;
+      margin-top: 0;
       background: linear-gradient(135deg, #163123, #1f3d28);
       color: rgba(255, 255, 255, .88);
       border-top: 1px solid rgba(255, 255, 255, .06)
