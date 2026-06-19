@@ -103,10 +103,17 @@
 
     .hero {
       display: grid;
-      gap: 24px;
-      padding: 44px 0px 44px 75px;
+      grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+      gap: 0;
+      align-items: stretch;
+      min-height: 620px;
+      padding: 0;
       background: linear-gradient(to right, #e6efe4, var(--bg));
-      align-items: center
+    }
+
+    .hero>div:first-child {
+      align-self: center;
+      padding: 44px 44px 44px 75px;
     }
 
     .eyebrow {
@@ -382,8 +389,8 @@
 
     @media(min-width:768px) {
       .hero {
-        grid-template-columns: 1fr 1fr;
-        align-items: center
+        grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+        align-items: stretch
       }
 
       .story-grid {
@@ -1099,15 +1106,30 @@
     }
 
     @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 56px;
+        padding-bottom: 56px;
+        gap: 28px;
+      }
+
+      .hero>div:first-child {
+        padding: 0 24px;
+      }
+
       .hero-image {
+        order: -1;
         min-height: auto;
       }
 
       .hero-image img {
         height: auto;
-        max-width: 640px;
+        max-width: 560px;
         margin: 0 auto;
         aspect-ratio: 4 / 3;
+        border-radius: 24px;
+        box-shadow: var(--shadow-md);
       }
     }
 
@@ -1204,7 +1226,7 @@
           <summary>About</summary>
           <div class="aa-dd__menu">
             <a class="is-active" href="Our Story.html">Our Story</a>
-            <a class="is-active" href="Meet the Team Page.html">Team Page</a>
+            <a class="is-active" href="Meet the Team Page.html">Meet the team</a>
           </div>
         </details>
         <details class="aa-dd">
@@ -1466,7 +1488,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="HTML/About Us.html">About Us</a></li>
             <li><a href="Our Story.html">Our Story</a></li>
-            <li><a href="Meet the Team Page.html">Meet the Team</a></li>
+            <li><a href="Meet the Team Page.html">Meet the team</a></li>
             <li><a href="Career page.html">Careers</a></li>
           </ul>
         </div>
