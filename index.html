@@ -93,7 +93,12 @@
       <a class="aa-header__brand aa-header__brand--logo" href="index.html" aria-label="ELITE ANCHOR Home">
         <img class="aa-header__logo" src="img/Logo.png" alt="ELITE ANCHOR" />
       </a>
-      <nav aria-label="Main navigation" class="aa-header__nav">
+      <button class="aa-header__toggle nav-toggle" type="button" aria-controls="primary-navigation"
+        aria-expanded="false">
+        <span class="aa-header__toggle-bars" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+      <nav aria-label="Main navigation" class="aa-header__nav nav-menu" id="primary-navigation">
         <a class="aa-header__link is-active" href="index.html">Home</a>
         <details class="aa-dd">
           <summary>About</summary>
