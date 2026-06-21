@@ -3334,7 +3334,7 @@
 }
 
 .home-page .hero > div {
-  width: 100%;
+  width: 90%;
   max-width: 1320px;
 }
 
@@ -3369,6 +3369,7 @@
 
 .home-page .hero-point {
   padding: 12px;
+  font-size: 25px;
 }
 
 @keyframes fadeUp {
